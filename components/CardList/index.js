@@ -6,7 +6,7 @@ export default function CardList({ tutorials }) {
       {tutorials.map((tutorial) => {
         return (
           <li key={tutorial.id}>
-            <CardPreview content={tutorial.snippet} />
+            <CardPreview content={tutorial.snippet} id={tutorial.id} />
           </li>
         );
       })}
