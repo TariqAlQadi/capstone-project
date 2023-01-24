@@ -1,8 +1,9 @@
+import { StyledHeader } from "./Header.styled";
+
 export default function Header() {
   return (
-    <header>
-      <h1>NetTricks</h1>
-      {/* <button>Burgerbutton</button> */}
-    </header>
+    <StyledHeader>
+      <h1>NeTricks</h1>
+    </StyledHeader>
   );
 }
