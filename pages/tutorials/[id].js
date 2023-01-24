@@ -21,7 +21,7 @@ export default function DetailsPage() {
 
   return (
     <>
-      <Link href="/tutorials">Back</Link>
+      <Link href="/repertoire">Back</Link>
       <h1>Details:</h1>
       <CardDetails content={currentTutorial.snippet} />
     </>

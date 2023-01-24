@@ -1,5 +1,4 @@
 import CardList from "@/components/CardList";
-import Header from "@/components/Header";
 import useSWR from "swr";
 
 const url =
@@ -13,7 +12,6 @@ export default function HomePage() {
 
   return (
     <>
-      <Header />
       <CardList tutorials={data.items} />
     </>
   );
