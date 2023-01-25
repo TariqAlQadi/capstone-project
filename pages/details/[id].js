@@ -13,7 +13,6 @@ export default function DetailsPage() {
     setList(
       list.map((tutorial) => {
         if (tutorial.id === id) {
-          console.log(tutorial);
           return { ...tutorial, isLiked: !tutorial.isLiked };
         }
         return tutorial;
