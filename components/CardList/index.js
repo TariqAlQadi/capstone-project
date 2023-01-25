@@ -2,7 +2,7 @@ import CardPreview from "../CardPreview";
 
 export default function CardList({ tutorials }) {
   return (
-    <ul>
+    <ol>
       {tutorials.map((tutorial) => {
         return (
           <li key={tutorial.id}>
@@ -10,6 +10,6 @@ export default function CardList({ tutorials }) {
           </li>
         );
       })}
-    </ul>
+    </ol>
   );
 }
