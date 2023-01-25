@@ -1,28 +1,33 @@
 import CardDetails from "@/components/CardDetails";
+import { beginnerList } from "@/mockData/globalBeginner52";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import useSWR from "swr";
-
-const url =
-  "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=PLiiteex9CDbg-EAskekSQHbfj1j8WaaxM&key=AIzaSyBMSlB4mSGgur42EkHOKKMmTPtqOTSkRI4&part=snippet&maxResults=112";
+import { useAtom } from "jotai";
 
 export default function DetailsPage() {
+  const [list, setList] = useAtom(beginnerList);
+
   const router = useRouter();
   const { id } = router.query;
 
-  const { data, error, isLoading } = useSWR(url);
-
-  if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
-
-  const currentTutorial = data.items.find((tutorial) => {
+  function handleToggleLike(id) {
+    setList(
+      list.map((tutorial) => {
+        if (tutorial.id === id) {
+          console.log(tutorial);
+          return { ...tutorial, isLiked: !tutorial.isLiked };
+        }
+        return tutorial;
+      })
+    );
+  }
+  const currentTutorial = list.find((tutorial) => {
     return tutorial.id === id;
   });
 
   return (
-    <>
-      <h1>Details:</h1>
-      <CardDetails content={currentTutorial.snippet} />
-    </>
+    <section>
+      <h2>Details:</h2>
+      <CardDetails content={currentTutorial} onToggle={handleToggleLike} />
+    </section>
   );
 }

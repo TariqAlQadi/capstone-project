@@ -1,18 +1,13 @@
 import CardList from "@/components/CardList";
-import useSWR from "swr";
-
-const url =
-  "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=PLiiteex9CDbg-EAskekSQHbfj1j8WaaxM&key=AIzaSyBMSlB4mSGgur42EkHOKKMmTPtqOTSkRI4&part=snippet&maxResults=112";
+import { beginnerList } from "@/mockData/globalBeginner52";
+import { useAtom } from "jotai";
 
 export default function HomePage() {
-  const { data, error, isLoading } = useSWR(url);
-
-  if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
+  const [list] = useAtom(beginnerList);
 
   return (
     <>
-      <CardList tutorials={data.items} />
+      <CardList tutorials={list} />
     </>
   );
 }

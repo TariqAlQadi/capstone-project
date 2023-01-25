@@ -7,10 +7,10 @@ export default function Card({ content, id, toggleBookmark }) {
       <h2>{content.title}</h2>
       <h3>by {content.videoOwnerChannelTitle}</h3>
       <Image
-        src={content.thumbnails.maxres.url}
+        src={content.thumbnails.high.url}
         alt={content.title}
-        width={300} //can be maxres.width
-        height={300} //maxres.height
+        width={300}
+        height={300}
       />
     </Link>
   );
