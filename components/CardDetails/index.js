@@ -8,7 +8,7 @@ export default function CardDetails({ content }) {
   const lengthOfDescription = content.description.indexOf("!") + 1;
 
   //bookmark toggle function
-  function handleToggleBookmark() {
+  function toggleBookmark() {
     setIsBookmarked(!isBookmarked);
   }
 

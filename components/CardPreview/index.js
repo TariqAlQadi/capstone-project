@@ -9,8 +9,8 @@ export default function Card({ content, id, toggleBookmark }) {
       <Image
         src={content.thumbnails.maxres.url}
         alt={content.title}
-        width={300}
-        height={300}
+        width={300} //can be maxres.width
+        height={300} //maxres.height
       />
     </Link>
   );
