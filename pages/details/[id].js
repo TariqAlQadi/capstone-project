@@ -20,6 +20,7 @@ export default function DetailsPage() {
       })
     );
   }
+
   const currentTutorial = list.find((tutorial) => {
     return tutorial.id === id;
   });
