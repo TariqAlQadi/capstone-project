@@ -1,6 +1,4 @@
-import { atom } from "jotai";
-
-const list = [
+export const advancedList = [
   {
     _id: {
       $oid: "63c981da7cfaa5353d9c43c2",
@@ -1928,5 +1926,3 @@ const list = [
     notes: [""],
   },
 ];
-
-export const advancedList = atom(list);

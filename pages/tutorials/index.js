@@ -1,9 +1,9 @@
 import CardList from "@/components/CardList";
-import { beginnerList } from "@/mockData/globalBeginner52";
+import { allTutorials } from "@/mockData/globalStates";
 import { useAtom } from "jotai";
 
 export default function HomePage() {
-  const [list] = useAtom(beginnerList);
+  const [list] = useAtom(allTutorials);
 
   return (
     <section>
