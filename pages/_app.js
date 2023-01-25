@@ -1,6 +1,8 @@
 import GlobalStyle from "@/styles";
 import Head from "next/head";
 import { SWRConfig } from "swr";
+import Navigation from "@/components/Navigation";
+import Header from "@/components/Header";
 
 const fetcher = async (url) => {
   const res = await fetch(url);
@@ -29,7 +31,9 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Capstone Project</title>
       </Head>
+      <Header />
       <Component {...pageProps} />
+      <Navigation />
     </SWRConfig>
   );
 }
