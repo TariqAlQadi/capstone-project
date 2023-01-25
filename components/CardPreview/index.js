@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Card({ content, id, toggleBookmark }) {
+export default function Card({ content, id }) {
   return (
     <Link href={`/details/${id}`}>
       <h2>{content.title}</h2>
