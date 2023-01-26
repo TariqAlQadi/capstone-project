@@ -1,70 +1,23 @@
-import CardList from "@/components/CardList";
-import { allTutorials } from "@/mockData/globalStates";
-import { useAtom } from "jotai";
-import { useState } from "react";
+import Link from "next/link";
 
-export default function HomePage() {
-  const [list] = useAtom(allTutorials);
-
-  //show list states
-  const [showBeginner, setShowBeginner] = useState(false);
-  const [showIntermediate, setShowIntermediate] = useState(false);
-  const [showAdvanced, setShowAdvanced] = useState(false);
-  const [showCoin, setShowCoin] = useState(false);
-
-  //filtered by difficulty
-  const beginnerList = list.filter(
-    (category) => category.difficulty === "beginner"
-  );
-  const intermediateList = list.filter(
-    (category) => category.difficulty === "intermediate"
-  );
-  const advancedList = list.filter(
-    (category) => category.difficulty === "advanced"
-  );
-  const coinList = list.filter((category) => category.difficulty === "coin");
-
+export default function Categories() {
   return (
     <section>
-      <h2>Beginner Tutorials:</h2>
-      <button
-        onClick={() => {
-          setShowBeginner(!showBeginner);
-        }}
-      >
-        Show List
-      </button>
-      {showBeginner && <CardList tutorials={beginnerList} />}
-
-      <h2>Intermediate Tutorials:</h2>
-      <button
-        onClick={() => {
-          setShowIntermediate(!showIntermediate);
-        }}
-      >
-        Show List
-      </button>
-      {showIntermediate && <CardList tutorials={intermediateList} />}
-
-      <h2>Advanced Tutorials:</h2>
-      <button
-        onClick={() => {
-          setShowAdvanced(!showAdvanced);
-        }}
-      >
-        Show List
-      </button>
-      {showAdvanced && <CardList tutorials={advancedList} />}
-
-      <h2>Coin Tutorials:</h2>
-      <button
-        onClick={() => {
-          setShowCoin(!showCoin);
-        }}
-      >
-        Show List
-      </button>
-      {showCoin && <CardList tutorials={coinList} />}
+      <h2>Categories:</h2>
+      <ul>
+        <li>
+          <Link href="/tutorials/beginner">Beginner</Link>
+        </li>
+        <li>
+          <Link href="/tutorials/intermediate">Intermediate</Link>
+        </li>
+        <li>
+          <Link href="/tutorials/advanced">Advanced</Link>
+        </li>
+        <li>
+          <Link href="/tutorials/coin">Coin</Link>
+        </li>
+      </ul>
     </section>
   );
 }
