@@ -9,7 +9,7 @@ export default function Repertoire() {
 
   return (
     <section>
-      <h2>your Repertoire</h2>
+      <h2>Your Repertoire:</h2>
       <ul>
         {filteredList.map((tutorial) => {
           return (

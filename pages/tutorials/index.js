@@ -10,6 +10,7 @@ export default function HomePage() {
   const [showBeginner, setShowBeginner] = useState(false);
   const [showIntermediate, setShowIntermediate] = useState(false);
   const [showAdvanced, setShowAdvanced] = useState(false);
+  const [showCoin, setShowCoin] = useState(false);
 
   //filtered by difficulty
   const beginnerList = list.filter(
@@ -21,45 +22,49 @@ export default function HomePage() {
   const advancedList = list.filter(
     (category) => category.difficulty === "advanced"
   );
+  const coinList = list.filter((category) => category.difficulty === "coin");
 
   return (
     <section>
-      <ul>
-        <li>
-          <h2>Beginner Tutorials:</h2>
-          <button
-            onClick={() => {
-              setShowBeginner(!showBeginner);
-            }}
-          >
-            Show List
-          </button>
-          {showBeginner && <CardList tutorials={beginnerList} />}
-        </li>
+      <h2>Beginner Tutorials:</h2>
+      <button
+        onClick={() => {
+          setShowBeginner(!showBeginner);
+        }}
+      >
+        Show List
+      </button>
+      {showBeginner && <CardList tutorials={beginnerList} />}
 
-        <li>
-          <h2>intermediate Tutorials:</h2>
-          <button
-            onClick={() => {
-              setShowIntermediate(!showIntermediate);
-            }}
-          >
-            Show List
-          </button>
-          {showIntermediate && <CardList tutorials={intermediateList} />}
-        </li>
-        <li>
-          <h2>Advanced Tutorials:</h2>
-          <button
-            onClick={() => {
-              setShowAdvanced(!showAdvanced);
-            }}
-          >
-            Show List
-          </button>
-          {showAdvanced && <CardList tutorials={advancedList} />}
-        </li>
-      </ul>
+      <h2>Intermediate Tutorials:</h2>
+      <button
+        onClick={() => {
+          setShowIntermediate(!showIntermediate);
+        }}
+      >
+        Show List
+      </button>
+      {showIntermediate && <CardList tutorials={intermediateList} />}
+
+      <h2>Advanced Tutorials:</h2>
+      <button
+        onClick={() => {
+          setShowAdvanced(!showAdvanced);
+        }}
+      >
+        Show List
+      </button>
+      {showAdvanced && <CardList tutorials={advancedList} />}
+
+      <h2>Coin Tutorials:</h2>
+      <button
+        onClick={() => {
+          setShowCoin(!showCoin);
+        }}
+      >
+        Show List
+      </button>
+      {showCoin && <CardList tutorials={coinList} />}
     </section>
   );
 }

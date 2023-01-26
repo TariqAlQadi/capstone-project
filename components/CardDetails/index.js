@@ -1,7 +1,7 @@
 import SVGIcon from "../SVGIcon";
 
 export default function CardDetails({ content, onToggle }) {
-  // //length of the description until the first "!"
+  //length of the description until the first "!"
   const lengthOfDescription = content?.snippet.description.indexOf("!") + 1;
 
   return (
@@ -9,11 +9,11 @@ export default function CardDetails({ content, onToggle }) {
       <h2>{content?.snippet.title}</h2>
       <h3>by {content?.snippet.videoOwnerChannelTitle}</h3>
       <iframe
-        width="654"
-        height="368"
+        //temporary fix for iframe size
+        width={(200 * 16) / 9}
+        height={200}
         src={`https://www.youtube.com/embed/${content?.snippet.resourceId.videoId}`}
         title={content?.snippet.title}
-        frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
       ></iframe>
