@@ -3,7 +3,7 @@ import { allTutorials } from "@/mockData/globalStates";
 import { useAtom } from "jotai";
 import Link from "next/link";
 
-export default function advanced() {
+export default function Advanced() {
   const [list] = useAtom(allTutorials);
 
   const advancedList = list.filter(

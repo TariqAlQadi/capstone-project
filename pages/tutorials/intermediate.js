@@ -3,7 +3,7 @@ import { allTutorials } from "@/mockData/globalStates";
 import { useAtom } from "jotai";
 import Link from "next/link";
 
-export default function intermediate() {
+export default function Intermediate() {
   const [list] = useAtom(allTutorials);
 
   const intermediateList = list.filter(

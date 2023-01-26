@@ -3,7 +3,7 @@ import { allTutorials } from "@/mockData/globalStates";
 import { useAtom } from "jotai";
 import Link from "next/link";
 
-export default function coin() {
+export default function Coin() {
   const [list] = useAtom(allTutorials);
   const coinList = list.filter((category) => category.difficulty === "coin");
 
