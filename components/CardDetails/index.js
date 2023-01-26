@@ -27,11 +27,11 @@ export default function CardDetails({ content, onToggle }) {
       >
         {content?.isLiked ? (
           <>
-            <SVGIcon variant="bookmarked" width="50px" />
+            <SVGIcon variant="heart" width="50px" />
           </>
         ) : (
           <>
-            <SVGIcon variant="notBookmarked" width="50px" />
+            <SVGIcon variant="heartOutline" width="50px" />
           </>
         )}
       </button>

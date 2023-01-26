@@ -17,9 +17,7 @@ export default function Navigation() {
           </Link>
           <Link href="/repertoire">
             <SVGIcon
-              variant={
-                pathname === "/repertoire" ? "bookmarked" : "notBookmarked"
-              }
+              variant={pathname === "/repertoire" ? "heart" : "heartOutline"}
               width="40px"
             />
           </Link>
