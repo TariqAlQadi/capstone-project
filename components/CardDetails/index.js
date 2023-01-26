@@ -4,11 +4,6 @@ export default function CardDetails({ content, onToggle }) {
   //length of the description until the first "!"
   const lengthOfDescription = content?.snippet.description.indexOf("!") + 1;
 
-  // function handleSubmit(event) {
-  //   event.preventDefault();
-
-  // }
-
   return (
     <section>
       <h2>{content?.snippet.title}</h2>
@@ -39,17 +34,6 @@ export default function CardDetails({ content, onToggle }) {
           </>
         )}
       </button>
-
-      {/* <form onSubmit={handleSubmit}>
-        <label htmlFor="note">note:</label>
-        <input name="note" type="text"></input>
-        <button type="submit">Add</button>
-      </form>
-      <ul>
-        {content?.notes.map((note) => {
-          return <li key={content.id}>{note}</li>;
-        })}
-      </ul> */}
     </section>
   );
 }
