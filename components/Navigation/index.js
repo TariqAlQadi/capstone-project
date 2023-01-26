@@ -13,7 +13,7 @@ export default function Navigation() {
       ) : (
         <StyledNavigation>
           <Link href="/tutorials">
-            <SVGIcon variant="home" width="40px" />
+            <SVGIcon variant="list" width="40px" />
           </Link>
           <Link href="/repertoire">
             <SVGIcon
