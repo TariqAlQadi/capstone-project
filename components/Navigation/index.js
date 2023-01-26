@@ -13,7 +13,10 @@ export default function Navigation() {
       ) : (
         <StyledNavigation>
           <Link href="/tutorials">
-            <SVGIcon variant="list" width="40px" />
+            <SVGIcon
+              variant={pathname === "/tutorials" ? "list" : "listOutline"}
+              width="40px"
+            />
           </Link>
           <Link href="/repertoire">
             <SVGIcon

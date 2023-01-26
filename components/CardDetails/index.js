@@ -4,8 +4,13 @@ export default function CardDetails({ content, onToggle }) {
   //length of the description until the first "!"
   const lengthOfDescription = content?.snippet.description.indexOf("!") + 1;
 
+  // function handleSubmit(event) {
+  //   event.preventDefault();
+
+  // }
+
   return (
-    <>
+    <section>
       <h2>{content?.snippet.title}</h2>
       <h3>by {content?.snippet.videoOwnerChannelTitle}</h3>
       <iframe
@@ -18,11 +23,10 @@ export default function CardDetails({ content, onToggle }) {
         allowFullScreen
       ></iframe>
       <p>{content?.snippet.description.substring(0, lengthOfDescription)}</p>
-
       <button
         type="button"
         onClick={() => {
-          onToggle(content.id);
+          onToggle(content?.id);
         }}
       >
         {content?.isLiked ? (
@@ -35,6 +39,17 @@ export default function CardDetails({ content, onToggle }) {
           </>
         )}
       </button>
-    </>
+
+      {/* <form onSubmit={handleSubmit}>
+        <label htmlFor="note">note:</label>
+        <input name="note" type="text"></input>
+        <button type="submit">Add</button>
+      </form>
+      <ul>
+        {content?.notes.map((note) => {
+          return <li key={content.id}>{note}</li>;
+        })}
+      </ul> */}
+    </section>
   );
 }
