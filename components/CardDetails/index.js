@@ -9,6 +9,7 @@ export default function CardDetails({ content, onToggle, id }) {
   const [showEdit, setShowEdit] = useState(false);
 
   const router = useRouter();
+
   //handle function for editform
   function handleSubmit(event) {
     event.preventDefault();
@@ -56,14 +57,13 @@ export default function CardDetails({ content, onToggle, id }) {
       </button>
       {showEdit && (
         <form onSubmit={handleSubmit}>
-          <label htmlFor="notes">write your notes:</label>
+          <label htmlFor="notes">notes</label>
           <textarea
             type="text"
             name="notes"
             id="notes"
             defaultValue={content?.notes[0]}
           />
-          <button type="submit">Change</button>
         </form>
       )}
       <h3>Note:</h3>
