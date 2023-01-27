@@ -1,8 +1,21 @@
 import SVGIcon from "../SVGIcon";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
-export default function CardDetails({ content, onToggle }) {
+export default function CardDetails({ content, onToggle, id }) {
   //length of the description until the first "!"
   const lengthOfDescription = content?.snippet.description.indexOf("!") + 1;
+  //show edit form state
+  const [showEdit, setShowEdit] = useState(false);
+
+  const router = useRouter();
+
+  //handle function for editform
+  function handleSubmit(event) {
+    event.preventDefault();
+    content.notes[0] = event.target.notes.value;
+    router.push(`/details/${id}`);
+  }
 
   return (
     <section>
@@ -34,6 +47,27 @@ export default function CardDetails({ content, onToggle }) {
           </>
         )}
       </button>
+      <button
+        type="button"
+        onClick={() => {
+          setShowEdit(!showEdit);
+        }}
+      >
+        {showEdit ? "close edit" : "edit"}
+      </button>
+      {showEdit && (
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="notes">notes</label>
+          <textarea
+            type="text"
+            name="notes"
+            id="notes"
+            defaultValue={content?.notes[0]}
+          />
+        </form>
+      )}
+      <h3>Note:</h3>
+      <p>{content?.notes[0]}</p>
     </section>
   );
 }

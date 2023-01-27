@@ -27,7 +27,11 @@ export default function DetailsPage() {
   return (
     <section>
       <h2>Details:</h2>
-      <CardDetails content={currentTutorial} onToggle={handleToggleLike} />
+      <CardDetails
+        content={currentTutorial}
+        onToggle={handleToggleLike}
+        id={id}
+      />
     </section>
   );
 }
