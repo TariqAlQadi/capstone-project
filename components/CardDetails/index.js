@@ -14,11 +14,20 @@ export default function CardDetails({ content, onToggle, id }) {
   function handleSubmit(event) {
     event.preventDefault();
     content.notes[0] = event.target.notes.value;
+    setShowEdit(false);
     router.push(`/details/${id}`);
   }
 
   return (
     <section>
+      <button
+        type="button"
+        onClick={() => {
+          router.back();
+        }}
+      >
+        Go Back
+      </button>
       <h2>{content?.snippet.title}</h2>
       <h3>by {content?.snippet.videoOwnerChannelTitle}</h3>
       <iframe
@@ -64,6 +73,7 @@ export default function CardDetails({ content, onToggle, id }) {
             id="notes"
             defaultValue={content?.notes[0]}
           />
+          <button type="submit">Change</button>
         </form>
       )}
       <h3>Note:</h3>
