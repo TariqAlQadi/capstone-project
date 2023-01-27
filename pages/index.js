@@ -1,13 +1,5 @@
-import CardList from "@/components/CardList";
-import { beginnerList } from "@/mockData/globalBeginner52";
-import { useAtom } from "jotai";
+import Link from "next/link";
 
-export default function HomePage() {
-  const [list] = useAtom(beginnerList);
-
-  return (
-    <>
-      <CardList tutorials={list} />
-    </>
-  );
+export default function Home() {
+  return <Link href="/tutorials">Welcome to Netrix</Link>;
 }

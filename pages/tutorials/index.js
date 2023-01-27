@@ -1,14 +1,23 @@
-import CardList from "@/components/CardList";
-import { beginnerList } from "@/mockData/globalBeginner52";
-import { useAtom } from "jotai";
+import Link from "next/link";
 
-export default function HomePage() {
-  const [list] = useAtom(beginnerList);
-
+export default function Categories() {
   return (
     <section>
-      <h2>All Tutorials:</h2>
-      <CardList tutorials={list} />
+      <h2>Categories:</h2>
+      <ul>
+        <li>
+          <Link href="/tutorials/beginner">Beginner</Link>
+        </li>
+        <li>
+          <Link href="/tutorials/intermediate">Intermediate</Link>
+        </li>
+        <li>
+          <Link href="/tutorials/advanced">Advanced</Link>
+        </li>
+        <li>
+          <Link href="/tutorials/coin">Coin</Link>
+        </li>
+      </ul>
     </section>
   );
 }

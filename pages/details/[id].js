@@ -1,10 +1,10 @@
 import CardDetails from "@/components/CardDetails";
-import { beginnerList } from "@/mockData/globalBeginner52";
 import { useRouter } from "next/router";
 import { useAtom } from "jotai";
+import { allTutorials } from "@/mockData/globalStates";
 
 export default function DetailsPage() {
-  const [list, setList] = useAtom(beginnerList);
+  const [list, setList] = useAtom(allTutorials);
 
   const router = useRouter();
   const { id } = router.query;

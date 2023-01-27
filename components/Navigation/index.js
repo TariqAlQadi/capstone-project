@@ -1,32 +1,31 @@
 import Link from "next/link";
 import { StyledNavigation } from "./Navigation.styled";
 import SVGIcon from "../SVGIcon";
-import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function Navigation() {
-  const [toggleNav, setToggleNav] = useState(false);
+  const { pathname } = useRouter();
 
   return (
-    <StyledNavigation>
-      <Link
-        href="/tutorials"
-        onClick={() => {
-          setToggleLikeNav(false);
-        }}
-      >
-        <SVGIcon variant="home" width="40px" />
-      </Link>
-      <Link
-        href="/repertoire"
-        onClick={() => {
-          setToggleNav(true);
-        }}
-      >
-        <SVGIcon
-          variant={toggleNav ? "bookmarked" : "notBookmarked"}
-          width="40px"
-        />
-      </Link>
-    </StyledNavigation>
+    <>
+      {pathname === "/" ? (
+        <Link href="/tutorials"></Link>
+      ) : (
+        <StyledNavigation>
+          <Link href="/tutorials">
+            <SVGIcon
+              variant={pathname === "/tutorials" ? "list" : "listOutline"}
+              width="40px"
+            />
+          </Link>
+          <Link href="/repertoire">
+            <SVGIcon
+              variant={pathname === "/repertoire" ? "heart" : "heartOutline"}
+              width="40px"
+            />
+          </Link>
+        </StyledNavigation>
+      )}
+    </>
   );
 }
