@@ -1,13 +1,19 @@
 import SVGIcon from "../SVGIcon";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
-export default function CardDetails({ content, onToggle }) {
+export default function CardDetails({ content, onToggle, id }) {
   //length of the description until the first "!"
   const lengthOfDescription = content?.snippet.description.indexOf("!") + 1;
+  //show edit form state
+  const [showEdit, setShowEdit] = useState(false);
 
+  const router = useRouter();
+  //handle function for editform
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(event.target.notes.value);
-    content.notes[0].textContent = event.target.notes.value;
+    content.notes[0] = event.target.notes.value;
+    router.push(`/details/${id}`);
   }
 
   return (
@@ -40,15 +46,28 @@ export default function CardDetails({ content, onToggle }) {
           </>
         )}
       </button>
+      <button
+        type="button"
+        onClick={() => {
+          setShowEdit(!showEdit);
+        }}
+      >
+        {showEdit ? "close edit" : "edit"}
+      </button>
+      {showEdit && (
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="notes">Write your notes:</label>
+          <input
+            type="text"
+            name="notes"
+            id="notes"
+            defaultValue={content?.notes[0]}
+          />
+          <button type="submit">Change</button>
+        </form>
+      )}
       <h3>Notes:</h3>
-
       <p>{content?.notes[0]}</p>
-
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="notes">Notes</label>
-        <input type="text" name="notes" id="notes"></input>
-        <button type="submit">Change</button>
-      </form>
     </section>
   );
 }
