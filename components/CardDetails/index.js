@@ -56,8 +56,8 @@ export default function CardDetails({ content, onToggle, id }) {
       </button>
       {showEdit && (
         <form onSubmit={handleSubmit}>
-          <label htmlFor="notes">Write your notes:</label>
-          <input
+          <label htmlFor="notes">write your notes:</label>
+          <textarea
             type="text"
             name="notes"
             id="notes"
@@ -66,7 +66,7 @@ export default function CardDetails({ content, onToggle, id }) {
           <button type="submit">Change</button>
         </form>
       )}
-      <h3>Notes:</h3>
+      <h3>Note:</h3>
       <p>{content?.notes[0]}</p>
     </section>
   );
