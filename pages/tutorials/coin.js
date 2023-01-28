@@ -5,7 +5,7 @@ import { StyledLink } from "@/components/StyledLink/Link.styled";
 
 export default function Coin() {
   const [list] = useAtom(allTutorials);
-  const coinList = list.filter((category) => category.difficulty === "coin");
+  const coinList = list.filter((listItem) => listItem.category === "coin");
 
   return (
     <section>

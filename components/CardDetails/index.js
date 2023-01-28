@@ -13,7 +13,7 @@ export default function CardDetails({ content, onToggle, id }) {
   //handle function for editform
   function handleSubmit(event) {
     event.preventDefault();
-    content.notes[0] = event.target.notes.value;
+    content.notes = event.target.notes.value;
     content.isLearning = event.target.learning.checked;
     content.mastered = event.target.mastered.checked;
 
@@ -60,7 +60,7 @@ export default function CardDetails({ content, onToggle, id }) {
       )}
 
       <h3>Notes:</h3>
-      <p>{content?.notes[0]}</p>
+      <p>{content?.notes}</p>
       {showEdit && (
         <form onSubmit={handleSubmit}>
           <label htmlFor="notes">notes</label>

@@ -7,7 +7,7 @@ export default function Intermediate() {
   const [list] = useAtom(allTutorials);
 
   const intermediateList = list.filter(
-    (category) => category.difficulty === "intermediate"
+    (listItem) => listItem.difficulty === "intermediate"
   );
   return (
     <section>

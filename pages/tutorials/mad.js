@@ -3,16 +3,17 @@ import { allTutorials } from "@/testData/globalStates";
 import { useAtom } from "jotai";
 import { StyledLink } from "@/components/StyledLink/Link.styled";
 
-export default function Beginner() {
+export default function Mad() {
   const [list] = useAtom(allTutorials);
-  const beginnerList = list.filter(
-    (listItem) => listItem.difficulty === "beginner"
+
+  const intermediateList = list.filter(
+    (listItem) => listItem.difficulty === "mad"
   );
   return (
     <section>
       <StyledLink href="/tutorials">Go Back</StyledLink>
-      <h2>Beginner Tutorials:</h2>
-      <CardList tutorials={beginnerList} />
+      <h2>Intermediate Tutorials:</h2>
+      <CardList tutorials={intermediateList} />
     </section>
   );
 }

@@ -47,7 +47,9 @@ export const intermediateList = [
     difficulty: "intermediate",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
+    category: "cards",
   },
   {
     _id: {
@@ -97,7 +99,9 @@ export const intermediateList = [
     difficulty: "intermediate",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
+    category: "cards",
   },
   {
     _id: {
@@ -147,7 +151,9 @@ export const intermediateList = [
     difficulty: "intermediate",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
+    category: "cards",
   },
   {
     _id: {
@@ -197,7 +203,9 @@ export const intermediateList = [
     difficulty: "intermediate",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
+    category: "cards",
   },
   {
     _id: {
@@ -247,7 +255,9 @@ export const intermediateList = [
     difficulty: "intermediate",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
+    category: "cards",
   },
   {
     _id: {
@@ -297,7 +307,9 @@ export const intermediateList = [
     difficulty: "intermediate",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
+    category: "cards",
   },
   {
     _id: {
@@ -347,7 +359,9 @@ export const intermediateList = [
     difficulty: "intermediate",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
+    category: "cards",
   },
   {
     _id: {
@@ -397,7 +411,9 @@ export const intermediateList = [
     difficulty: "intermediate",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
+    category: "cards",
   },
   {
     _id: {
@@ -447,7 +463,9 @@ export const intermediateList = [
     difficulty: "intermediate",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
+    category: "cards",
   },
   {
     _id: {
@@ -497,7 +515,9 @@ export const intermediateList = [
     difficulty: "intermediate",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
+    category: "cards",
   },
   {
     _id: {
@@ -547,6 +567,8 @@ export const intermediateList = [
     difficulty: "intermediate",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
+    category: "cards",
   },
 ];

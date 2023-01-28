@@ -14,7 +14,13 @@ export default function Categories() {
           <StyledLink href="/tutorials/advanced">Advanced</StyledLink>
         </li>
         <li>
+          <StyledLink href="/tutorials/mad">Mad</StyledLink>
+        </li>
+        <li>
           <StyledLink href="/tutorials/coin">Coin</StyledLink>
+        </li>
+        <li>
+          <StyledLink href="/tutorials/gimmick">Gimmicks</StyledLink>
         </li>
       </ul>
     </section>

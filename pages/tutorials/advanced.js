@@ -7,7 +7,7 @@ export default function Advanced() {
   const [list] = useAtom(allTutorials);
 
   const advancedList = list.filter(
-    (category) => category.difficulty === "advanced"
+    (listItem) => listItem.difficulty === "advanced"
   );
 
   return (

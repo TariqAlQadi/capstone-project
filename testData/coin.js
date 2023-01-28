@@ -44,10 +44,12 @@ export const coin = [
       videoOwnerChannelTitle: "TheRussianGenius",
     },
     isLiked: false,
-    difficulty: "coin",
+    difficulty: "intermediate",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
+    category: "coin",
   },
   {
     _id: {
@@ -94,10 +96,12 @@ export const coin = [
       videoOwnerChannelTitle: "TheRussianGenius",
     },
     isLiked: false,
-    difficulty: "coin",
+    difficulty: "intermediate",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
+    category: "coin",
   },
   {
     _id: {
@@ -144,10 +148,12 @@ export const coin = [
       videoOwnerChannelTitle: "TheRussianGenius",
     },
     isLiked: false,
-    difficulty: "coin",
+    difficulty: "intermediate",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
+    category: "coin",
   },
   {
     _id: {
@@ -194,10 +200,12 @@ export const coin = [
       videoOwnerChannelTitle: "TheRussianGenius",
     },
     isLiked: false,
-    difficulty: "coin",
+    difficulty: "intermediate",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
+    category: "coin",
   },
   {
     _id: {
@@ -244,10 +252,12 @@ export const coin = [
       videoOwnerChannelTitle: "TheRussianGenius",
     },
     isLiked: false,
-    difficulty: "coin",
+    difficulty: "intermediate",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
+    category: "coin",
   },
   {
     _id: {
@@ -294,10 +304,12 @@ export const coin = [
       videoOwnerChannelTitle: "TheRussianGenius",
     },
     isLiked: false,
-    difficulty: "coin",
+    difficulty: "intermediate",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
+    category: "coin",
   },
   {
     _id: {
@@ -344,10 +356,12 @@ export const coin = [
       videoOwnerChannelTitle: "TheRussianGenius",
     },
     isLiked: false,
-    difficulty: "coin",
+    difficulty: "intermediate",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
+    category: "coin",
   },
   {
     _id: {
@@ -394,10 +408,12 @@ export const coin = [
       videoOwnerChannelTitle: "TheRussianGenius",
     },
     isLiked: false,
-    difficulty: "coin",
+    difficulty: "intermediate",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
+    category: "coin",
   },
   {
     _id: {
@@ -444,10 +460,12 @@ export const coin = [
       videoOwnerChannelTitle: "TheRussianGenius",
     },
     isLiked: false,
-    difficulty: "coin",
+    difficulty: "intermediate",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
+    category: "coin",
   },
   {
     _id: {
@@ -494,10 +512,12 @@ export const coin = [
       videoOwnerChannelTitle: "TheRussianGenius",
     },
     isLiked: false,
-    difficulty: "coin",
+    difficulty: "intermediate",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
+    category: "coin",
   },
   {
     _id: {
@@ -544,10 +564,12 @@ export const coin = [
       videoOwnerChannelTitle: "TheRussianGenius",
     },
     isLiked: false,
-    difficulty: "coin",
+    difficulty: "intermediate",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
+    category: "coin",
   },
   {
     _id: {
@@ -594,9 +616,11 @@ export const coin = [
       videoOwnerChannelTitle: "TheRussianGenius",
     },
     isLiked: false,
-    difficulty: "coin",
+    difficulty: "intermediate",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
+    category: "coin",
   },
 ];

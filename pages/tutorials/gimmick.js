@@ -3,16 +3,17 @@ import { allTutorials } from "@/testData/globalStates";
 import { useAtom } from "jotai";
 import { StyledLink } from "@/components/StyledLink/Link.styled";
 
-export default function Beginner() {
+export default function Coin() {
   const [list] = useAtom(allTutorials);
-  const beginnerList = list.filter(
-    (listItem) => listItem.difficulty === "beginner"
+  const gimmickList = list.filter(
+    (listItem) => listItem.category === "gimmick"
   );
+
   return (
     <section>
       <StyledLink href="/tutorials">Go Back</StyledLink>
-      <h2>Beginner Tutorials:</h2>
-      <CardList tutorials={beginnerList} />
+      <h2>Coin Tutorials:</h2>
+      <CardList tutorials={gimmickList} />
     </section>
   );
 }
