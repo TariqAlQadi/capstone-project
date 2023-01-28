@@ -57,7 +57,7 @@ export default function CardDetails({ content, onToggle, id }) {
         <SVGIcon variant="done" width="20px" color="green" />
       )}
 
-      <p>Release: {content?.snippet.publishedAt}</p>
+      {/* <p>Release: {content?.snippet.publishedAt}</p> */}
       <p>Category: {content?.category}</p>
       <p>Difficulty: {content?.difficulty}</p>
       <p>Notes: {content?.notes}</p>
