@@ -1,5 +1,5 @@
 import CardList from "@/components/CardList";
-import { allTutorials } from "@/mockData/globalStates";
+import { allTutorials } from "@/testData/globalStates";
 import { useAtom } from "jotai";
 import Link from "next/link";
 

@@ -1,7 +1,7 @@
 import CardDetails from "@/components/CardDetails";
 import { useRouter } from "next/router";
 import { useAtom } from "jotai";
-import { allTutorials } from "@/mockData/globalStates";
+import { allTutorials } from "@/testData/globalStates";
 
 export default function DetailsPage() {
   const [list, setList] = useAtom(allTutorials);
