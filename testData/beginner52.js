@@ -3,7 +3,6 @@ export const beginnerList = [
     _id: {
       $oid: "63c980ce7cfaa5353d9c4369",
     },
-    kind: "youtube#playlistItem",
     id: "UEw2NkY5QjE3Q0U4M0E2RjQyLjE1RkQxQ0Y3NjVCMTUxRjk",
     snippet: {
       publishedAt: "2015-09-17T10:09:06Z",
@@ -45,10 +44,12 @@ export const beginnerList = [
       videoOwnerChannelTitle: "52Kards",
     },
     isLiked: false,
+    category: "beginner",
     difficulty: "beginner",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
   },
   {
     _id: {
@@ -198,10 +199,12 @@ export const beginnerList = [
       videoOwnerChannelTitle: "52Kards",
     },
     isLiked: false,
+    category: "beginner",
     difficulty: "beginner",
     isLearning: false,
     mastered: false,
-    notes: [""],
+    notes: "",
+    rating: 0,
   },
   {
     _id: {

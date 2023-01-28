@@ -1,7 +1,7 @@
 import CardList from "@/components/CardList";
 import { allTutorials } from "@/testData/globalStates";
 import { useAtom } from "jotai";
-import Link from "next/link";
+import { StyledLink } from "@/components/StyledLink/Link.styled";
 
 export default function Coin() {
   const [list] = useAtom(allTutorials);
@@ -9,7 +9,7 @@ export default function Coin() {
 
   return (
     <section>
-      <Link href="/tutorials">Back to Categories</Link>
+      <StyledLink href="/tutorials">Go Back</StyledLink>
       <h2>Coin Tutorials:</h2>
       <CardList tutorials={coinList} />
     </section>

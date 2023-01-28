@@ -1,6 +1,6 @@
 import { allTutorials } from "@/testData/globalStates";
 import { useAtom } from "jotai";
-import Link from "next/link";
+import { StyledLink } from "@/components/StyledLink/Link.styled";
 import SVGIcon from "@/components/SVGIcon";
 
 export default function Repertoire() {
@@ -15,19 +15,19 @@ export default function Repertoire() {
         {filteredList.map((tutorial) => {
           return (
             <li key={tutorial.id}>
-              <Link href={`/details/${tutorial.id}`}>
+              <StyledLink href={`/details/${tutorial.id}`}>
                 <h3>{tutorial.snippet.title}</h3>
                 {tutorial.isLearning && (
                   <SVGIcon
                     variant="learningOutline"
-                    width="50px"
-                    color="red"
+                    width="20px"
+                    color="blue"
                   ></SVGIcon>
                 )}
                 {tutorial.mastered && (
-                  <SVGIcon variant="done" width="50px" color="green"></SVGIcon>
+                  <SVGIcon variant="done" width="20px" color="green"></SVGIcon>
                 )}
-              </Link>
+              </StyledLink>
             </li>
           );
         })}

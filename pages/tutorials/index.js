@@ -1,21 +1,20 @@
-import Link from "next/link";
-
+import { StyledLink } from "@/components/StyledLink/Link.styled";
 export default function Categories() {
   return (
     <section>
       <h2>Categories:</h2>
       <ul>
         <li>
-          <Link href="/tutorials/beginner">Beginner</Link>
+          <StyledLink href="/tutorials/beginner">Beginner</StyledLink>
         </li>
         <li>
-          <Link href="/tutorials/intermediate">Intermediate</Link>
+          <StyledLink href="/tutorials/intermediate">Intermediate</StyledLink>
         </li>
         <li>
-          <Link href="/tutorials/advanced">Advanced</Link>
+          <StyledLink href="/tutorials/advanced">Advanced</StyledLink>
         </li>
         <li>
-          <Link href="/tutorials/coin">Coin</Link>
+          <StyledLink href="/tutorials/coin">Coin</StyledLink>
         </li>
       </ul>
     </section>

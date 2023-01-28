@@ -17,20 +17,13 @@ export default function CardDetails({ content, onToggle, id }) {
     content.isLearning = event.target.learning.checked;
     content.mastered = event.target.mastered.checked;
 
+    //reset after submit
     setShowEdit(false);
     router.push(`/details/${id}`);
   }
 
   return (
     <section>
-      <button
-        type="button"
-        onClick={() => {
-          router.back();
-        }}
-      >
-        Go Back
-      </button>
       <h2>{content?.snippet.title}</h2>
       <h3>by {content?.snippet.videoOwnerChannelTitle}</h3>
       <iframe
@@ -51,14 +44,21 @@ export default function CardDetails({ content, onToggle, id }) {
       >
         {content?.isLiked ? (
           <>
-            <SVGIcon variant="heart" width="50px" color="red" />
+            <SVGIcon variant="heart" width="20px" color="red" />
           </>
         ) : (
           <>
-            <SVGIcon variant="heartOutline" width="50px" color="grey" />
+            <SVGIcon variant="heartOutline" width="20px" color="grey" />
           </>
         )}
       </button>
+      {content?.isLearning && (
+        <SVGIcon variant="learningOutline" width="20px" color="blue" />
+      )}
+      {content?.mastered && (
+        <SVGIcon variant="done" width="20px" color="green" />
+      )}
+
       <h3>Notes:</h3>
       <p>{content?.notes[0]}</p>
       {showEdit && (
@@ -71,10 +71,20 @@ export default function CardDetails({ content, onToggle, id }) {
             defaultValue={content?.notes[0]}
           />
 
-          <input type="radio" name="tracking" id="learning" />
+          <input
+            type="radio"
+            name="tracking"
+            id="learning"
+            defaultChecked={content?.isLearning}
+          />
           <label htmlFor="learning">learning</label>
 
-          <input type="radio" name="tracking" id="mastered" />
+          <input
+            type="radio"
+            name="tracking"
+            id="mastered"
+            defaultChecked={content?.mastered}
+          />
           <label htmlFor="mastered">mastered</label>
 
           <button type="submit">Change</button>

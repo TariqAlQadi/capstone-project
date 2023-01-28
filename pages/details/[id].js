@@ -26,6 +26,14 @@ export default function DetailsPage() {
 
   return (
     <section>
+      <button
+        type="button"
+        onClick={() => {
+          router.back();
+        }}
+      >
+        Go Back
+      </button>
       <h2>Details:</h2>
       <CardDetails
         content={currentTutorial}
