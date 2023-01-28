@@ -14,8 +14,8 @@ export default function CardDetails({ content, onToggle, id }) {
   function handleSubmit(event) {
     event.preventDefault();
     content.notes[0] = event.target.notes.value;
-    // content.isLearning = event.target.isLearning;
-    // content.mastered = event.target.mastered;
+    content.isLearning = event.target.learning.checked;
+    content.mastered = event.target.mastered.checked;
 
     setShowEdit(false);
     router.push(`/details/${id}`);
@@ -70,21 +70,12 @@ export default function CardDetails({ content, onToggle, id }) {
             id="notes"
             defaultValue={content?.notes[0]}
           />
-          <label htmlFor="tracking">isLearning</label>
-          <input
-            type="radio"
-            name="tracking"
-            id="learning"
-            defaultValue={content?.isLearning}
-          />
 
-          <label htmlFor="tracking">mastered</label>
-          <input
-            type="radio"
-            name="tracking"
-            id="mastered"
-            defaultValue={content?.mastered}
-          />
+          <input type="radio" name="tracking" id="learning" />
+          <label htmlFor="learning">learning</label>
+
+          <input type="radio" name="tracking" id="mastered" />
+          <label htmlFor="mastered">mastered</label>
 
           <button type="submit">Change</button>
         </form>
