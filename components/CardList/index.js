@@ -1,8 +1,9 @@
 import CardPreview from "../CardPreview";
+import { StyledList } from "./CardList.styled";
 
 export default function CardList({ tutorials }) {
   return (
-    <ol>
+    <StyledList>
       {tutorials.map((tutorial) => {
         return (
           <li key={tutorial.id}>
@@ -10,6 +11,6 @@ export default function CardList({ tutorials }) {
           </li>
         );
       })}
-    </ol>
+    </StyledList>
   );
 }

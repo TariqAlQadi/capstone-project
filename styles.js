@@ -8,8 +8,6 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
 
-
-
   body {
     font-family: monospace;
   }
