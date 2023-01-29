@@ -17,14 +17,6 @@ export default function Search() {
     listItem.snippet.videoOwnerChannelTitle.toLowerCase().includes(filter)
   );
 
-  // const filteredByCategory = list.filter((listItem) =>
-  //   listItem.category.toLowerCase().includes(filter)
-  // );
-
-  // const filteredByDifficulty = list.filter((listItem) =>
-  //   listItem.difficulty.toLowerCase().includes(filter)
-  // );
-
   function handleChange(event) {
     setFilter(event.target.value.toLowerCase());
   }
@@ -35,10 +27,6 @@ export default function Search() {
       <input onChange={handleChange} type="text" name="search" id="search" />
       <CardList tutorials={filteredByTitle} />
       <CardList tutorials={filteredByArtist} />
-      {/* <h3>filtered by Category:</h3>
-      <CardList tutorials={filteredByCategory} />
-      <h3>filtered by Difficulty:</h3>
-      <CardList tutorials={filteredByDifficulty} /> */}
     </section>
   );
 }
