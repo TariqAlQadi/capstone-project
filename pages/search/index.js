@@ -33,9 +33,7 @@ export default function Search() {
     <section>
       <label htmlFor="search">search</label>
       <input onChange={handleChange} type="text" name="search" id="search" />
-      <h3>filtered by Title:</h3>
       <CardList tutorials={filteredByTitle} />
-      <h3>filtered by Artist:</h3>
       <CardList tutorials={filteredByArtist} />
       {/* <h3>filtered by Category:</h3>
       <CardList tutorials={filteredByCategory} />
