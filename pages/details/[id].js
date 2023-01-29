@@ -20,9 +20,15 @@ export default function DetailsPage() {
     );
   }
 
+  //find current tutorial
   const currentTutorial = list.find((tutorial) => {
     return tutorial.id === id;
   });
+
+  //404 handling
+  if (id !== currentTutorial?.id) {
+    return <div>404 - Page not found</div>;
+  }
 
   return (
     <section>
