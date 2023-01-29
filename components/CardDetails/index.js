@@ -69,7 +69,7 @@ export default function CardDetails({ content, onToggle, id }) {
             type="text"
             name="notes"
             id="notes"
-            defaultValue={content?.notes[0]}
+            defaultValue={content?.notes}
           />
 
           <input
