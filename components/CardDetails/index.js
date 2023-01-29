@@ -1,6 +1,7 @@
 import SVGIcon from "../SVGIcon";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { StyledSection } from "./CardDetails.styled";
 
 export default function CardDetails({ content, onToggle, id }) {
   //length of the description until the first "!"
@@ -23,7 +24,7 @@ export default function CardDetails({ content, onToggle, id }) {
   }
 
   return (
-    <section>
+    <StyledSection>
       <h2>{content?.snippet.title}</h2>
       <h3>by {content?.snippet.videoOwnerChannelTitle}</h3>
       <iframe
@@ -99,6 +100,6 @@ export default function CardDetails({ content, onToggle, id }) {
       >
         {showEdit ? "close edit" : "edit"}
       </button>
-    </section>
+    </StyledSection>
   );
 }
