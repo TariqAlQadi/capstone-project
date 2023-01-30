@@ -21,8 +21,9 @@ export default function Search() {
     setFilter(event.target.value.toLowerCase());
   }
 
-  //randomizing the result
+  // randomizing the result
   const shuffledTitleList = filteredByTitle.sort((a, b) => 0.5 - Math.random());
+
   const shuffledArtistList = filteredByArtist.sort(
     (a, b) => 0.5 - Math.random()
   );
@@ -33,7 +34,7 @@ export default function Search() {
       <input onChange={handleChange} type="text" name="search" id="search" />
       <CardList tutorials={shuffledTitleList} />
       <CardList tutorials={shuffledArtistList} />
-      <div>nothing found</div>
+      <p>nothing found</p>
     </section>
   );
 }
