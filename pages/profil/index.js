@@ -66,7 +66,7 @@ export default function Profil() {
       />
 
       <p>Name: {user.name}</p>
-      <p>Bio: {user.bio}</p>
+      <StyledParagraph>Bio: {user.bio}</StyledParagraph>
       <h3>Stats</h3>
       <p>
         LvL: <StyledNumber number={lvl}>{lvl}</StyledNumber>
@@ -100,9 +100,21 @@ export default function Profil() {
       {showEdit && (
         <form onSubmit={handleSubmit}>
           <label htmlFor="name">Name:</label>
-          <input type="text" id="name" name="name" defaultValue={user.name} />
+          <input
+            type="text"
+            id="name"
+            name="name"
+            defaultValue={user.name}
+            maxLength={20}
+          />
           <label htmlFor="bio">Bio:</label>
-          <input type="text" id="bio" name="bio" defaultValue={user.bio} />
+          <input
+            type="text"
+            id="bio"
+            name="bio"
+            defaultValue={user.bio}
+            maxLength={100}
+          />
           <button type="submit">Edit</button>
         </form>
       )}
@@ -111,6 +123,11 @@ export default function Profil() {
 }
 
 //styling for page
+
+const StyledParagraph = styled.p`
+  word-wrap: break-word;
+`;
+
 const StyledNumber = styled.span`
   ${({ number }) => {
     if (number === 0) {
