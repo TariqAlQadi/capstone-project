@@ -30,6 +30,12 @@ export default function Navigation() {
               width="40px"
             />
           </Link>
+          <Link href="/profil">
+            <SVGIcon
+              variant={pathname === "/profil" ? "user" : "userOutline"}
+              width="40px"
+            />
+          </Link>
         </StyledNavigation>
       )}
     </>

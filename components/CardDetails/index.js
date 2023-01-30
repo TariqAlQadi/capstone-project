@@ -1,7 +1,7 @@
 import SVGIcon from "../SVGIcon";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { StyledSection } from "./CardDetails.styled";
+import { StyledSection, StyledParagraph } from "./CardDetails.styled";
 
 export default function CardDetails({ content, onToggle, id }) {
   //length of the description until the first "!"
@@ -62,7 +62,7 @@ export default function CardDetails({ content, onToggle, id }) {
       {/* <p>Release: {content?.snippet.publishedAt}</p> */}
       <p>Category: {content?.category}</p>
       <p>Difficulty: {content?.difficulty}</p>
-      <p>Notes: {content?.notes}</p>
+      <StyledParagraph>Notes: {content?.notes}</StyledParagraph>
 
       {showEdit && (
         <form onSubmit={handleSubmit}>
