@@ -67,15 +67,15 @@ export default function Profil() {
 
       <p>Name: {user.name}</p>
       <p>Bio: {user.bio}</p>
-
+      <h3>Stats</h3>
       <p>
         LvL: <StyledNumber number={lvl}>{lvl}</StyledNumber>
       </p>
 
       <p>
         I have added{" "}
-        <StyledNumber number={numberLiked}>{numberLiked}</StyledNumber> to my
-        repertoire!
+        <StyledNumber number={numberLiked}>{numberLiked}</StyledNumber> tricks
+        to my repertoire!
       </p>
 
       <p>
