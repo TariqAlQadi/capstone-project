@@ -1,7 +1,13 @@
-import CardList from "@/components/CardList";
+// import CardList from "@/components/CardList";
 import { allTutorials } from "@/testData/globalStates";
 import { useAtom } from "jotai";
 import { useState } from "react";
+
+// import dynamic CardList for randomizing
+import dynamic from "next/dynamic";
+const CardList = dynamic(() => import("@/components/CardList"), {
+  ssr: false,
+});
 
 export default function Search() {
   const [list] = useAtom(allTutorials);

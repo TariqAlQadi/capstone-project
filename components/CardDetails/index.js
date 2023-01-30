@@ -1,7 +1,11 @@
 import SVGIcon from "../SVGIcon";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { StyledSection, StyledParagraph } from "./CardDetails.styled";
+import {
+  StyledSection,
+  StyledParagraph,
+  StyledDifficulty,
+} from "./CardDetails.styled";
 
 export default function CardDetails({ content, onToggle, id }) {
   //length of the description until the first "!"
@@ -29,8 +33,8 @@ export default function CardDetails({ content, onToggle, id }) {
       <h3>by {content?.snippet.videoOwnerChannelTitle}</h3>
       <iframe
         // width should be "100%" on mobile, but for now static
-        width={(240 * 16) / 9}
-        height={240}
+        width={(200 * 16) / 9}
+        height={200}
         src={`https://www.youtube.com/embed/${content?.snippet.resourceId.videoId}`}
         title={content?.snippet.title}
         allowFullScreen
@@ -59,9 +63,13 @@ export default function CardDetails({ content, onToggle, id }) {
         <SVGIcon variant="done" width="20px" color="green" />
       )}
 
-      {/* <p>Release: {content?.snippet.publishedAt}</p> */}
       <p>Category: {content?.category}</p>
-      <p>Difficulty: {content?.difficulty}</p>
+      <p>
+        Difficulty:{" "}
+        <StyledDifficulty difficulty={content?.difficulty}>
+          {content?.difficulty}
+        </StyledDifficulty>
+      </p>
       <StyledParagraph>Notes: {content?.notes}</StyledParagraph>
 
       {showEdit && (
@@ -89,7 +97,6 @@ export default function CardDetails({ content, onToggle, id }) {
             defaultChecked={content?.mastered}
           />
           <label htmlFor="mastered">mastered</label>
-
           <button type="submit">Change</button>
         </form>
       )}
