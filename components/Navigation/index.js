@@ -18,6 +18,12 @@ export default function Navigation() {
               width="40px"
             />
           </Link>
+          <Link href="/search">
+            <SVGIcon
+              variant={pathname === "/search" ? "search" : "searchOutline"}
+              width="40px"
+            />
+          </Link>
           <Link href="/repertoire">
             <SVGIcon
               variant={pathname === "/repertoire" ? "heart" : "heartOutline"}

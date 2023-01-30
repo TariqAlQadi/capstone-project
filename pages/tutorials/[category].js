@@ -24,6 +24,7 @@ export default function Categories() {
   if (filteredLists.length === 0) {
     return <div>404 - Page not found</div>;
   }
+
   return (
     <section>
       <StyledLink href="/tutorials">Go Back</StyledLink>
