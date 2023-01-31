@@ -83,7 +83,7 @@ export default function Profil() {
         <StyledNumber number={numberMastered}>{numberMastered}</StyledNumber>{" "}
         tricks!
       </p>
-      <button type="button" onClick={(previous) => setShowEdit(!previous)}>
+      <button type="button" onClick={() => setShowEdit(!showEdit)}>
         {showEdit ? "close" : "edit"}
       </button>
       {showEdit && (
