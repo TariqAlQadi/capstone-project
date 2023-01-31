@@ -15,29 +15,19 @@ export default function Shop() {
           <Link href="https://www.theory11.com">Theory11</Link>
         </li>
         <li>
-          <Link href="https://www.magicshop.ch" i>
-            MagicShop
-          </Link>
+          <Link href="https://www.magicshop.ch">MagicShop</Link>
         </li>
         <li>
-          <Link href="https://pinkybreak.com" i>
-            pinkybreak
-          </Link>
+          <Link href="https://pinkybreak.com">pinkybreak</Link>
         </li>
         <li>
-          <Link href="https://anyoneworldwide.com" i>
-            Anyone
-          </Link>
+          <Link href="https://anyoneworldwide.com">Anyone</Link>
         </li>
         <li>
-          <Link href="https://plainsightmagic.com" i>
-            Plainsight
-          </Link>
+          <Link href="https://plainsightmagic.com">Plainsight</Link>
         </li>
         <li>
-          <Link href="https://hhpresents.com" i>
-            Henry Harrius
-          </Link>
+          <Link href="https://hhpresents.com">Henry Harrius</Link>
         </li>
         <li>
           <Link href="https://www.vanishingincmagic.com" i>
@@ -59,12 +49,11 @@ export default function Shop() {
             ProMystic
           </Link>
         </li>
-        <li>
-          <Link href="https://askalexander.org" i>
-            Ask Alexander
-          </Link>
-        </li>
       </ul>
+      <h2>Best Search Engine:</h2>
+      <Link href="https://askalexander.org" i>
+        Ask Alexander
+      </Link>
     </section>
   );
 }
