@@ -21,6 +21,6 @@ export const StyledNavLink = styled(Link)`
   color: currentColor;
 
   :hover {
-    filter: drop-shadow(0 0 2px rgb(0 0 0 / 0.7));
+    filter: drop-shadow(0 0 2px rgb(0 0 0 / 0.3));
   }
 `;
