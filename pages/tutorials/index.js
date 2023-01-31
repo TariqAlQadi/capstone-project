@@ -32,9 +32,7 @@ export default function Feed() {
   const filteredByDifficulty = list.filter(
     (listItem) => listItem.difficulty === filterCategory
   );
-
   const filteredByOption = [...filteredByCategory, ...filteredByDifficulty];
-
   const filteredCategoryTitle = filteredByOption.filter((listItem) =>
     listItem.snippet.title.toLowerCase().includes(filter)
   );
@@ -86,6 +84,7 @@ export default function Feed() {
         Random
       </button>
 
+      <h2> Results</h2>
       {filterCategory === "" ? (
         <>
           <CardList
@@ -109,7 +108,6 @@ export default function Feed() {
           />
         </>
       )}
-
       <p>nothing found</p>
     </section>
   );
