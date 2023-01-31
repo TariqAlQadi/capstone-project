@@ -6,6 +6,7 @@ import { coin } from "./coin";
 import { gimmickList } from "./gimmick";
 import { madList } from "./mad";
 
+//lists
 const list = [
   ...beginnerList,
   ...intermediateList,
@@ -16,3 +17,8 @@ const list = [
 ];
 
 export const allTutorials = atom(list);
+
+//user
+const user = { name: "Tariq", bio: "Magician" };
+
+export const userObject = atom(user);
