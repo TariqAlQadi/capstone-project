@@ -17,6 +17,8 @@ export const StyledNavLink = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-decoration: none;
+  color: currentColor;
 
   :hover {
     filter: drop-shadow(3px 3px 3px rgb(0 0 0 / 0.9));
