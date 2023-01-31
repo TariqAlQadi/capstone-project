@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { StyledNavigation, StyledNavLink } from "./Navigation.styled";
+import { StyledNavigation } from "./Navigation.styled";
 import SVGIcon from "../SVGIcon";
 import { useRouter } from "next/router";
 
@@ -12,45 +12,33 @@ export default function Navigation() {
         <Link href="/tutorials"></Link>
       ) : (
         <StyledNavigation>
-          <StyledNavLink href="/tutorials">
-            <SVGIcon
-              variant={pathname === "/tutorials" ? "list" : "listOutline"}
-              width="40px"
-            />
-            Tutorials
-          </StyledNavLink>
-
-          <StyledNavLink href="/search">
+          <Link href="/tutorials" aria-label="tutorials">
             <SVGIcon
               variant={pathname === "/search" ? "search" : "searchOutline"}
               width="40px"
             />
-            Search
-          </StyledNavLink>
+          </Link>
 
-          <StyledNavLink href="/repertoire">
+          <Link href="/repertoire" aria-label="repertoire">
             <SVGIcon
               variant={pathname === "/repertoire" ? "heart" : "heartOutline"}
               width="40px"
             />
-            Repertoire
-          </StyledNavLink>
+          </Link>
 
-          <StyledNavLink href="/shop">
+          <Link href="/shop" aria-label="shops">
             <SVGIcon
               variant={pathname === "/shop" ? "shop" : "shopOutline"}
               width="40px"
             />
-            Shops
-          </StyledNavLink>
+          </Link>
 
-          <StyledNavLink href="/profil">
+          <Link href="/profil" aria-label="profil">
             <SVGIcon
               variant={pathname === "/profil" ? "user" : "userOutline"}
               width="40px"
             />
-            Profil
-          </StyledNavLink>
+          </Link>
         </StyledNavigation>
       )}
     </>

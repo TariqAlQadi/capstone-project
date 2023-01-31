@@ -12,15 +12,3 @@ export const StyledNavigation = styled.nav`
   align-items: center;
   border: 1px solid black;
 `;
-
-export const StyledNavLink = styled(Link)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: currentColor;
-
-  :hover {
-    filter: drop-shadow(0 0 2px rgb(0 0 0 / 0.3));
-  }
-`;
