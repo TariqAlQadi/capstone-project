@@ -24,7 +24,7 @@ export default function Navigation() {
             <SVGIcon
               variant={pathname === "/search" ? "search" : "searchOutline"}
               width="40px"
-            />{" "}
+            />
             Search
           </StyledNavLink>
 
