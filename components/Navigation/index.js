@@ -17,24 +17,28 @@ export default function Navigation() {
               variant={pathname === "/tutorials" ? "list" : "listOutline"}
               width="40px"
             />
+            Tutorials
           </Link>
           <Link href="/search">
             <SVGIcon
               variant={pathname === "/search" ? "search" : "searchOutline"}
               width="40px"
             />
+            Search
           </Link>
           <Link href="/repertoire">
             <SVGIcon
               variant={pathname === "/repertoire" ? "heart" : "heartOutline"}
               width="40px"
             />
+            Repertoire
           </Link>
           <Link href="/profil">
             <SVGIcon
               variant={pathname === "/profil" ? "user" : "userOutline"}
               width="40px"
             />
+            Profil
           </Link>
         </StyledNavigation>
       )}
