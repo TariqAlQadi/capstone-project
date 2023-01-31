@@ -100,12 +100,7 @@ export default function CardDetails({ content, onToggle, id }) {
           <button type="submit">Change</button>
         </form>
       )}
-      <button
-        type="button"
-        onClick={() => {
-          setShowEdit(!showEdit);
-        }}
-      >
+      <button type="button" onClick={(previous) => setShowEdit(!previous)}>
         {showEdit ? "close edit" : "edit"}
       </button>
     </StyledSection>

@@ -10,34 +10,28 @@ export default function Profil() {
   const [showEdit, setShowEdit] = useState(false);
 
   //stats counter
-  const numberLiked = list.filter(
-    (listItem) => listItem.isLiked === true
-  ).length;
+  const numberLiked = list.filter((listItem) => listItem.isLiked).length;
 
-  const numberLearning = list.filter(
-    (listItem) => listItem.isLearning === true
-  ).length;
+  const numberLearning = list.filter((listItem) => listItem.isLearning).length;
 
-  const numberMastered = list.filter(
-    (listItem) => listItem.mastered === true
-  ).length;
+  const numberMastered = list.filter((listItem) => listItem.mastered).length;
 
   //lvl calculation
   const numberMasteredBeginner = list
     .filter((listItem) => listItem.difficulty === "beginner")
-    .filter((listItem) => listItem.mastered === true).length;
+    .filter((listItem) => listItem.mastered).length;
 
   const numberMasteredIntermediate = list
     .filter((listItem) => listItem.difficulty === "intermediate")
-    .filter((listItem) => listItem.mastered === true).length;
+    .filter((listItem) => listItem.mastered).length;
 
   const numberMasteredAdvanced = list
     .filter((listItem) => listItem.difficulty === "advanced")
-    .filter((listItem) => listItem.mastered === true).length;
+    .filter((listItem) => listItem.mastered).length;
 
   const numberMasteredMad = list
     .filter((listItem) => listItem.difficulty === "mad")
-    .filter((listItem) => listItem.mastered === true).length;
+    .filter((listItem) => listItem.mastered).length;
 
   const lvl = Math.round(
     (numberMasteredBeginner * 50 +
@@ -89,12 +83,7 @@ export default function Profil() {
         <StyledNumber number={numberMastered}>{numberMastered}</StyledNumber>{" "}
         tricks!
       </p>
-      <button
-        type="button"
-        onClick={() => {
-          setShowEdit(!showEdit);
-        }}
-      >
+      <button type="button" onClick={(previous) => setShowEdit(!previous)}>
         {showEdit ? "close" : "edit"}
       </button>
       {showEdit && (
@@ -123,23 +112,12 @@ export default function Profil() {
 }
 
 //styling for page
-
 const StyledParagraph = styled.p`
   word-wrap: break-word;
 `;
 
 const StyledNumber = styled.span`
-  ${({ number }) => {
-    if (number === 0) {
-      return css`
-        color: red;
-      `;
-    } else {
-      return css`
-        color: green;
-      `;
-    }
-  }}
+  color: ${({ number }) => (number === 0 ? "red" : "green")};
 `;
 
 const StyledImage = styled(Image)`

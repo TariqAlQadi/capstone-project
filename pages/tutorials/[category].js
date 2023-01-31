@@ -19,7 +19,6 @@ export default function Categories() {
   );
 
   const filteredLists = [...filterdByCategory, ...filteredByDifficulty];
-  console.log(filteredLists);
 
   if (filteredLists.length === 0) {
     return <div>404 - Page not found</div>;
