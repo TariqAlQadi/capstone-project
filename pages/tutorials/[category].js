@@ -20,6 +20,7 @@ export default function Categories() {
 
   const filteredLists = [...filterdByCategory, ...filteredByDifficulty];
 
+  //unknown url handling
   if (filteredLists.length === 0) {
     return <div>404 - Page not found</div>;
   }
