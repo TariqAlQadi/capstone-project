@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Link from "next/link";
 
 export const StyledNavigation = styled.nav`
   position: fixed;
@@ -10,4 +11,14 @@ export const StyledNavigation = styled.nav`
   justify-content: space-around;
   align-items: center;
   border: 1px solid black;
+`;
+
+export const StyledNavLink = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  :hover {
+    filter: drop-shadow(3px 3px 3px rgb(0 0 0 / 0.9));
+  }
 `;
