@@ -19,6 +19,7 @@ export default function Navigation() {
             />
             Tutorials
           </StyledNavLink>
+
           <StyledNavLink href="/search">
             <SVGIcon
               variant={pathname === "/search" ? "search" : "searchOutline"}
@@ -26,6 +27,7 @@ export default function Navigation() {
             />
             Search
           </StyledNavLink>
+
           <StyledNavLink href="/repertoire">
             <SVGIcon
               variant={pathname === "/repertoire" ? "heart" : "heartOutline"}
@@ -33,6 +35,7 @@ export default function Navigation() {
             />
             Repertoire
           </StyledNavLink>
+
           <StyledNavLink href="/profil">
             <SVGIcon
               variant={pathname === "/profil" ? "user" : "userOutline"}

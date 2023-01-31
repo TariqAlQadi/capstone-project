@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useAtom } from "jotai";
 import { allTutorials, userObject } from "@/testData/globalStates";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { useState } from "react";
 
 export default function Profil() {
