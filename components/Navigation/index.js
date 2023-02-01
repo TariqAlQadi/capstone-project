@@ -36,6 +36,14 @@ export default function Navigation() {
             Repertoire
           </StyledNavLink>
 
+          <StyledNavLink href="/shop">
+            <SVGIcon
+              variant={pathname === "/shop" ? "shop" : "shopOutline"}
+              width="40px"
+            />
+            Shops
+          </StyledNavLink>
+
           <StyledNavLink href="/profil">
             <SVGIcon
               variant={pathname === "/profil" ? "user" : "userOutline"}
