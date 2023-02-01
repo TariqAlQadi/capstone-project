@@ -1,5 +1,19 @@
 import Link from "next/link";
 
+const onlineShops = [
+  { name: "Murphsy Magic", href: "https://www.murphysmagic.com" },
+  { name: "Ellusionist", href: "https://ellusionist.com" },
+  { name: "Theory11", href: "https://www.theory11.com" },
+  { name: "MagicShop", href: "https://www.magicshop.ch" },
+  { name: "PinkyBreak", href: "https://pinkybreak.com" },
+  { name: "Anyone", href: "https://anyoneworldwide.com" },
+  { name: "Plainsight", href: "https://plainsightmagic.com" },
+  { name: "Vanishing Inc.", href: "https://www.vanishingincmagic.com" },
+  { name: "Penguin", href: "https://www.penguinmagic.com" },
+  { name: "Stemaro", href: "https://stemaro-magic.de" },
+  { name: "ProMystic", href: "https://promystic.com" },
+];
+
 export default function Shop() {
   return (
     <section>
