@@ -19,13 +19,6 @@ export default function Navigation() {
             />
           </Link>
 
-          <Link href="/repertoire" aria-label="repertoire">
-            <SVGIcon
-              variant={pathname === "/repertoire" ? "heart" : "heartOutline"}
-              width="40px"
-            />
-          </Link>
-
           <Link href="/shop" aria-label="shops">
             <SVGIcon
               variant={pathname === "/shop" ? "shop" : "shopOutline"}
