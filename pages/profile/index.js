@@ -11,10 +11,8 @@ export default function Profil() {
   const [user, setUser] = useAtom(userObject);
   const [showEdit, setShowEdit] = useState(false);
 
+  //filter isLiked/isLearning/mastered section
   const [filter, setFilter] = useState("isLiked");
-
-  //filter isLiked/isLearning/mastered
-
   const filteredList = list.filter((content) => content[filter]);
 
   //stats counter
