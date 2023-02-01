@@ -26,9 +26,9 @@ export default function Navigation() {
             />
           </Link>
 
-          <Link href="/profil" aria-label="profil">
+          <Link href="/profile" aria-label="profile">
             <SVGIcon
-              variant={pathname === "/profil" ? "user" : "userOutline"}
+              variant={pathname === "/profile" ? "user" : "userOutline"}
               width="40px"
             />
           </Link>

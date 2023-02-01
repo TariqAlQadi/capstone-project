@@ -3,16 +3,19 @@ import { useAtom } from "jotai";
 import { allTutorials, userObject } from "@/testData/globalStates";
 import styled from "styled-components";
 import { useState } from "react";
-import { StyledLink } from "@/components/StyledLink/Link.styled";
+import ProfilSection from "@/components/ProfileSection";
 import SVGIcon from "@/components/SVGIcon";
 
 export default function Profil() {
   const [list] = useAtom(allTutorials);
   const [user, setUser] = useAtom(userObject);
   const [showEdit, setShowEdit] = useState(false);
+  const [filter, setFilter] = useState("isLiked");
 
-  //filter IsLiked
+  //filter isLiked/isLearning/mastered
   const filteredIsLiked = list.filter((content) => content.isLiked);
+  const filteredIsLearning = list.filter((content) => content.isLearning);
+  const filteredMastered = list.filter((content) => content.mastered);
 
   //stats counter
   const numberLiked = list.filter((listItem) => listItem.isLiked).length;
@@ -64,25 +67,6 @@ export default function Profil() {
         />
         <p>Name: {user.name}</p>
         <StyledParagraph>Bio: {user.bio}</StyledParagraph>
-        <h3>Stats</h3>
-        <p>
-          LvL: <StyledNumber number={lvl}>{lvl}</StyledNumber>
-        </p>
-        <p>
-          I have added{" "}
-          <StyledNumber number={numberLiked}>{numberLiked}</StyledNumber> tricks
-          to my repertoire!
-        </p>
-        <p>
-          I am learing{" "}
-          <StyledNumber number={numberLearning}>{numberLearning}</StyledNumber>{" "}
-          tricks right now!
-        </p>
-        <p>
-          And I have mastered{" "}
-          <StyledNumber number={numberMastered}>{numberMastered}</StyledNumber>{" "}
-          tricks!
-        </p>
         <button type="button" onClick={() => setShowEdit(!showEdit)}>
           {showEdit ? "close" : "edit"}
         </button>
@@ -109,35 +93,71 @@ export default function Profil() {
         )}
       </section>
       <section>
-        <h2>Your Repertoire:</h2>
-        <ul>
-          {filteredIsLiked.map((tutorial) => {
-            return (
-              <li key={tutorial.id}>
-                <StyledLink href={`/details/${tutorial.id}`}>
-                  <h3>{tutorial.snippet.title}</h3>
-                  {tutorial.isLiked && (
-                    <SVGIcon variant="heart" width="20px" color="red"></SVGIcon>
-                  )}
-                  {tutorial.isLearning && (
-                    <SVGIcon
-                      variant="learningOutline"
-                      width="20px"
-                      color="blue"
-                    ></SVGIcon>
-                  )}
-                  {tutorial.mastered && (
-                    <SVGIcon
-                      variant="done"
-                      width="20px"
-                      color="green"
-                    ></SVGIcon>
-                  )}
-                </StyledLink>
-              </li>
-            );
-          })}
-        </ul>
+        <h2>Stats</h2>
+        <p>
+          LvL: <StyledNumber number={lvl}>{lvl}</StyledNumber>
+        </p>
+        <p>
+          I have added{" "}
+          <StyledNumber number={numberLiked}>{numberLiked}</StyledNumber> tricks
+          to my repertoire!
+        </p>
+        <p>
+          I am learing{" "}
+          <StyledNumber number={numberLearning}>{numberLearning}</StyledNumber>{" "}
+          tricks right now!
+        </p>
+        <p>
+          And I have mastered{" "}
+          <StyledNumber number={numberMastered}>{numberMastered}</StyledNumber>{" "}
+          tricks!
+        </p>
+      </section>
+      <section>
+        <h2>Repertoire</h2>
+        <button
+          aria-label="liked"
+          onClick={() => {
+            setFilter("isLiked");
+          }}
+        >
+          <SVGIcon
+            variant={filter === "isLiked" ? "heart" : "heartOutline"}
+            width="40px"
+            color="red"
+          />
+        </button>
+        <button
+          aria-label="learning"
+          onClick={() => {
+            setFilter("isLearning");
+          }}
+        >
+          <SVGIcon
+            variant={filter === "isLearning" ? "learning" : "learningOutline"}
+            width="40px"
+            color="blue"
+          />
+        </button>
+        <button
+          aria-label="mastered"
+          onClick={() => {
+            setFilter("mastered");
+          }}
+        >
+          <SVGIcon
+            variant={filter === "mastered" ? "doneAll" : "done"}
+            width="40px"
+            color="green"
+          />
+        </button>
+        {filter === "isLiked" && <ProfilSection tutorials={filteredIsLiked} />}
+        {filter === "isLearning" && (
+          <ProfilSection tutorials={filteredIsLearning} />
+        )}
+        {filter === "mastered" && (
+          <ProfilSection tutorials={filteredMastered} />
+        )}
       </section>
     </>
   );
