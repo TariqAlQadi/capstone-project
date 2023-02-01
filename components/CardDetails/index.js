@@ -57,7 +57,7 @@ export default function CardDetails({ content, onToggle, id }) {
         )}
       </button>
       {content?.isLearning && (
-        <SVGIcon variant="learningOutline" width="20px" color="blue" />
+        <SVGIcon variant="learning" width="20px" color="blue" />
       )}
       {content?.mastered && (
         <SVGIcon variant="done" width="20px" color="green" />
