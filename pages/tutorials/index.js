@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 
 // import dynamic CardList for randomizing
 import dynamic from "next/dynamic";
+import SVGIcon from "@/components/SVGIcon";
 const CardList = dynamic(() => import("@/components/CardList"), {
   ssr: false,
 });
@@ -80,8 +81,8 @@ export default function Feed() {
         <option value="coin">Coins</option>
         <option value="gimmick">Gimmicks</option>
       </select>
-      <button type="button" onClick={handleRandom}>
-        Random
+      <button type="button" aria-label="random" onClick={handleRandom}>
+        <SVGIcon variant="dice" width="30px" color="black"></SVGIcon>
       </button>
 
       <h2> Results</h2>
