@@ -12,6 +12,8 @@ const onlineShops = [
   { name: "Penguin", href: "https://www.penguinmagic.com" },
   { name: "Stemaro", href: "https://stemaro-magic.de" },
   { name: "ProMystic", href: "https://promystic.com" },
+  { name: "PK Magic", href: "https://www.pk-magic.com" },
+  { name: "Alakazam", href: "https://alakazam.co.uk" },
 ];
 
 export default function Shop() {
