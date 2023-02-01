@@ -24,19 +24,19 @@ export default function Profil() {
 
   //lvl calculation
   const numberMasteredBeginner = list.filter(
-    (listItem) => listItem.mastered && listItem.difficutly === "beginner"
+    (listItem) => listItem.mastered && listItem.difficulty === "beginner"
   ).length;
 
   const numberMasteredIntermediate = list.filter(
-    (listItem) => listItem.mastered && listItem.difficutly === "intermediate"
+    (listItem) => listItem.mastered && listItem.difficulty === "intermediate"
   ).length;
 
   const numberMasteredAdvanced = list.filter(
-    (listItem) => listItem.mastered && listItem.difficutly === "advanced"
+    (listItem) => listItem.mastered && listItem.difficulty === "advanced"
   ).length;
 
   const numberMasteredMad = list.filter(
-    (listItem) => listItem.mastered && listItem.difficutly === "mad"
+    (listItem) => listItem.mastered && listItem.difficultqy === "mad"
   ).length;
 
   const lvl = Math.round(
