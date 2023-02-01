@@ -42,7 +42,7 @@ export default function Profil() {
       numberMasteredIntermediate * 100 +
       numberMasteredAdvanced * 150 +
       numberMasteredMad * 200) /
-      100
+      50
   );
 
   //handle edit profil form
