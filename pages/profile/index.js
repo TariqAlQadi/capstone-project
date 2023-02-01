@@ -10,12 +10,12 @@ export default function Profil() {
   const [list] = useAtom(allTutorials);
   const [user, setUser] = useAtom(userObject);
   const [showEdit, setShowEdit] = useState(false);
+
   const [filter, setFilter] = useState("isLiked");
 
   //filter isLiked/isLearning/mastered
-  const filteredIsLiked = list.filter((content) => content.isLiked);
-  const filteredIsLearning = list.filter((content) => content.isLearning);
-  const filteredMastered = list.filter((content) => content.mastered);
+
+  const filteredList = list.filter((content) => content[filter]);
 
   //stats counter
   const numberLiked = list.filter((listItem) => listItem.isLiked).length;
@@ -23,21 +23,21 @@ export default function Profil() {
   const numberMastered = list.filter((listItem) => listItem.mastered).length;
 
   //lvl calculation
-  const numberMasteredBeginner = list
-    .filter((listItem) => listItem.difficulty === "beginner")
-    .filter((listItem) => listItem.mastered).length;
+  const numberMasteredBeginner = list.filter(
+    (listItem) => listItem.mastered && listItem.difficutly === "beginner"
+  ).length;
 
-  const numberMasteredIntermediate = list
-    .filter((listItem) => listItem.difficulty === "intermediate")
-    .filter((listItem) => listItem.mastered).length;
+  const numberMasteredIntermediate = list.filter(
+    (listItem) => listItem.mastered && listItem.difficutly === "intermediate"
+  ).length;
 
-  const numberMasteredAdvanced = list
-    .filter((listItem) => listItem.difficulty === "advanced")
-    .filter((listItem) => listItem.mastered).length;
+  const numberMasteredAdvanced = list.filter(
+    (listItem) => listItem.mastered && listItem.difficutly === "advanced"
+  ).length;
 
-  const numberMasteredMad = list
-    .filter((listItem) => listItem.difficulty === "mad")
-    .filter((listItem) => listItem.mastered).length;
+  const numberMasteredMad = list.filter(
+    (listItem) => listItem.mastered && listItem.difficutly === "mad"
+  ).length;
 
   const lvl = Math.round(
     (numberMasteredBeginner * 50 +
@@ -151,13 +151,7 @@ export default function Profil() {
             color="green"
           />
         </button>
-        {filter === "isLiked" && <ProfilSection tutorials={filteredIsLiked} />}
-        {filter === "isLearning" && (
-          <ProfilSection tutorials={filteredIsLearning} />
-        )}
-        {filter === "mastered" && (
-          <ProfilSection tutorials={filteredMastered} />
-        )}
+        <ProfilSection tutorials={filteredList} />
       </section>
     </>
   );

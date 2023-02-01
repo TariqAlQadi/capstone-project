@@ -18,27 +18,24 @@ export default function Feed() {
   const [filter, setFilter] = useState("");
   const [filterCategory, setFilterCategory] = useState("");
 
-  //filtered only by search
-  const filteredByTitle = list.filter((listItem) =>
-    listItem.snippet.title.toLowerCase().includes(filter)
-  );
-  const filteredByArtist = list.filter((listItem) =>
-    listItem.snippet.videoOwnerChannelTitle.toLowerCase().includes(filter)
+  //filtered by search
+  const filteredBySearch = list.filter(
+    (listItem) =>
+      listItem.snippet.title.toLowerCase().includes(filter) ||
+      listItem.snippet.videoOwnerChannelTitle.toLowerCase().includes(filter)
   );
 
   //filterd by category and search
-  const filteredByCategory = list.filter(
-    (listItem) => listItem.category === filterCategory
+  const filteredByOption = list.filter(
+    (listItem) =>
+      listItem.difficulty === filterCategory ||
+      listItem.category === filterCategory
   );
-  const filteredByDifficulty = list.filter(
-    (listItem) => listItem.difficulty === filterCategory
-  );
-  const filteredByOption = [...filteredByCategory, ...filteredByDifficulty];
-  const filteredCategoryTitle = filteredByOption.filter((listItem) =>
-    listItem.snippet.title.toLowerCase().includes(filter)
-  );
-  const filteredCategoryArtist = filteredByOption.filter((listItem) =>
-    listItem.snippet.videoOwnerChannelTitle.toLowerCase().includes(filter)
+
+  const filteredByCategorySearch = filteredByOption.filter(
+    (listItem) =>
+      listItem.snippet.title.toLowerCase().includes(filter) ||
+      listItem.snippet.videoOwnerChannelTitle.toLowerCase().includes(filter)
   );
 
   //handle filter inputs
@@ -86,27 +83,14 @@ export default function Feed() {
       </button>
 
       <h2> Results</h2>
+
       {filterCategory === "" ? (
         <>
-          <CardList
-            tutorials={filteredByTitle.sort((a, b) => 0.5 - Math.random())}
-          />
-          <CardList
-            tutorials={filteredByArtist.sort((a, b) => 0.5 - Math.random())}
-          />
+          <CardList tutorials={filteredBySearch} />
         </>
       ) : (
         <>
-          <CardList
-            tutorials={filteredCategoryTitle.sort(
-              (a, b) => 0.5 - Math.random()
-            )}
-          />
-          <CardList
-            tutorials={filteredCategoryArtist.sort(
-              (a, b) => 0.5 - Math.random()
-            )}
-          />
+          <CardList tutorials={filteredByCategorySearch} />
         </>
       )}
       <p>nothing found</p>
