@@ -34,7 +34,7 @@ export default function Profil() {
   ).length;
 
   const numberMasteredMad = list.filter(
-    (listItem) => listItem.mastered && listItem.difficultqy === "mad"
+    (listItem) => listItem.mastered && listItem.difficulty === "mad"
   ).length;
 
   const lvl = Math.round(
@@ -42,8 +42,9 @@ export default function Profil() {
       numberMasteredIntermediate * 100 +
       numberMasteredAdvanced * 150 +
       numberMasteredMad * 200) /
-      50
+      20
   );
+  console.log(lvl);
 
   //handle edit profil form
   function handleSubmit(event) {
