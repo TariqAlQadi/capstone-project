@@ -9,12 +9,12 @@ export default function Navigation() {
   return (
     <>
       {pathname === "/" ? (
-        <Link href="/tutorials"></Link>
+        <></>
       ) : (
         <StyledNavigation>
           <Link href="/tutorials" aria-label="tutorials">
             <SVGIcon
-              variant={pathname === "/search" ? "search" : "searchOutline"}
+              variant={pathname === "/tutorials" ? "search" : "searchOutline"}
               width="40px"
             />
           </Link>
