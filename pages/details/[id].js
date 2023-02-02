@@ -6,17 +6,17 @@ import { currentUser } from "@/testData/globalStates";
 
 export default function DetailsPage() {
   const [list, setList] = useAtom(allTutorials);
-  const [user, setUser] = useAtom(currentUser);
+  const [user] = useAtom(currentUser);
 
   const router = useRouter();
   const { id } = router.query;
 
-  //pushes and pulls the user id on the isLiked array
+  //pushes & pulls the user id on/off the isLiked array
   function handleToggleLike(id) {
     setList(
       list.map((tutorial) => {
         if (tutorial.id === id) {
-          const updatedIsLiked = [];
+          let updatedIsLiked = [];
           if (!tutorial.isLiked.includes(user.email)) {
             updatedIsLiked = [...tutorial.isLiked, user.email];
           } else {
@@ -24,7 +24,6 @@ export default function DetailsPage() {
               (email) => email !== user.email
             );
           }
-          console.log(updatedIsLiked);
           return { ...tutorial, isLiked: updatedIsLiked };
         }
         return tutorial;

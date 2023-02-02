@@ -10,6 +10,7 @@ import {
 export default function CardDetails({ content, onToggle, id }) {
   //length of the description until the first "!"
   const lengthOfDescription = content?.snippet.description.indexOf("!") + 1;
+
   //show edit form state
   const [showEdit, setShowEdit] = useState(false);
 

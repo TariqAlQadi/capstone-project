@@ -13,28 +13,44 @@ export default function Profil() {
 
   //filter isLiked/isLearning/mastered section
   const [filter, setFilter] = useState("isLiked");
-  const filteredList = list.filter((content) => content[filter]);
+
+  const filteredList = list.filter((listItem) =>
+    listItem[filter].includes(user.email)
+  );
 
   //stats counter
-  const numberLiked = list.filter((listItem) => listItem.isLiked).length;
-  const numberLearning = list.filter((listItem) => listItem.isLearning).length;
-  const numberMastered = list.filter((listItem) => listItem.mastered).length;
+  const numberLiked = list.filter((listItem) =>
+    listItem.isLiked.includes(user.email)
+  ).length;
+  const numberLearning = list.filter((listItem) =>
+    listItem.isLearning.includes(user.email)
+  ).length;
+  const numberMastered = list.filter((listItem) =>
+    listItem.mastered.includes(user.email)
+  ).length;
 
   //lvl calculation
   const numberMasteredBeginner = list.filter(
-    (listItem) => listItem.mastered && listItem.difficulty === "beginner"
+    (listItem) =>
+      listItem.mastered.includes(user.email) &&
+      listItem.difficulty === "beginner"
   ).length;
 
   const numberMasteredIntermediate = list.filter(
-    (listItem) => listItem.mastered && listItem.difficulty === "intermediate"
+    (listItem) =>
+      listItem.mastered.includes(user.email) &&
+      listItem.difficulty === "intermediate"
   ).length;
 
   const numberMasteredAdvanced = list.filter(
-    (listItem) => listItem.mastered && listItem.difficulty === "advanced"
+    (listItem) =>
+      listItem.mastered.includes(user.email) &&
+      listItem.difficulty === "advanced"
   ).length;
 
   const numberMasteredMad = list.filter(
-    (listItem) => listItem.mastered && listItem.difficulty === "mad"
+    (listItem) =>
+      listItem.mastered.includes(user.email) && listItem.difficulty === "mad"
   ).length;
 
   const lvl = Math.round(
@@ -49,7 +65,6 @@ export default function Profil() {
   function handleSubmit(event) {
     event.preventDefault();
     setUser({ name: event.target.name.value, bio: event.target.bio.value });
-
     setShowEdit(false);
   }
 
