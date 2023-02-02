@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useAtom } from "jotai";
-import { allTutorials, userObject } from "@/testData/globalStates";
+import { allTutorials, currentUser } from "@/testData/globalStates";
 import styled from "styled-components";
 import { useState } from "react";
 import ProfilSection from "@/components/ProfileSection";
@@ -8,33 +8,49 @@ import SVGIcon from "@/components/SVGIcon";
 
 export default function Profil() {
   const [list] = useAtom(allTutorials);
-  const [user, setUser] = useAtom(userObject);
+  const [user, setUser] = useAtom(currentUser);
   const [showEdit, setShowEdit] = useState(false);
 
   //filter isLiked/isLearning/mastered section
   const [filter, setFilter] = useState("isLiked");
-  const filteredList = list.filter((content) => content[filter]);
+
+  const filteredList = list.filter((listItem) =>
+    listItem[filter].includes(user.email)
+  );
 
   //stats counter
-  const numberLiked = list.filter((listItem) => listItem.isLiked).length;
-  const numberLearning = list.filter((listItem) => listItem.isLearning).length;
-  const numberMastered = list.filter((listItem) => listItem.mastered).length;
+  const numberLiked = list.filter((listItem) =>
+    listItem.isLiked.includes(user.email)
+  ).length;
+  const numberLearning = list.filter((listItem) =>
+    listItem.isLearning.includes(user.email)
+  ).length;
+  const numberMastered = list.filter((listItem) =>
+    listItem.mastered.includes(user.email)
+  ).length;
 
   //lvl calculation
   const numberMasteredBeginner = list.filter(
-    (listItem) => listItem.mastered && listItem.difficulty === "beginner"
+    (listItem) =>
+      listItem.mastered.includes(user.email) &&
+      listItem.difficulty === "beginner"
   ).length;
 
   const numberMasteredIntermediate = list.filter(
-    (listItem) => listItem.mastered && listItem.difficulty === "intermediate"
+    (listItem) =>
+      listItem.mastered.includes(user.email) &&
+      listItem.difficulty === "intermediate"
   ).length;
 
   const numberMasteredAdvanced = list.filter(
-    (listItem) => listItem.mastered && listItem.difficulty === "advanced"
+    (listItem) =>
+      listItem.mastered.includes(user.email) &&
+      listItem.difficulty === "advanced"
   ).length;
 
   const numberMasteredMad = list.filter(
-    (listItem) => listItem.mastered && listItem.difficulty === "mad"
+    (listItem) =>
+      listItem.mastered.includes(user.email) && listItem.difficulty === "mad"
   ).length;
 
   const lvl = Math.round(
@@ -42,15 +58,13 @@ export default function Profil() {
       numberMasteredIntermediate * 100 +
       numberMasteredAdvanced * 150 +
       numberMasteredMad * 200) /
-      20
+      50
   );
-  console.log(lvl);
 
   //handle edit profil form
   function handleSubmit(event) {
     event.preventDefault();
     setUser({ name: event.target.name.value, bio: event.target.bio.value });
-
     setShowEdit(false);
   }
 
@@ -58,12 +72,7 @@ export default function Profil() {
     <>
       <section>
         <h2>Profil</h2>
-        <StyledImage
-          src="https://i.ytimg.com/vi/bCIMMl3e7dY/hqdefault.jpg"
-          alt="user image"
-          width={100}
-          height={100}
-        />
+        <StyledImage src={user.img} alt="user image" width={100} height={100} />
         <p>Name: {user.name}</p>
         <StyledParagraph>Bio: {user.bio}</StyledParagraph>
         <button type="button" onClick={() => setShowEdit(!showEdit)}>
