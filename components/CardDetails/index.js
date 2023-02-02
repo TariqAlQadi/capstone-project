@@ -6,22 +6,62 @@ import {
   StyledParagraph,
   StyledDifficulty,
 } from "./CardDetails.styled";
+import { currentUser } from "@/testData/globalStates";
+import { useAtom } from "jotai";
+import { allTutorials } from "@/testData/globalStates";
 
 export default function CardDetails({ content, onToggle, id }) {
+  const router = useRouter();
+  const [user, setUser] = useAtom(currentUser);
+  const [list, setList] = useAtom(allTutorials);
+
   //length of the description until the first "!"
   const lengthOfDescription = content?.snippet.description.indexOf("!") + 1;
 
   //show edit form state
   const [showEdit, setShowEdit] = useState(false);
 
-  const router = useRouter();
-
-  //handle function for editform
+  //handle submit that toggles user email between "learning"/"mastered" + notes input
   function handleSubmit(event) {
     event.preventDefault();
-    content.notes = event.target.notes.value;
-    content.isLearning = event.target.learning.checked;
-    content.mastered = event.target.mastered.checked;
+
+    const notes = event.target.notes.value;
+    const learning = event.target.learning.checked;
+    const mastered = event.target.mastered.checked;
+
+    setList(
+      list.map((tutorial) => {
+        if (tutorial.id === id) {
+          let updatedIsLearning = [];
+          let updatedMastered = [];
+          if (learning) {
+            if (!tutorial.isLearning.includes(user.email)) {
+              updatedIsLearning = [...tutorial.isLearning, user.email];
+            } else {
+              updatedIsLearning = tutorial.isLearning.filter(
+                (email) => email !== user.email
+              );
+            }
+          }
+          if (mastered) {
+            if (!tutorial.mastered.includes(user.email)) {
+              updatedMastered = [...tutorial.mastered, user.email];
+            } else {
+              updatedMastered = tutorial.mastered.filter(
+                (email) => email !== user.email
+              );
+            }
+          }
+          return {
+            ...tutorial,
+            notes,
+            isLearning: updatedIsLearning,
+            mastered: updatedMastered,
+          };
+        }
+        return tutorial;
+      })
+    );
 
     //reset after submit
     setShowEdit(false);
@@ -47,7 +87,7 @@ export default function CardDetails({ content, onToggle, id }) {
           onToggle(content?.id);
         }}
       >
-        {content?.isLiked ? (
+        {content?.isLiked.includes(user.email) ? (
           <>
             <SVGIcon variant="heart" width="20px" color="red" />
           </>
@@ -57,10 +97,10 @@ export default function CardDetails({ content, onToggle, id }) {
           </>
         )}
       </button>
-      {content?.isLearning && (
+      {content?.isLearning.includes(user.email) && (
         <SVGIcon variant="learning" width="20px" color="blue" />
       )}
-      {content?.mastered && (
+      {content?.mastered.includes(user.email) && (
         <SVGIcon variant="done" width="20px" color="green" />
       )}
 
