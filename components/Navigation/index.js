@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { StyledNavigation, StyledNavLink } from "./Navigation.styled";
+import { StyledNavigation } from "./Navigation.styled";
 import SVGIcon from "../SVGIcon";
 import { useRouter } from "next/router";
 
@@ -9,48 +9,29 @@ export default function Navigation() {
   return (
     <>
       {pathname === "/" ? (
-        <Link href="/tutorials"></Link>
+        <></>
       ) : (
         <StyledNavigation>
-          <StyledNavLink href="/tutorials">
+          <Link href="/feed" aria-label="feed">
             <SVGIcon
-              variant={pathname === "/tutorials" ? "list" : "listOutline"}
+              variant={pathname === "/feed" ? "search" : "searchOutline"}
               width="40px"
             />
-            Tutorials
-          </StyledNavLink>
+          </Link>
 
-          <StyledNavLink href="/search">
-            <SVGIcon
-              variant={pathname === "/search" ? "search" : "searchOutline"}
-              width="40px"
-            />
-            Search
-          </StyledNavLink>
-
-          <StyledNavLink href="/repertoire">
-            <SVGIcon
-              variant={pathname === "/repertoire" ? "heart" : "heartOutline"}
-              width="40px"
-            />
-            Repertoire
-          </StyledNavLink>
-
-          <StyledNavLink href="/shop">
+          <Link href="/shop" aria-label="shops">
             <SVGIcon
               variant={pathname === "/shop" ? "shop" : "shopOutline"}
               width="40px"
             />
-            Shops
-          </StyledNavLink>
+          </Link>
 
-          <StyledNavLink href="/profil">
+          <Link href="/profile" aria-label="profile">
             <SVGIcon
-              variant={pathname === "/profil" ? "user" : "userOutline"}
+              variant={pathname === "/profile" ? "user" : "userOutline"}
               width="40px"
             />
-            Profil
-          </StyledNavLink>
+          </Link>
         </StyledNavigation>
       )}
     </>
