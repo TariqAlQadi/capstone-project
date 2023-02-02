@@ -15,10 +15,30 @@ const list = [
   ...gimmickList,
   ...madList,
 ];
-
 export const allTutorials = atom(list);
 
-//user
-const user = { name: "Tariq", bio: "Magician" };
+//users
+const users = [
+  {
+    email: "tariqalqadi@gmx.de",
+    password: "abc",
+    name: "Tariq",
+    bio: "Magician",
+  },
+  {
+    email: "a@b",
+    password: "def",
+    name: "Niklas",
+    bio: "Hallo ich bin niklas",
+  },
+];
+export const allUsers = atom(users);
 
-export const userObject = atom(user);
+//current user
+const initialUser = {
+  email: "tariqalqadi@gmx.de",
+  password: "abc",
+  name: "Tariq",
+  bio: "Magician",
+};
+export const currentUser = atom(initialUser);

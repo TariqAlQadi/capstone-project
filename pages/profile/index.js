@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useAtom } from "jotai";
-import { allTutorials, userObject } from "@/testData/globalStates";
+import { allTutorials, currentUser } from "@/testData/globalStates";
 import styled from "styled-components";
 import { useState } from "react";
 import ProfilSection from "@/components/ProfileSection";
@@ -8,7 +8,7 @@ import SVGIcon from "@/components/SVGIcon";
 
 export default function Profil() {
   const [list] = useAtom(allTutorials);
-  const [user, setUser] = useAtom(userObject);
+  const [user, setUser] = useAtom(currentUser);
   const [showEdit, setShowEdit] = useState(false);
 
   //filter isLiked/isLearning/mastered section
