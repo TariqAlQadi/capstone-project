@@ -127,7 +127,7 @@ export default function CardDetails({ content, onToggle, id }) {
             type="radio"
             name="tracking"
             id="learning"
-            defaultChecked={content?.isLearning}
+            defaultChecked={content?.isLearning.includes(user.email)}
           />
           <label htmlFor="learning">learning</label>
 
@@ -135,7 +135,7 @@ export default function CardDetails({ content, onToggle, id }) {
             type="radio"
             name="tracking"
             id="mastered"
-            defaultChecked={content?.mastered}
+            defaultChecked={content?.mastered.includes(user.email)}
           />
           <label htmlFor="mastered">mastered</label>
           <button type="submit">Change</button>
