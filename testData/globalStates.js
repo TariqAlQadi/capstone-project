@@ -1,22 +1,7 @@
 import { atom } from "jotai";
-import { advancedList } from "./advanced52";
-import { beginnerList } from "./beginner52";
-import { intermediateList } from "./Intermediate52";
-import { coin } from "./coin";
-import { gimmickList } from "./gimmick";
-import { madList } from "./mad";
 import { newAllTutorials } from "./NewAllTutorials";
 
-//lists
-// const list = [
-//   ...beginnerList,
-//   ...intermediateList,
-//   ...advancedList,
-//   ...coin,
-//   ...gimmickList,
-//   ...madList,
-// ];
-
+//list
 const list = newAllTutorials;
 export const allTutorials = atom(list);
 

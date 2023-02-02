@@ -12,7 +12,7 @@ import { allTutorials } from "@/testData/globalStates";
 
 export default function CardDetails({ content, onToggle, id }) {
   const router = useRouter();
-  const [user, setUser] = useAtom(currentUser);
+  const [user] = useAtom(currentUser);
   const [list, setList] = useAtom(allTutorials);
 
   //length of the description until the first "!"
