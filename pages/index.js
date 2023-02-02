@@ -10,6 +10,7 @@ export default function Login() {
   function handleLogin(event) {
     event.preventDefault();
 
+    // user check email & password
     const foundUser = users.find(
       (user) => user.email === event.target.email.value
     );
@@ -27,6 +28,9 @@ export default function Login() {
     <section>
       <h1>Welcome to Netrix</h1>
       <p>This is a Web Application to learn and create Magic!</p>
+      <p>Psst! .. Try the test login!</p>
+      <h2>Email: test@test</h2>
+      <h2>Password: test</h2>
       <form onSubmit={handleLogin}>
         <label htmlFor="">Email</label>
         <input type="email" name="email" id="email" required />

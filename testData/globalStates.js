@@ -8,28 +8,28 @@ export const allTutorials = atom(list);
 //users
 const users = [
   {
+    email: "test@test",
+    password: "test",
+    name: "MusterFrau/Mustermann",
+    img: "https://i.ytimg.com/vi/bCIMMl3e7dY/hqdefault.jpg",
+    bio: "Hallo, ich bin ein Test und Preview Nutzer",
+  },
+  {
     email: "tariqalqadi@gmx.de",
     password: "abc",
     name: "Tariq",
-    img: "https://i.ytimg.com/vi/bCIMMl3e7dY/hqdefault.jpg",
-    bio: "hallo ich bion tariq",
-  },
-  {
-    email: "a@b",
-    password: "def",
-    name: "Niklas",
     img: "https://i.ytimg.com/vi/5n4ocBp3K0A/maxresdefault.jpg",
-    bio: "Hallo ich bin niklas",
+    bio: "hallo ich bion tariq",
   },
 ];
 export const allUsers = atom(users);
 
 //current user
 const initialUser = {
-  email: "tariqalqadi@gmx.de",
-  password: "abc",
-  name: "Tariq",
+  email: "",
+  password: "",
+  name: "MusterFrau/Mustermann",
   img: "https://i.ytimg.com/vi/bCIMMl3e7dY/hqdefault.jpg",
-  bio: "Magician",
+  bio: "Hallo, ich bin ein Test und Preview Nutzer",
 };
 export const currentUser = atom(initialUser);
