@@ -44,7 +44,6 @@ export default function Profil() {
       numberMasteredMad * 200) /
       20
   );
-  console.log(lvl);
 
   //handle edit profil form
   function handleSubmit(event) {
@@ -58,12 +57,7 @@ export default function Profil() {
     <>
       <section>
         <h2>Profil</h2>
-        <StyledImage
-          src="https://i.ytimg.com/vi/bCIMMl3e7dY/hqdefault.jpg"
-          alt="user image"
-          width={100}
-          height={100}
-        />
+        <StyledImage src={user.img} alt="user image" width={100} height={100} />
         <p>Name: {user.name}</p>
         <StyledParagraph>Bio: {user.bio}</StyledParagraph>
         <button type="button" onClick={() => setShowEdit(!showEdit)}>
