@@ -120,6 +120,69 @@ export default function Profil() {
           <StyledNumber number={numberMastered}>{numberMastered}</StyledNumber>{" "}
           tricks!
         </p>
+        <h3>Achievements:</h3>
+        <ul>
+          {lvl >= 1 && (
+            <li>
+              <SVGIcon variant="medal" width="20px" color="green" />
+              Novice
+            </li>
+          )}
+          {lvl >= 10 && (
+            <li>
+              <SVGIcon variant="medal" width="20px" color="skyblue" />
+              Prodigy
+            </li>
+          )}
+          {lvl >= 100 && (
+            <li>
+              <SVGIcon variant="medal" width="20px" color="blue" />
+              Mastermind
+            </li>
+          )}
+          {lvl >= 1000 && (
+            <li>
+              <SVGIcon variant="medal" width="20px" color="gold" />
+              Legend
+            </li>
+          )}
+          {numberMasteredBeginner >= 1 && (
+            <li>
+              <SVGIcon variant="medal" width="20px" color="yellow" />
+              First Steps
+            </li>
+          )}
+          {numberMasteredIntermediate >= 1 && (
+            <li>
+              <SVGIcon variant="medal" width="20px" color="orange" />
+              Intermediate Innovator
+            </li>
+          )}
+          {numberMasteredAdvanced >= 1 && (
+            <li>
+              <SVGIcon variant="medal" width="20px" color="red" />
+              Advanced Ace
+            </li>
+          )}
+          {numberMasteredMad >= 1 && (
+            <li>
+              <SVGIcon variant="medal" width="20px" color="violet" />
+              Mad Skillz
+            </li>
+          )}
+          {numberMastered >= 10 && (
+            <li>
+              <SVGIcon variant="medal" width="20px" color="silver" />
+              Tenfold Triumph
+            </li>
+          )}
+          {numberMastered >= 100 && (
+            <li>
+              <SVGIcon variant="medal" width="20px" color="black" />
+              Century of Success
+            </li>
+          )}
+        </ul>
       </section>
       <section>
         <h2>Repertoire</h2>
