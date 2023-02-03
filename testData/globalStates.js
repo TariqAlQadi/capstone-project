@@ -1,5 +1,5 @@
 import { atom } from "jotai";
-import { newAllTutorials } from "./newAllTutorials";
+import { newAllTutorials } from "./NewAllTutorials";
 
 //list
 const list = newAllTutorials;
