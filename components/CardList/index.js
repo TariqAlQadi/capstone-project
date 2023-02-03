@@ -1,5 +1,5 @@
 import CardPreview from "../CardPreview";
-import { StyledList } from "./CardList.styled";
+import { StyledList, StyledListItem } from "./CardList.styled";
 
 export default function CardList({ tutorials }) {
   const shuffledTutorials = tutorials.sort((a, b) => 0.5 - Math.random());
@@ -8,9 +8,9 @@ export default function CardList({ tutorials }) {
     <StyledList>
       {shuffledTutorials.map((tutorial) => {
         return (
-          <li key={tutorial.id}>
+          <StyledListItem key={tutorial.id}>
             <CardPreview content={tutorial.snippet} id={tutorial.id} />
-          </li>
+          </StyledListItem>
         );
       })}
     </StyledList>

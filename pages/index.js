@@ -28,10 +28,7 @@ export default function Login() {
   return (
     <StyledSection>
       <h1>Welcome to Netrix</h1>
-      <p>This is a Web Application to learn and create Magic!</p>
-      <p>Psst! .. Try the test login!</p>
-      <h2>Email: test@test</h2>
-      <h2>Password: test</h2>
+      <p>This is a Web Application to discover, learn and create Magic!</p>
       <StyledForm onSubmit={handleLogin}>
         <label htmlFor="">Email</label>
         <input type="email" name="email" id="email" required />
@@ -39,6 +36,9 @@ export default function Login() {
         <input type="password" name="password" id="password" required />
         <button type="submit">Login</button>
       </StyledForm>
+      <p>Psst! .. Try the test login!</p>
+      <h3>Email: test@test</h3>
+      <h3>Password: test</h3>
     </StyledSection>
   );
 }

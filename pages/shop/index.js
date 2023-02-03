@@ -1,4 +1,5 @@
 import Link from "next/link";
+import styled from "styled-components";
 
 const onlineShops = [
   { name: "Murphsy Magic", href: "https://www.murphysmagic.com" },
@@ -18,9 +19,9 @@ const onlineShops = [
 
 export default function Shop() {
   return (
-    <section>
+    <StyledSection>
       <h2>Online Shops:</h2>
-      <ul>
+      <StyledList>
         {onlineShops.map((shop) => {
           return (
             <li key={shop.href}>
@@ -28,13 +29,23 @@ export default function Shop() {
             </li>
           );
         })}
-      </ul>
+      </StyledList>
       <h2>Best Search Engine:</h2>
       <Link href="https://askalexander.org">Ask Alexander</Link>
       <h2>Forum:</h2>
       <Link href="https://www.themagiccafe.com/forums/index.php">
         The Magic Café
       </Link>
-    </section>
+    </StyledSection>
   );
 }
+
+const StyledSection = styled.section`
+  margin: 10px;
+  text-align: center;
+`;
+
+const StyledList = styled.ul`
+  list-style: none;
+  padding: 0;
+`;

@@ -70,7 +70,7 @@ export default function Profil() {
 
   return (
     <>
-      <section>
+      <StyledSection>
         <h2>Profil</h2>
         <StyledImage src={user.img} alt="user image" width={100} height={100} />
         <p>Name: {user.name}</p>
@@ -99,8 +99,8 @@ export default function Profil() {
             <button type="submit">Edit</button>
           </form>
         )}
-      </section>
-      <section>
+      </StyledSection>
+      <StyledSection>
         <h2>Stats</h2>
         <p>
           LvL: <StyledNumber number={lvl}>{lvl}</StyledNumber>
@@ -121,7 +121,7 @@ export default function Profil() {
           tricks!
         </p>
         <h3>Achievements:</h3>
-        <ul>
+        <StyledList>
           {lvl >= 1 && (
             <li>
               <SVGIcon variant="medal" width="20px" color="green" />
@@ -182,9 +182,9 @@ export default function Profil() {
               Century of Success
             </li>
           )}
-        </ul>
-      </section>
-      <section>
+        </StyledList>
+      </StyledSection>
+      <StyledSection>
         <h2>Repertoire</h2>
         <button
           aria-label="liked"
@@ -223,7 +223,7 @@ export default function Profil() {
           />
         </button>
         <ProfilSection tutorials={filteredList} />
-      </section>
+      </StyledSection>
     </>
   );
 }
@@ -239,4 +239,13 @@ const StyledNumber = styled.span`
 
 const StyledImage = styled(Image)`
   border-radius: 50%;
+`;
+
+const StyledSection = styled.section`
+  margin: 10px;
+`;
+
+const StyledList = styled.ul`
+  list-style: none;
+  padding: 0;
 `;
