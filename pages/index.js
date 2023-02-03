@@ -36,6 +36,7 @@ export default function Login() {
         <input type="password" name="password" id="password" required />
         <button type="submit">Login</button>
       </StyledForm>
+      <br />
       <p>Psst! .. Try the test login!</p>
       <h3>Email: test@test</h3>
       <h3>Password: test</h3>
@@ -46,9 +47,11 @@ export default function Login() {
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  align-items: center;
+  gap: 5px;
 `;
 
 const StyledSection = styled.section`
   margin: 10px;
+  text-align: center;
 `;

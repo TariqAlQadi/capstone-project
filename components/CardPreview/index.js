@@ -1,11 +1,12 @@
 import Image from "next/image";
 import { StyledLink } from "../StyledLink/Link.styled";
+import { StyledSubtitle } from "./CardPreview.styled";
 
 export default function CardPreview({ content, id }) {
   return (
     <StyledLink href={`/details/${id}`}>
       <h3>{content?.title}</h3>
-      <h4>by {content?.videoOwnerChannelTitle}</h4>
+      <StyledSubtitle>by {content?.videoOwnerChannelTitle}</StyledSubtitle>
       <Image
         src={content?.thumbnails.high.url}
         alt={content?.title}
