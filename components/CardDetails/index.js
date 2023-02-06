@@ -15,6 +15,11 @@ export default function CardDetails({ content, onToggle, id }) {
   const [user] = useAtom(currentUser);
   const [list, setList] = useAtom(allTutorials);
 
+  //number of "golbal" likes/learns/masters
+  const numberLiked = content?.isLiked.length;
+  const numberLearning = content?.isLearning.length;
+  const numberMastered = content?.mastered.length;
+
   //length of the description until the first "!"
   const lengthOfDescription = content?.snippet.description.indexOf("!") + 1;
 
@@ -81,6 +86,16 @@ export default function CardDetails({ content, onToggle, id }) {
         allowFullScreen
       ></iframe>
       <p>{content?.snippet.description.substring(0, lengthOfDescription)}</p>
+      <p>Category: {content?.category}</p>
+      <p>
+        Difficulty:{" "}
+        <StyledDifficulty difficulty={content?.difficulty}>
+          {content?.difficulty}
+        </StyledDifficulty>
+      </p>
+      <p>{numberLiked} people liked this trick!</p>
+      <p>{numberLearning} people are learning this trick!</p>
+      <p>{numberMastered} people mastered this trick!</p>
       <button
         type="button"
         onClick={() => {
@@ -97,6 +112,7 @@ export default function CardDetails({ content, onToggle, id }) {
           </>
         )}
       </button>
+
       {content?.isLearning.includes(user.email) && (
         <SVGIcon variant="learning" width="20px" color="blue" />
       )}
@@ -104,24 +120,32 @@ export default function CardDetails({ content, onToggle, id }) {
         <SVGIcon variant="done" width="20px" color="green" />
       )}
 
-      <p>Category: {content?.category}</p>
-      <p>
-        Difficulty:{" "}
-        <StyledDifficulty difficulty={content?.difficulty}>
-          {content?.difficulty}
-        </StyledDifficulty>
-      </p>
-      <StyledParagraph>Notes: {content?.notes}</StyledParagraph>
+      <button
+        aria-label="edit statistic"
+        type="button"
+        onClick={() => setShowEdit(!showEdit)}
+      >
+        {showEdit ? (
+          <SVGIcon variant="close" width="20px" color="red" />
+        ) : (
+          <SVGIcon variant="edit" width="20px" color="green" />
+        )}
+      </button>
+      {content?.notes !== "" && (
+        <StyledParagraph>Notes: {content?.notes}</StyledParagraph>
+      )}
 
       {showEdit && (
         <form onSubmit={handleSubmit}>
-          <label htmlFor="notes">notes</label>
+          <label htmlFor="notes">Notes:</label>
+          <br />
           <textarea
             type="text"
             name="notes"
             id="notes"
             defaultValue={content?.notes}
           />
+          <br />
 
           <input
             type="radio"
@@ -130,7 +154,7 @@ export default function CardDetails({ content, onToggle, id }) {
             defaultChecked={content?.isLearning.includes(user.email)}
           />
           <label htmlFor="learning">learning</label>
-
+          <br />
           <input
             type="radio"
             name="tracking"
@@ -138,12 +162,10 @@ export default function CardDetails({ content, onToggle, id }) {
             defaultChecked={content?.mastered.includes(user.email)}
           />
           <label htmlFor="mastered">mastered</label>
-          <button type="submit">Change</button>
+          <br />
+          <button type="submit">Submit Changes</button>
         </form>
       )}
-      <button type="button" onClick={() => setShowEdit(!showEdit)}>
-        {showEdit ? "close edit" : "edit"}
-      </button>
     </StyledSection>
   );
 }

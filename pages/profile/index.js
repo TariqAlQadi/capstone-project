@@ -75,8 +75,16 @@ export default function Profil() {
         <StyledImage src={user.img} alt="user image" width={100} height={100} />
         <p>Name: {user.name}</p>
         <StyledParagraph>Bio: {user.bio}</StyledParagraph>
-        <button type="button" onClick={() => setShowEdit(!showEdit)}>
-          {showEdit ? "close" : "edit"}
+        <button
+          type="button"
+          aria-label="edit profile"
+          onClick={() => setShowEdit(!showEdit)}
+        >
+          {showEdit ? (
+            <SVGIcon variant="close" width="20px" color="red" />
+          ) : (
+            <SVGIcon variant="edit" width="20px" color="green" />
+          )}
         </button>
         {showEdit && (
           <form onSubmit={handleSubmit}>
@@ -96,7 +104,7 @@ export default function Profil() {
               defaultValue={user.bio}
               maxLength={100}
             />
-            <button type="submit">Edit</button>
+            <button type="submit">Submit Changes</button>
           </form>
         )}
       </StyledSection>

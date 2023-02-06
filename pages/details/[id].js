@@ -1,4 +1,5 @@
 import CardDetails from "@/components/CardDetails";
+import styled from "styled-components";
 import { useRouter } from "next/router";
 import { useAtom } from "jotai";
 import { allTutorials } from "@/testData/globalStates";
@@ -42,7 +43,7 @@ export default function DetailsPage() {
   }
 
   return (
-    <section>
+    <StyledSection>
       <button
         type="button"
         onClick={() => {
@@ -57,6 +58,10 @@ export default function DetailsPage() {
         onToggle={handleToggleLike}
         id={id}
       />
-    </section>
+    </StyledSection>
   );
 }
+
+const StyledSection = styled.section`
+  margin: 10px;
+`;
