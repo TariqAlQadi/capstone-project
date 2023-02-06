@@ -72,7 +72,12 @@ export default function Profil() {
     <>
       <StyledSection>
         <h2>Profil</h2>
-        <StyledImage src={user.img} alt="user image" width={100} height={100} />
+        <StyledImage
+          src={user?.img}
+          alt="user image"
+          width={100}
+          height={100}
+        />
         <p>Name: {user.name}</p>
         <StyledParagraph>Bio: {user.bio}</StyledParagraph>
         <button
