@@ -85,7 +85,14 @@ export default function CardDetails({ content, onToggle, id }) {
         title={content?.snippet.title}
         allowFullScreen
       ></iframe>
-      <p>{content?.snippet.description.substring(0, lengthOfDescription)}</p>
+      {content?.snippet.description && (
+        <>
+          <p>Description:</p>
+          <p>
+            {content?.snippet.description.substring(0, lengthOfDescription)}
+          </p>
+        </>
+      )}
       <p>Category: {content?.category}</p>
       <p>
         Difficulty:{" "}
@@ -93,9 +100,9 @@ export default function CardDetails({ content, onToggle, id }) {
           {content?.difficulty}
         </StyledDifficulty>
       </p>
-      <p>{numberLiked} people liked this trick!</p>
-      <p>{numberLearning} people are learning this trick!</p>
-      <p>{numberMastered} people mastered this trick!</p>
+      <p>{numberLiked} people liked this trick so far!</p>
+      <p>{numberLearning} people are learning this trick right now!</p>
+      <p>{numberMastered} people mastered this trick already!</p>
       <button
         type="button"
         onClick={() => {
