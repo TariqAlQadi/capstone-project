@@ -122,66 +122,86 @@ export default function Profil() {
         </p>
         <h3>Achievements:</h3>
         <StyledList>
-          {lvl >= 1 && (
-            <li>
-              <SVGIcon variant="medal" width="20px" color="green" />
-              Novice
-            </li>
-          )}
-          {lvl >= 10 && (
-            <li>
-              <SVGIcon variant="medal" width="20px" color="skyblue" />
-              Prodigy
-            </li>
-          )}
-          {lvl >= 100 && (
-            <li>
-              <SVGIcon variant="medal" width="20px" color="blue" />
-              Mastermind
-            </li>
-          )}
-          {lvl >= 1000 && (
-            <li>
-              <SVGIcon variant="medal" width="20px" color="gold" />
-              Legend
-            </li>
-          )}
-          {numberMasteredBeginner >= 1 && (
-            <li>
-              <SVGIcon variant="medal" width="20px" color="yellow" />
-              First Steps
-            </li>
-          )}
-          {numberMasteredIntermediate >= 1 && (
-            <li>
-              <SVGIcon variant="medal" width="20px" color="orange" />
-              Intermediate Innovator
-            </li>
-          )}
-          {numberMasteredAdvanced >= 1 && (
-            <li>
-              <SVGIcon variant="medal" width="20px" color="red" />
-              Advanced Ace
-            </li>
-          )}
-          {numberMasteredMad >= 1 && (
-            <li>
-              <SVGIcon variant="medal" width="20px" color="violet" />
-              Mad Skillz
-            </li>
-          )}
-          {numberMastered >= 10 && (
-            <li>
-              <SVGIcon variant="medal" width="20px" color="silver" />
-              Tenfold Triumph
-            </li>
-          )}
-          {numberMastered >= 100 && (
-            <li>
-              <SVGIcon variant="medal" width="20px" color="black" />
-              Century of Success
-            </li>
-          )}
+          <li>
+            <SVGIcon
+              variant="medal"
+              width="20px"
+              color={lvl >= 1 ? "green" : "grey"}
+            />
+            Novice (reach lvl 1)
+          </li>
+          <li>
+            <SVGIcon
+              variant="medal"
+              width="20px"
+              color={lvl >= 10 ? "skyblue" : "grey"}
+            />
+            Prodigy (reach lvl 10)
+          </li>
+          <li>
+            <SVGIcon
+              variant="medal"
+              width="20px"
+              color={lvl >= 100 ? "blue" : "grey"}
+            />
+            Mastermind (reach lvl 100)
+          </li>
+          <li>
+            <SVGIcon
+              variant="medal"
+              width="20px"
+              color={lvl >= 1000 ? "gold" : "grey"}
+            />
+            Legend (reach lvl 1000)
+          </li>
+          <li>
+            <SVGIcon
+              variant="medal"
+              width="20px"
+              color={numberMasteredBeginner >= 1 ? "yellow" : "grey"}
+            />
+            First Steps (master 1st Beginner Turtorial)
+          </li>
+          <li>
+            <SVGIcon
+              variant="medal"
+              width="20px"
+              color={numberMasteredIntermediate >= 1 ? "orange" : "grey"}
+            />
+            Innovator (master 1st Intermediate Turtorial)
+          </li>
+          <li>
+            <SVGIcon
+              variant="medal"
+              width="20px"
+              color={numberMasteredAdvanced >= 1 ? "red" : "grey"}
+            />
+            Advanced Ace (master 1st Advanced Turtorial)
+          </li>
+          <li>
+            <SVGIcon
+              variant="medal"
+              width="20px"
+              color={numberMasteredMad >= 1 ? "violet" : "grey"}
+            />
+            Mad Skillz (master 1st Mad Turtorial)
+          </li>
+          <li>
+            <SVGIcon
+              variant="medal"
+              width="20px"
+              color={numberMastered >= 10 ? "silver" : "grey"}
+            />
+            Tenfold Triumph (master 10 Tutorials)
+          </li>
+          <li>
+            <SVGIcon
+              variant="medal"
+              width="20px"
+              color={numberMastered >= 100 ? "black" : "grey"}
+            />
+            Century of Success (master 100 Tutorials)
+          </li>
         </StyledList>
       </StyledSection>
       <StyledSection>
