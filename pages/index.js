@@ -37,7 +37,7 @@ export default function Login() {
         <button type="submit">Login</button>
       </StyledForm>
       <br />
-      <p>Psst! .. Try the test login!</p>
+      <p>Psst! ... Try the test login!</p>
       <h3>Email: test@test</h3>
       <h3>Password: test</h3>
     </StyledSection>
