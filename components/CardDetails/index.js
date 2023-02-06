@@ -146,7 +146,6 @@ export default function CardDetails({ content, onToggle, id }) {
             defaultValue={content?.notes}
           />
           <br />
-
           <input
             type="radio"
             name="tracking"
