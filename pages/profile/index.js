@@ -70,7 +70,7 @@ export default function Profil() {
 
   return (
     <>
-      <section>
+      <StyledSection>
         <h2>Profil</h2>
         <StyledImage src={user.img} alt="user image" width={100} height={100} />
         <p>Name: {user.name}</p>
@@ -99,8 +99,8 @@ export default function Profil() {
             <button type="submit">Edit</button>
           </form>
         )}
-      </section>
-      <section>
+      </StyledSection>
+      <StyledSection>
         <h2>Stats</h2>
         <p>
           LvL: <StyledNumber number={lvl}>{lvl}</StyledNumber>
@@ -120,8 +120,91 @@ export default function Profil() {
           <StyledNumber number={numberMastered}>{numberMastered}</StyledNumber>{" "}
           tricks!
         </p>
-      </section>
-      <section>
+        <h3>Achievements:</h3>
+        <StyledList>
+          <li>
+            <SVGIcon
+              variant="medal"
+              width="20px"
+              color={lvl >= 1 ? "green" : "grey"}
+            />
+            Novice (reach lvl 1)
+          </li>
+          <li>
+            <SVGIcon
+              variant="medal"
+              width="20px"
+              color={lvl >= 10 ? "skyblue" : "grey"}
+            />
+            Prodigy (reach lvl 10)
+          </li>
+          <li>
+            <SVGIcon
+              variant="medal"
+              width="20px"
+              color={lvl >= 100 ? "blue" : "grey"}
+            />
+            Mastermind (reach lvl 100)
+          </li>
+          <li>
+            <SVGIcon
+              variant="medal"
+              width="20px"
+              color={lvl >= 1000 ? "gold" : "grey"}
+            />
+            Legend (reach lvl 1000)
+          </li>
+          <li>
+            <SVGIcon
+              variant="medal"
+              width="20px"
+              color={numberMasteredBeginner >= 1 ? "yellow" : "grey"}
+            />
+            First Steps (master 1st Beginner Turtorial)
+          </li>
+          <li>
+            <SVGIcon
+              variant="medal"
+              width="20px"
+              color={numberMasteredIntermediate >= 1 ? "orange" : "grey"}
+            />
+            Innovator (master 1st Intermediate Turtorial)
+          </li>
+          <li>
+            <SVGIcon
+              variant="medal"
+              width="20px"
+              color={numberMasteredAdvanced >= 1 ? "red" : "grey"}
+            />
+            Advanced Ace (master 1st Advanced Turtorial)
+          </li>
+          <li>
+            <SVGIcon
+              variant="medal"
+              width="20px"
+              color={numberMasteredMad >= 1 ? "violet" : "grey"}
+            />
+            Mad Skillz (master 1st Mad Turtorial)
+          </li>
+          <li>
+            <SVGIcon
+              variant="medal"
+              width="20px"
+              color={numberMastered >= 10 ? "silver" : "grey"}
+            />
+            Tenfold Triumph (master 10 Tutorials)
+          </li>
+          <li>
+            <SVGIcon
+              variant="medal"
+              width="20px"
+              color={numberMastered >= 100 ? "black" : "grey"}
+            />
+            Century of Success (master 100 Tutorials)
+          </li>
+        </StyledList>
+      </StyledSection>
+      <StyledSection>
         <h2>Repertoire</h2>
         <button
           aria-label="liked"
@@ -160,7 +243,7 @@ export default function Profil() {
           />
         </button>
         <ProfilSection tutorials={filteredList} />
-      </section>
+      </StyledSection>
     </>
   );
 }
@@ -176,4 +259,13 @@ const StyledNumber = styled.span`
 
 const StyledImage = styled(Image)`
   border-radius: 50%;
+`;
+
+const StyledSection = styled.section`
+  margin: 10px;
+`;
+
+const StyledList = styled.ul`
+  list-style: none;
+  padding: 0;
 `;

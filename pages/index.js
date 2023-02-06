@@ -1,6 +1,7 @@
 import { allUsers, currentUser } from "@/testData/globalStates";
 import { useAtom } from "jotai";
 import { useRouter } from "next/router";
+import styled from "styled-components";
 
 export default function Login() {
   const router = useRouter();
@@ -25,19 +26,32 @@ export default function Login() {
   }
 
   return (
-    <section>
+    <StyledSection>
       <h1>Welcome to Netrix</h1>
-      <p>This is a Web Application to learn and create Magic!</p>
-      <p>Psst! .. Try the test login!</p>
-      <h2>Email: test@test</h2>
-      <h2>Password: test</h2>
-      <form onSubmit={handleLogin}>
+      <p>This is a Web Application to discover, learn and create Magic!</p>
+      <StyledForm onSubmit={handleLogin}>
         <label htmlFor="">Email</label>
         <input type="email" name="email" id="email" required />
         <label htmlFor="password">Password</label>
         <input type="password" name="password" id="password" required />
         <button type="submit">Login</button>
-      </form>
-    </section>
+      </StyledForm>
+      <br />
+      <p>Psst! ... Try the test login!</p>
+      <h3>Email: test@test</h3>
+      <h3>Password: test</h3>
+    </StyledSection>
   );
 }
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+`;
+
+const StyledSection = styled.section`
+  margin: 10px;
+  text-align: center;
+`;

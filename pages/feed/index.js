@@ -2,6 +2,7 @@ import { allTutorials } from "@/testData/globalStates";
 import { useAtom } from "jotai";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import styled from "styled-components";
 
 // import dynamic CardList for randomizing
 import dynamic from "next/dynamic";
@@ -53,36 +54,41 @@ export default function Feed() {
   }
 
   return (
-    <section>
-      <label htmlFor="search">search</label>
-      <input
-        onChange={handleChangeSearch}
-        type="text"
-        name="search"
-        id="search"
-        maxLength={50}
-      />
-      <label htmlFor="select"></label>
-      <select
-        onChange={handleChangeCategory}
-        type="select"
-        id="select"
-        name="select"
-      >
-        <option value="">--choose a category--</option>
-        <option value="beginner">Difficulty: Beginner</option>
-        <option value="intermediate">Difficulty: Intermediate</option>
-        <option value="advanced">Difficulty: Advanced</option>
-        <option value="mad">Difficulty: Mad</option>
-        <option value="cards">Cards</option>
-        <option value="coin">Coins</option>
-        <option value="gimmick">Gimmicks</option>
-      </select>
-      <button type="button" aria-label="random" onClick={handleRandom}>
-        <SVGIcon variant="dice" width="30px" color="black"></SVGIcon>
-      </button>
+    <StyledSection>
+      {/* <h2>Search</h2> */}
+      <StyledQuery>
+        <SVGIcon variant="magnify" width="20px" color="grey" />
+        <input
+          aria-label="search"
+          onChange={handleChangeSearch}
+          type="text"
+          name="search"
+          id="search"
+          maxLength={50}
+        />
 
-      <h2> Results</h2>
+        <label htmlFor="select"></label>
+        <select
+          onChange={handleChangeCategory}
+          type="select"
+          id="select"
+          name="select"
+        >
+          <option value="">--choose a category--</option>
+          <option value="beginner">Difficulty: Beginner</option>
+          <option value="intermediate">Difficulty: Intermediate</option>
+          <option value="advanced">Difficulty: Advanced</option>
+          <option value="mad">Difficulty: Mad</option>
+          <option value="cards">Cards</option>
+          <option value="coin">Coins</option>
+          <option value="gimmick">Gimmicks</option>
+        </select>
+        <button type="button" aria-label="random" onClick={handleRandom}>
+          <SVGIcon variant="dice" width="30px" color="black"></SVGIcon>
+        </button>
+      </StyledQuery>
+
+      <h2>Results</h2>
 
       {filterCategory === "" ? (
         <>
@@ -94,6 +100,17 @@ export default function Feed() {
         </>
       )}
       <p>nothing found</p>
-    </section>
+    </StyledSection>
   );
 }
+
+const StyledSection = styled.section`
+  margin: 10px;
+  text-align: center;
+`;
+
+const StyledQuery = styled.div`
+  display: flex;
+  gap: 2px;
+  margin-bottom: 10px;
+`;

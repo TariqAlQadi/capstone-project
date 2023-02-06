@@ -8,9 +8,7 @@ export default function Navigation() {
 
   return (
     <>
-      {pathname === "/" ? (
-        <></>
-      ) : (
+      {pathname !== "/" && (
         <StyledNavigation>
           <Link href="/feed" aria-label="feed">
             <SVGIcon
