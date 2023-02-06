@@ -30,8 +30,11 @@ export default function Shop() {
           );
         })}
       </StyledList>
+      <br />
       <h2>Best Search Engine:</h2>
       <Link href="https://askalexander.org">Ask Alexander</Link>
+      <br />
+      <br />
       <h2>Forum:</h2>
       <Link href="https://www.themagiccafe.com/forums/index.php">
         The Magic Café
