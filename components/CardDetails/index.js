@@ -24,8 +24,8 @@ export default function CardDetails({ content, onToggle, id }) {
   //number of all likes/learns/masters
 
   const numberLikes = content?.isLiked.length;
-  const numberLearning = content?.isLiked.length;
-  const numberMastered = content?.isLiked.length;
+  const numberLearning = content?.isLearning.length;
+  const numberMastered = content?.mastered.length;
 
   //handle submit that toggles user email between "learning"/"mastered" + notes input
   function handleSubmit(event) {
@@ -96,6 +96,7 @@ export default function CardDetails({ content, onToggle, id }) {
           {content?.difficulty}
         </StyledDifficulty>
       </p>
+      <br />
       <p>{numberLikes} people have liked this trick so far!</p>
       <p>{numberLearning} people are learning this trick right now!</p>
       <p>{numberMastered} people have mastered this trick already!</p>
@@ -151,7 +152,7 @@ export default function CardDetails({ content, onToggle, id }) {
             id="learning"
             defaultChecked={content?.isLearning.includes(user.email)}
           />
-          <label htmlFor="learning">learning</label>
+          <label htmlFor="learning">I am learning this trick!</label>
           <br />
           <input
             type="radio"
@@ -159,7 +160,7 @@ export default function CardDetails({ content, onToggle, id }) {
             id="mastered"
             defaultChecked={content?.mastered.includes(user.email)}
           />
-          <label htmlFor="mastered"> mastered</label>
+          <label htmlFor="mastered">I have mastered this trick!</label>
           <br />
           <button type="submit">Submit Changes</button>
         </form>
