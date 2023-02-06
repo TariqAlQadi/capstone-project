@@ -154,6 +154,7 @@ export default function CardDetails({ content, onToggle, id }) {
             name="notes"
             id="notes"
             defaultValue={content?.notes}
+            maxLength={200}
           />
           <br />
           <input

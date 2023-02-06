@@ -145,7 +145,9 @@ export default function Profil() {
               width="20px"
               color={lvl >= 1 ? "green" : "grey"}
             />
+
             {lvl >= 1 ? "Novice" : "(reach lvl 1)"}
+
           </li>
           <li>
             <SVGIcon
@@ -153,7 +155,9 @@ export default function Profil() {
               width="20px"
               color={lvl >= 10 ? "skyblue" : "grey"}
             />
+
             {lvl >= 10 ? "Prodigy" : "(reach lvl 10)"}
+
           </li>
           <li>
             <SVGIcon
@@ -161,7 +165,9 @@ export default function Profil() {
               width="20px"
               color={lvl >= 100 ? "blue" : "grey"}
             />
+
             {lvl >= 100 ? "Mastermind" : "(reach lvl 100)"}
+
           </li>
           <li>
             <SVGIcon
@@ -169,7 +175,9 @@ export default function Profil() {
               width="20px"
               color={lvl >= 1000 ? "gold" : "grey"}
             />
+
             {lvl >= 1000 ? "Legend" : "(reach lvl 1000)"}
+
           </li>
           <li>
             <SVGIcon
@@ -177,9 +185,11 @@ export default function Profil() {
               width="20px"
               color={numberMasteredBeginner >= 1 ? "yellow" : "grey"}
             />
+
             {numberMasteredBeginner >= 1
               ? "First Steps"
               : "(master 1st Beginner Turtorial)"}
+
           </li>
           <li>
             <SVGIcon
@@ -187,9 +197,11 @@ export default function Profil() {
               width="20px"
               color={numberMasteredIntermediate >= 1 ? "orange" : "grey"}
             />
+
             {numberMasteredIntermediate >= 1
               ? "Intermediate Innovator"
               : "(master 1st Intermediate Turtorial)"}
+
           </li>
           <li>
             <SVGIcon
@@ -197,9 +209,11 @@ export default function Profil() {
               width="20px"
               color={numberMasteredAdvanced >= 1 ? "red" : "grey"}
             />
+
             {numberMasteredAdvanced >= 1
               ? "Advanced Ace"
               : "(master 1st Advanced Turtorial)"}
+
           </li>
           <li>
             <SVGIcon
@@ -207,9 +221,11 @@ export default function Profil() {
               width="20px"
               color={numberMasteredMad >= 1 ? "violet" : "grey"}
             />
+
             {numberMasteredMad >= 1
               ? "Mad Skillz"
               : "(master 1st Mad Turtorial)"}
+
           </li>
           <li>
             <SVGIcon
@@ -217,17 +233,20 @@ export default function Profil() {
               width="20px"
               color={numberMastered >= 10 ? "silver" : "grey"}
             />
+
             {numberMastered >= 10 ? "Tenfold Triumph" : "(master 10 Tutorials)"}
+
           </li>
           <li>
             <SVGIcon
               variant="medal"
               width="20px"
               color={numberMastered >= 100 ? "black" : "grey"}
-            />
+
             {numberMastered >= 100
               ? "Century of Success"
               : "(master 100 Tutorials)"}
+
           </li>
         </StyledList>
       </StyledSection>
