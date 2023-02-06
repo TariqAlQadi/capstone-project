@@ -61,10 +61,14 @@ export default function Profil() {
       50
   );
 
-  //handle edit profil form
+  //handle submit profil
   function handleSubmit(event) {
     event.preventDefault();
-    setUser({ name: event.target.name.value, bio: event.target.bio.value });
+    setUser({
+      name: event.target.name.value,
+      bio: event.target.bio.value,
+      ...user,
+    });
     setShowEdit(false);
   }
 
