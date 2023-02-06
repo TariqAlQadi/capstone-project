@@ -21,6 +21,12 @@ export default function CardDetails({ content, onToggle, id }) {
   //show edit form state
   const [showEdit, setShowEdit] = useState(false);
 
+  //number of all likes/learns/masters
+
+  const numberLikes = content?.isLiked.length;
+  const numberLearning = content?.isLiked.length;
+  const numberMastered = content?.isLiked.length;
+
   //handle submit that toggles user email between "learning"/"mastered" + notes input
   function handleSubmit(event) {
     event.preventDefault();
@@ -80,7 +86,20 @@ export default function CardDetails({ content, onToggle, id }) {
         title={content?.snippet.title}
         allowFullScreen
       ></iframe>
+      <p>Description:</p>
       <p>{content?.snippet.description.substring(0, lengthOfDescription)}</p>
+      <br />
+      <p>Category: {content?.category}</p>
+      <p>
+        Difficulty:{" "}
+        <StyledDifficulty difficulty={content?.difficulty}>
+          {content?.difficulty}
+        </StyledDifficulty>
+      </p>
+      <p>{numberLikes} people have liked this trick so far!</p>
+      <p>{numberLearning} people are learning this trick right now!</p>
+      <p>{numberMastered} people have mastered this trick already!</p>
+      <br />
       <button
         type="button"
         onClick={() => {
@@ -104,18 +123,20 @@ export default function CardDetails({ content, onToggle, id }) {
         <SVGIcon variant="done" width="20px" color="green" />
       )}
 
-      <p>Category: {content?.category}</p>
-      <p>
-        Difficulty:{" "}
-        <StyledDifficulty difficulty={content?.difficulty}>
-          {content?.difficulty}
-        </StyledDifficulty>
-      </p>
-      <StyledParagraph>Notes: {content?.notes}</StyledParagraph>
-
+      {content?.notes !== "" && (
+        <StyledParagraph>Notes: {content?.notes}</StyledParagraph>
+      )}
+      <button type="button" onClick={() => setShowEdit(!showEdit)}>
+        {showEdit ? (
+          <SVGIcon variant="close" width="20px" color="red" />
+        ) : (
+          <SVGIcon variant="edit" width="20px" color="green" />
+        )}
+      </button>
       {showEdit && (
         <form onSubmit={handleSubmit}>
           <label htmlFor="notes">notes</label>
+          <br />
           <textarea
             type="text"
             name="notes"
@@ -123,7 +144,7 @@ export default function CardDetails({ content, onToggle, id }) {
             defaultValue={content?.notes}
             maxLength={200}
           />
-
+          <br />
           <input
             type="radio"
             name="tracking"
@@ -131,20 +152,18 @@ export default function CardDetails({ content, onToggle, id }) {
             defaultChecked={content?.isLearning.includes(user.email)}
           />
           <label htmlFor="learning">learning</label>
-
+          <br />
           <input
             type="radio"
             name="tracking"
             id="mastered"
             defaultChecked={content?.mastered.includes(user.email)}
           />
-          <label htmlFor="mastered">mastered</label>
-          <button type="submit">Change</button>
+          <label htmlFor="mastered"> mastered</label>
+          <br />
+          <button type="submit">Submit Changes</button>
         </form>
       )}
-      <button type="button" onClick={() => setShowEdit(!showEdit)}>
-        {showEdit ? "close edit" : "edit"}
-      </button>
     </StyledSection>
   );
 }
