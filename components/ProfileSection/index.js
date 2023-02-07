@@ -1,4 +1,3 @@
-import React from "react";
 import { StyledLink } from "../StyledLink/Link.styled";
 import { StyledList, StyledListItem } from "./ProfileSection.styled";
 

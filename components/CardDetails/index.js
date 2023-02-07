@@ -8,12 +8,10 @@ import {
 } from "./CardDetails.styled";
 import { currentUser } from "@/testData/globalStates";
 import { useAtom } from "jotai";
-import { allTutorials } from "@/testData/globalStates";
 
 export default function CardDetails({ content, onToggle, id }) {
   const router = useRouter();
   const [user] = useAtom(currentUser);
-  const [list, setList] = useAtom(allTutorials);
 
   //length of the description until the first "!"
   const lengthOfDescription = content?.snippet.description.indexOf("!") + 1;
@@ -22,7 +20,6 @@ export default function CardDetails({ content, onToggle, id }) {
   const [showEdit, setShowEdit] = useState(false);
 
   //number of all likes/learns/masters
-
   const numberLikes = content?.isLiked.length;
   const numberLearning = content?.isLearning.length;
   const numberMastered = content?.mastered.length;
