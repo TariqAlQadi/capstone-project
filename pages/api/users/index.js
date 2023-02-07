@@ -1,11 +1,12 @@
 import dbConnect from "@/db/connect";
-import Tutorial from "@/db/models/Tutorial";
+import User from "@/db/models/User";
 
 export default async function handler(request, response) {
   await dbConnect();
 
   if (request.method === "GET") {
-    const tutorials = await Tutorial.find();
-    return response.status(200).json(tutorials);
+    const users = await User.find();
+    console.log("users", users);
+    return response.status(200).json(users);
   }
 }

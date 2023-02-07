@@ -1,11 +1,16 @@
 import mongoose, { Schema } from "mongoose";
 
 const tutorialSchema = new Schema({
-  name: { type: String, required: true },
-  location: { type: String, required: true },
-  image: { type: String, required: true },
-  mapURL: { type: String, required: true },
-  description: { type: String, required: true },
+  snippet: {
+    description: String,
+    title: String,
+    position: Number,
+  },
+  difficulty: String,
+  isLiked: [String],
+  isLearning: [String],
+  mastered: [String],
+  notes: String,
 });
 
 const Tutorial =

@@ -3,6 +3,7 @@ import { useAtom } from "jotai";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
+import useSWR from "swr";
 
 // import dynamic CardList for randomizing
 import dynamic from "next/dynamic";
@@ -12,12 +13,19 @@ const CardList = dynamic(() => import("@/components/CardList"), {
 });
 
 export default function Feed() {
-  const [list] = useAtom(allTutorials);
   const router = useRouter();
 
   //filter states for artist and title
   const [filter, setFilter] = useState("");
   const [filterCategory, setFilterCategory] = useState("");
+
+  //fetch mongoDB Atlas
+  const { data } = useSWR("/api/tutorials");
+  if (!data) {
+    return <div>...is Loading</div>;
+  }
+
+  const list = data;
 
   //filtered by search
   const filteredBySearch = list.filter(
