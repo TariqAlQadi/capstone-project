@@ -55,7 +55,6 @@ export default function Feed() {
 
   return (
     <StyledSection>
-      {/* <h2>Search</h2> */}
       <StyledQuery>
         <SVGIcon variant="magnify" width="20px" color="grey" />
         <input
