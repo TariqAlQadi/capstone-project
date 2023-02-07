@@ -1,17 +1,14 @@
-import mongoose from "mongoose";
-
-const { Schema } = mongoose;
+import mongoose, { Schema } from "mongoose";
 
 const tutorialSchema = new Schema({
-  image: { type: String },
-  description: { type: String },
-  categories: [String],
-  difficulty: [String],
-  isLiked: [String],
-  isLearning: [String],
-  mastered: [String],
+  name: { type: String, required: true },
+  location: { type: String, required: true },
+  image: { type: String, required: true },
+  mapURL: { type: String, required: true },
+  description: { type: String, required: true },
 });
 
-const Tutorial = mongoose.models.Tutorial || mongoose.model("Post", postSchema);
+const Tutorial =
+  mongoose.models.Tutorial || mongoose.model("Tutorial", tutorialSchema);
 
-export default Post;
+export default Tutorial;
