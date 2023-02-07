@@ -14,12 +14,12 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ["i.ytimg.com"],
     remotePatterns: [
-      // {
-      //   protocol: "https",
-      //   hostname: "ytimg.com",
-      // },
+      {
+        protocol: "https",
+        hostname: "**",
+        pathname: "**",
+      },
     ],
   },
 };
