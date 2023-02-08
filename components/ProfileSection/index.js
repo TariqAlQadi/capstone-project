@@ -7,8 +7,8 @@ export default function ProfilSection({ tutorials }) {
       <StyledList>
         {tutorials.map((tutorial) => {
           return (
-            <StyledListItem key={tutorial.id}>
-              <StyledLink href={`/details/${tutorial.id}`}>
+            <StyledListItem key={tutorial._id}>
+              <StyledLink href={`/details/${tutorial._id}`}>
                 <h3>{tutorial.snippet.title}</h3>
               </StyledLink>
             </StyledListItem>

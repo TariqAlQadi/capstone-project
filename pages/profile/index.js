@@ -269,7 +269,7 @@ export default function Profil() {
           <SVGIcon
             variant={filter === "isLiked" ? "heart" : "heartOutline"}
             width="40px"
-            color="red"
+            color={filter === "isLiked" ? "red" : "grey"}
           />
         </button>
         <button
@@ -281,7 +281,7 @@ export default function Profil() {
           <SVGIcon
             variant={filter === "isLearning" ? "learning" : "learningOutline"}
             width="40px"
-            color="blue"
+            color={filter === "isLearning" ? "blue" : "grey"}
           />
         </button>
         <button
@@ -293,7 +293,7 @@ export default function Profil() {
           <SVGIcon
             variant={filter === "mastered" ? "doneAll" : "done"}
             width="40px"
-            color="green"
+            color={filter === "mastered" ? "green" : "grey"}
           />
         </button>
         <ProfilSection tutorials={filteredList} />
