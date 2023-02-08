@@ -8,8 +8,9 @@ import {
 import { currentUser } from "@/testData/globalStates";
 import { useAtom } from "jotai";
 
-export default function CardDetails({ content, onToggle, onEdit, _id }) {
+export default function CardDetails({ content, onToggle, onEdit }) {
   const [user] = useAtom(currentUser);
+  console.log(currentUser);
 
   //length of the description until the first "!"
   const lengthOfDescription = content?.snippet.description.indexOf("!") + 1;
@@ -49,12 +50,7 @@ export default function CardDetails({ content, onToggle, onEdit, _id }) {
       <p>{numberLearning} people are learning this trick right now!</p>
       <p>{numberMastered} people have mastered this trick already!</p>
       <br />
-      <button
-        type="button"
-        onClick={() => {
-          onToggle(content?._id);
-        }}
-      >
+      <button aria-label="like" type="button" onClick={onToggle}>
         {content?.isLiked.includes(user.email) ? (
           <>
             <SVGIcon variant="heart" width="20px" color="red" />

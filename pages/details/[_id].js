@@ -10,37 +10,45 @@ export default function DetailsPage() {
   const router = useRouter();
   const { _id } = router.query;
 
-  const { data } = useSWR(`/api/tutorials/${_id}`);
+  const { data, mutate } = useSWR(`/api/tutorials/${_id}`);
 
   if (!data) {
     return <div>...is Loading</div>;
   }
 
   //pushes & pulls the user id on/off the isLiked array
-  function handleToggleLike(_id) {
-    // let updatedIsLiked = [];
-    // if (!data.isLiked.includes(user.email)) {
-    //   updatedIsLiked = [...data.isLiked, user.email];
-    // } else {
-    //   updatedIsLiked = tutorial.isLiked.filter((email) => email !== user.email);
-    // }
-    // const updatedData = { ...data, isLiked: updatedIsLiked };
-    // try {
-    //   const response = fetch(`/api/tutorials/${_id}`, {
-    //     method: "PUT",
-    //     body: JSON.stringify(data),
-    //     headers: { "Content-type": "application/json" },
-    //   });
-    //   if (response.ok) {
-    //     router.push(`/details/${_id}`);
-    //   } else {
-    //     console.error(`Error: ${response.status}`);
-    //   }
-    // } catch (error) {
-    //   console.error(error);
-    // }
+  async function handleToggleLike() {
+    if (!data.isLiked.includes(user.email)) {
+      try {
+        const response = await fetch(`/api/tutorials/${_id}`, {
+          method: "PUT",
+          body: JSON.stringify(user.email),
+          headers: { "Content-type": "application/json" },
+        });
+        if (!response.ok) {
+          console.error(`Error: ${response.status}`);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+      mutate();
+    } else {
+      try {
+        const response = await fetch(`/api/tutorials/${_id}`, {
+          method: "DELETE",
+          body: JSON.stringify(user.email),
+          headers: { "Content-type": "application/json" },
+        });
+        if (!response.ok) {
+          console.error(`Error: ${response.status}`);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+      mutate();
+    }
   }
-
+  console.log(data);
   function handleEdit(event) {
     event.preventDefault();
 
@@ -113,7 +121,6 @@ export default function DetailsPage() {
       <CardDetails
         content={data}
         onToggle={handleToggleLike}
-        _id={_id}
         onEdit={handleEdit}
       />
     </section>

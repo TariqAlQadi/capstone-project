@@ -17,13 +17,24 @@ export default async function handler(request, response) {
   }
 
   if (request.method === "PUT") {
-    const updatedTutorial = await Tutorial.findByIdAndUpdate(_id, {
-      $set: request.body,
-    });
+    await Tutorial.findByIdAndUpdate(
+      { _id: _id },
+      {
+        $push: { isLiked: request.body },
+      }
+    );
 
-    if (!updatedTutorial) {
-      return response.status(404).json({ status: "Not Found" });
-    }
+    return response.status(200).json({ status: "Tutorial updated" });
+  }
+
+  if (request.method === "DELETE") {
+    await Tutorial.findByIdAndUpdate(
+      { _id: _id },
+      {
+        $pull: { isLiked: request.body },
+      }
+    );
+
     return response.status(200).json({ status: "Tutorial updated" });
   }
 }

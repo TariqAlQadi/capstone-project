@@ -26,7 +26,7 @@ export const allUsers = atom(users);
 
 //current user
 const initialUser = {
-  email: "",
+  email: "abc@def",
   password: "",
   name: "MusterFrau/Mustermann",
   img: "https://i.ytimg.com/vi/bCIMMl3e7dY/hqdefault.jpg",
