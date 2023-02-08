@@ -1,17 +1,12 @@
 import SVGIcon from "../SVGIcon";
 import { useState } from "react";
-import {
-  StyledSection,
-  StyledParagraph,
-  StyledDifficulty,
-} from "./CardDetails.styled";
+import { StyledSection, StyledDifficulty } from "./CardDetails.styled";
 import { currentUser } from "@/testData/globalStates";
 import { useAtom } from "jotai";
 
 export default function CardDetails({
   content,
   onToggleLike,
-  onEdit,
   onToggleLearning,
   onToggleMastered,
 }) {
