@@ -1,5 +1,4 @@
 import SVGIcon from "../SVGIcon";
-import { useState } from "react";
 import { StyledSection, StyledDifficulty } from "./CardDetails.styled";
 
 export default function CardDetails({
@@ -10,9 +9,6 @@ export default function CardDetails({
 }) {
   //length of the description until the first "!"
   const lengthOfDescription = content?.snippet.description.indexOf("!") + 1;
-
-  //show edit form state
-  const [showEdit, setShowEdit] = useState(false);
 
   //get logged-in user
   const user = JSON.parse(localStorage.getItem("loggedInUser"));

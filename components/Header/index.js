@@ -1,6 +1,7 @@
 import { StyledHeader } from "./Header.styled";
 import { useRouter } from "next/router";
 import SVGIcon from "../SVGIcon";
+import { StyledLogOutButton } from "./Header.styled";
 
 export default function Header() {
   const { pathname } = useRouter();
@@ -15,9 +16,9 @@ export default function Header() {
       {pathname !== "/" && (
         <StyledHeader>
           <h1>NeTrix</h1>
-          <button onClick={handleLogOut} aria-label="log-out">
+          <StyledLogOutButton onClick={handleLogOut} aria-label="log-out">
             <SVGIcon variant="logOut" width="20px" color="black" />
-          </button>
+          </StyledLogOutButton>
         </StyledHeader>
       )}
     </>

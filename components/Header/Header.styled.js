@@ -6,3 +6,9 @@ export const StyledHeader = styled.header`
   text-align: center;
   padding: 10px;
 `;
+
+export const StyledLogOutButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+`;
