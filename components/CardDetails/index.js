@@ -8,9 +8,14 @@ import {
 import { currentUser } from "@/testData/globalStates";
 import { useAtom } from "jotai";
 
-export default function CardDetails({ content, onToggle, onEdit }) {
+export default function CardDetails({
+  content,
+  onToggleLike,
+  onEdit,
+  onToggleLearning,
+  onToggleMastered,
+}) {
   const [user] = useAtom(currentUser);
-  console.log(currentUser);
 
   //length of the description until the first "!"
   const lengthOfDescription = content?.snippet.description.indexOf("!") + 1;
@@ -50,7 +55,7 @@ export default function CardDetails({ content, onToggle, onEdit }) {
       <p>{numberLearning} people are learning this trick right now!</p>
       <p>{numberMastered} people have mastered this trick already!</p>
       <br />
-      <button aria-label="like" type="button" onClick={onToggle}>
+      <button aria-label="like" type="button" onClick={onToggleLike}>
         {content?.isLiked.includes(user.email) ? (
           <>
             <SVGIcon variant="heart" width="20px" color="red" />
@@ -61,54 +66,30 @@ export default function CardDetails({ content, onToggle, onEdit }) {
           </>
         )}
       </button>
-      {content?.isLearning.includes(user.email) && (
-        <SVGIcon variant="learning" width="20px" color="blue" />
-      )}
-      {content?.mastered.includes(user.email) && (
-        <SVGIcon variant="done" width="20px" color="green" />
-      )}
 
-      {content?.notes !== "" && (
-        <StyledParagraph>Notes: {content?.notes}</StyledParagraph>
-      )}
-      <button type="button" onClick={() => setShowEdit(!showEdit)}>
-        {showEdit ? (
-          <SVGIcon variant="close" width="20px" color="red" />
+      <button aria-label="learing" type="button" onClick={onToggleLearning}>
+        {content?.isLearning.includes(user.email) ? (
+          <>
+            <SVGIcon variant="learning" width="20px" color="blue" />
+          </>
         ) : (
-          <SVGIcon variant="edit" width="20px" color="green" />
+          <>
+            <SVGIcon variant="learningOutline" width="20px" color="grey" />
+          </>
         )}
       </button>
-      {showEdit && (
-        <form onSubmit={onEdit}>
-          <label htmlFor="notes">notes</label>
-          <br />
-          <textarea
-            type="text"
-            name="notes"
-            id="notes"
-            defaultValue={content?.notes}
-            maxLength={200}
-          />
-          <br />
-          <input
-            type="radio"
-            name="tracking"
-            id="learning"
-            defaultChecked={content?.isLearning.includes(user.email)}
-          />
-          <label htmlFor="learning">I am learning this trick!</label>
-          <br />
-          <input
-            type="radio"
-            name="tracking"
-            id="mastered"
-            defaultChecked={content?.mastered.includes(user.email)}
-          />
-          <label htmlFor="mastered">I have mastered this trick!</label>
-          <br />
-          <button type="submit">Submit Changes</button>
-        </form>
-      )}
+
+      <button aria-label="mastered" type="button" onClick={onToggleMastered}>
+        {content?.mastered.includes(user.email) ? (
+          <>
+            <SVGIcon variant="doneAll" width="20px" color="green" />
+          </>
+        ) : (
+          <>
+            <SVGIcon variant="done" width="20px" color="grey" />
+          </>
+        )}
+      </button>
     </StyledSection>
   );
 }

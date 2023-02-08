@@ -16,11 +16,11 @@ export default function DetailsPage() {
     return <div>...is Loading</div>;
   }
 
-  //pushes & pulls the user id on/off the isLiked array
+  //pushes & pulls the user id on/off the isLiked/isLearning/mastered array
   async function handleToggleLike() {
     if (!data.isLiked.includes(user.email)) {
       try {
-        const response = await fetch(`/api/tutorials/${_id}`, {
+        const response = await fetch(`/api/tutorials/like/${_id}`, {
           method: "PUT",
           body: JSON.stringify(user.email),
           headers: { "Content-type": "application/json" },
@@ -34,7 +34,7 @@ export default function DetailsPage() {
       mutate();
     } else {
       try {
-        const response = await fetch(`/api/tutorials/${_id}`, {
+        const response = await fetch(`/api/tutorials/like/${_id}`, {
           method: "DELETE",
           body: JSON.stringify(user.email),
           headers: { "Content-type": "application/json" },
@@ -48,63 +48,93 @@ export default function DetailsPage() {
       mutate();
     }
   }
-  console.log(data);
-  function handleEdit(event) {
-    event.preventDefault();
 
-    const notes = event.target.notes.value;
-    const learning = event.target.learning.checked;
-    const mastered = event.target.mastered.checked;
+  async function handleToggleLearning() {
+    if (!data.isLearning.includes(user.email)) {
+      try {
+        const response = await fetch(`/api/tutorials/learn/${_id}`, {
+          method: "PUT",
+          body: JSON.stringify(user.email),
+          headers: { "Content-type": "application/json" },
+        });
+        if (!response.ok) {
+          console.error(`Error: ${response.status}`);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+      try {
+        const response = await fetch(`/api/tutorials/master/${_id}`, {
+          method: "DELETE",
+          body: JSON.stringify(user.email),
+          headers: { "Content-type": "application/json" },
+        });
+        if (!response.ok) {
+          console.error(`Error: ${response.status}`);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+      mutate();
+    } else {
+      try {
+        const response = await fetch(`/api/tutorials/learn/${_id}`, {
+          method: "DELETE",
+          body: JSON.stringify(user.email),
+          headers: { "Content-type": "application/json" },
+        });
+        if (!response.ok) {
+          console.error(`Error: ${response.status}`);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+      mutate();
+    }
+  }
 
-    // list.map((tutorial) => {
-    //   if (tutorial._id === _id) {
-    //     let updatedIsLearning = [];
-    //     let updatedMastered = [];
-    //     if (learning) {
-    //       if (!tutorial.isLearning.includes(user.email)) {
-    //         updatedIsLearning = [...tutorial.isLearning, user.email];
-    //       } else {
-    //         updatedIsLearning = tutorial.isLearning.filter(
-    //           (email) => email !== user.email
-    //         );
-    //       }
-    //     }
-    //     if (mastered) {
-    //       if (!tutorial.mastered.includes(user.email)) {
-    //         updatedMastered = [...tutorial.mastered, user.email];
-    //       } else {
-    //         updatedMastered = tutorial.mastered.filter(
-    //           (email) => email !== user.email
-    //         );
-    //       }
-    //     }
-    //     return {
-    //       ...tutorial,
-    //       notes,
-    //       isLearning: updatedIsLearning,
-    //       mastered: updatedMastered,
-    //     };
-    //   }
-    //   console.log(tutorial);
-    //   return tutorial;
-    // });
-
-    // try {
-    //   const response = fetch(`/api/tutorials/${id}`, {
-    //     method: "PUT",
-    //     body: JSON.stringify(data),
-    //     headers: { "Content-type": "application/json" },
-    //   });
-
-    //   if (response.ok) {
-    //     event.target.reset();
-    //     router.push("/");
-    //   } else {
-    //     console.error(`Error: ${response.status}`);
-    //   }
-    // } catch (error) {
-    //   console.error(error);
-    // }
+  async function handleToggleMastered() {
+    if (!data.mastered.includes(user.email)) {
+      try {
+        const response = await fetch(`/api/tutorials/master/${_id}`, {
+          method: "PUT",
+          body: JSON.stringify(user.email),
+          headers: { "Content-type": "application/json" },
+        });
+        if (!response.ok) {
+          console.error(`Error: ${response.status}`);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+      try {
+        const response = await fetch(`/api/tutorials/learn/${_id}`, {
+          method: "DELETE",
+          body: JSON.stringify(user.email),
+          headers: { "Content-type": "application/json" },
+        });
+        if (!response.ok) {
+          console.error(`Error: ${response.status}`);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+      mutate();
+    } else {
+      try {
+        const response = await fetch(`/api/tutorials/master/${_id}`, {
+          method: "DELETE",
+          body: JSON.stringify(user.email),
+          headers: { "Content-type": "application/json" },
+        });
+        if (!response.ok) {
+          console.error(`Error: ${response.status}`);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+      mutate();
+    }
   }
 
   return (
@@ -120,8 +150,9 @@ export default function DetailsPage() {
       <h2>Details:</h2>
       <CardDetails
         content={data}
-        onToggle={handleToggleLike}
-        onEdit={handleEdit}
+        onToggleLike={handleToggleLike}
+        onToggleLearning={handleToggleLearning}
+        onToggleMastered={handleToggleMastered}
       />
     </section>
   );

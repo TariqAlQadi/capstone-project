@@ -15,26 +15,4 @@ export default async function handler(request, response) {
 
     response.status(200).json(tutorial);
   }
-
-  if (request.method === "PUT") {
-    await Tutorial.findByIdAndUpdate(
-      { _id: _id },
-      {
-        $push: { isLiked: request.body },
-      }
-    );
-
-    return response.status(200).json({ status: "Tutorial updated" });
-  }
-
-  if (request.method === "DELETE") {
-    await Tutorial.findByIdAndUpdate(
-      { _id: _id },
-      {
-        $pull: { isLiked: request.body },
-      }
-    );
-
-    return response.status(200).json({ status: "Tutorial updated" });
-  }
 }
