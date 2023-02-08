@@ -1,12 +1,8 @@
 import CardDetails from "@/components/CardDetails";
 import { useRouter } from "next/router";
-import { useAtom } from "jotai";
-import { currentUser } from "@/testData/globalStates";
 import useSWR from "swr";
 
 export default function DetailsPage() {
-  const [user] = useAtom(currentUser);
-
   const router = useRouter();
   const { _id } = router.query;
 
@@ -15,6 +11,9 @@ export default function DetailsPage() {
   if (!data) {
     return <div>...is Loading</div>;
   }
+
+  //get logged-in user
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
 
   //pushes & pulls the user id on/off the isLiked/isLearning/mastered array
   async function handleToggleLike() {

@@ -1,8 +1,6 @@
 import SVGIcon from "../SVGIcon";
 import { useState } from "react";
 import { StyledSection, StyledDifficulty } from "./CardDetails.styled";
-import { currentUser } from "@/testData/globalStates";
-import { useAtom } from "jotai";
 
 export default function CardDetails({
   content,
@@ -10,13 +8,14 @@ export default function CardDetails({
   onToggleLearning,
   onToggleMastered,
 }) {
-  const [user] = useAtom(currentUser);
-
   //length of the description until the first "!"
   const lengthOfDescription = content?.snippet.description.indexOf("!") + 1;
 
   //show edit form state
   const [showEdit, setShowEdit] = useState(false);
+
+  //get logged-in user
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
 
   //number of all likes/learns/masters
   const numberLikes = content?.isLiked.length;
