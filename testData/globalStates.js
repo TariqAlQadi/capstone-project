@@ -1,9 +1,4 @@
 import { atom } from "jotai";
-import { newAllTutorials } from "./NewAllTutorials";
-
-//list
-const list = newAllTutorials;
-export const allTutorials = atom(list);
 
 //users
 const users = [
