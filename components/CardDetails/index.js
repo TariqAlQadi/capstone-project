@@ -1,5 +1,4 @@
 import SVGIcon from "../SVGIcon";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import {
   StyledSection,
@@ -9,67 +8,8 @@ import {
 import { currentUser } from "@/testData/globalStates";
 import { useAtom } from "jotai";
 
-export default function CardDetails({ content, onToggle, _id }) {
-  const router = useRouter();
+export default function CardDetails({ content, onToggle, onEdit }) {
   const [user] = useAtom(currentUser);
-
-  function handleEdit(event) {
-    event.preventDefault();
-
-    const notes = event.target.notes.value;
-    const learning = event.target.learning.checked;
-    const mastered = event.target.mastered.checked;
-
-    list.map((tutorial) => {
-      if (tutorial._id === _id) {
-        let updatedIsLearning = [];
-        let updatedMastered = [];
-        if (learning) {
-          if (!tutorial.isLearning.includes(user.email)) {
-            updatedIsLearning = [...tutorial.isLearning, user.email];
-          } else {
-            updatedIsLearning = tutorial.isLearning.filter(
-              (email) => email !== user.email
-            );
-          }
-        }
-        if (mastered) {
-          if (!tutorial.mastered.includes(user.email)) {
-            updatedMastered = [...tutorial.mastered, user.email];
-          } else {
-            updatedMastered = tutorial.mastered.filter(
-              (email) => email !== user.email
-            );
-          }
-        }
-        return {
-          ...tutorial,
-          notes,
-          isLearning: updatedIsLearning,
-          mastered: updatedMastered,
-        };
-      }
-      console.log(tutorial);
-      return tutorial;
-    });
-
-    // try {
-    //   const response = fetch(`/api/tutorials/${id}`, {
-    //     method: "PUT",
-    //     body: JSON.stringify(data),
-    //     headers: { "Content-type": "application/json" },
-    //   });
-
-    //   if (response.ok) {
-    //     event.target.reset();
-    //     router.push("/");
-    //   } else {
-    //     console.error(`Error: ${response.status}`);
-    //   }
-    // } catch (error) {
-    //   console.error(error);
-    // }
-  }
 
   //length of the description until the first "!"
   const lengthOfDescription = content?.snippet.description.indexOf("!") + 1;
@@ -81,53 +21,6 @@ export default function CardDetails({ content, onToggle, _id }) {
   const numberLikes = content?.isLiked.length;
   const numberLearning = content?.isLearning.length;
   const numberMastered = content?.mastered.length;
-
-  //handle submit that toggles user email between "learning"/"mastered" + notes input
-  // function handleEdit(event) {
-  //   event.preventDefault();
-
-  //   const notes = event.target.notes.value;
-  //   const learning = event.target.learning.checked;
-  //   const mastered = event.target.mastered.checked;
-
-  //   setList(
-  //     list.map((tutorial) => {
-  //       if (tutorial.id === id) {
-  //         let updatedIsLearning = [];
-  //         let updatedMastered = [];
-  //         if (learning) {
-  //           if (!tutorial.isLearning.includes(user.email)) {
-  //             updatedIsLearning = [...tutorial.isLearning, user.email];
-  //           } else {
-  //             updatedIsLearning = tutorial.isLearning.filter(
-  //               (email) => email !== user.email
-  //             );
-  //           }
-  //         }
-  //         if (mastered) {
-  //           if (!tutorial.mastered.includes(user.email)) {
-  //             updatedMastered = [...tutorial.mastered, user.email];
-  //           } else {
-  //             updatedMastered = tutorial.mastered.filter(
-  //               (email) => email !== user.email
-  //             );
-  //           }
-  //         }
-  //         return {
-  //           ...tutorial,
-  //           notes,
-  //           isLearning: updatedIsLearning,
-  //           mastered: updatedMastered,
-  //         };
-  //       }
-  //       return tutorial;
-  //     })
-  //   );
-
-  //reset after submit
-  //   setShowEdit(false);
-  //   router.push(`/details/${id}`);
-  // }
 
   return (
     <StyledSection>
@@ -190,7 +83,7 @@ export default function CardDetails({ content, onToggle, _id }) {
         )}
       </button>
       {showEdit && (
-        <form onSubmit={handleEdit}>
+        <form onSubmit={onEdit}>
           <label htmlFor="notes">notes</label>
           <br />
           <textarea

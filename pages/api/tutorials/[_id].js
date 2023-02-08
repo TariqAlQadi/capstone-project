@@ -16,7 +16,7 @@ export default async function handler(request, response) {
   }
 
   if (request.method === "PUT") {
-    const updatedTutorial = await Tutorial.findByIdAndUpdate(id, {
+    const updatedTutorial = await Tutorial.findByIdAndUpdate(_id, {
       $set: request.body,
     });
 
