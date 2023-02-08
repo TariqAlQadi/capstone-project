@@ -1,27 +1,36 @@
 import Image from "next/image";
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProfilSection from "@/components/ProfileSection";
 import SVGIcon from "@/components/SVGIcon";
 import useSWR from "swr";
 
 export default function Profil() {
+  //show edit profile state
   const [showEdit, setShowEdit] = useState(false);
+
+  //logged-in state
+  const [loggedInUser, setLoggedInUser] = useState({});
 
   //filter isLiked/isLearning/mastered section
   const [filter, setFilter] = useState("isLiked");
 
   //get logged-in user
-  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+  useEffect(() => {
+    setLoggedInUser(JSON.parse(localStorage.getItem("loggedInUser")));
+  }, []);
 
-  //fetch mongoDB Atlas
+  //fetch tutorials
   const { data } = useSWR("/api/tutorials");
   if (!data) {
     return <div>...is Loading</div>;
   }
 
+  //data
+  const user = loggedInUser;
   const list = data;
 
+  //filter with filter state
   const filteredList = list.filter((listItem) =>
     listItem[filter].includes(user.email)
   );
@@ -71,12 +80,12 @@ export default function Profil() {
 
   //handle submit profil
   function handleSubmit(event) {
-    event.preventDefault();
-    setUser({
-      name: event.target.name.value,
-      bio: event.target.bio.value,
-      ...user,
-    });
+    // event.preventDefault();
+    // setUser({
+    //   name: event.target.name.value,
+    //   bio: event.target.bio.value,
+    //   ...user,
+    // });
     setShowEdit(false);
   }
 

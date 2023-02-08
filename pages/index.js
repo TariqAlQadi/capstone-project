@@ -5,16 +5,18 @@ import useSWR from "swr";
 
 export default function Login() {
   const router = useRouter();
+
+  //localstorage state for logged in user
   const [loggedInUser, setLoggedInUser] = useLocalStorageState("loggedInUser", {
     defaultValue: {},
   });
 
-  //fetching users
+  //fetch users
   const { data } = useSWR("/api/users");
   if (!data) {
     return <div>...is Loading</div>;
   }
-
+  //login function
   function handleLogin(event) {
     event.preventDefault();
 

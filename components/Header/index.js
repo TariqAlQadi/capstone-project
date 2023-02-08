@@ -7,10 +7,12 @@ export default function Header() {
   const { pathname } = useRouter();
   const router = useRouter();
 
+  //log out function
   function handleLogOut() {
     localStorage.clear();
     router.push("/");
   }
+
   return (
     <>
       {pathname !== "/" && (
