@@ -1,24 +1,31 @@
-import { allUsers, currentUser } from "@/testData/globalStates";
-import { useAtom } from "jotai";
 import { useRouter } from "next/router";
 import styled from "styled-components";
+import useLocalStorageState from "use-local-storage-state";
+import useSWR from "swr";
 
 export default function Login() {
   const router = useRouter();
-  const [user, setUser] = useAtom(currentUser);
-  const [users] = useAtom(allUsers);
+  const [loggedInUser, setLoggedInUser] = useLocalStorageState("loggedInUser", {
+    defaultValue: {},
+  });
+
+  //fetching users
+  const { data } = useSWR("/api/users");
+  if (!data) {
+    return <div>...is Loading</div>;
+  }
 
   function handleLogin(event) {
     event.preventDefault();
 
     // user check email & password
-    const foundUser = users.find(
+    const foundUser = data.find(
       (user) => user.email === event.target.email.value
     );
     if (!foundUser) {
       alert("incorrect email");
     } else if (foundUser.password === event.target.password.value) {
-      setUser(foundUser);
+      setLoggedInUser(foundUser);
       router.push("/feed");
     } else {
       alert("incorrect password");
