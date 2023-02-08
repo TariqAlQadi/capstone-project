@@ -9,7 +9,7 @@ export default function CardList({ tutorials }) {
       {shuffledTutorials.map((tutorial) => {
         return (
           <StyledListItem key={tutorial.id}>
-            <CardPreview content={tutorial.snippet} id={tutorial.id} />
+            <CardPreview content={tutorial.snippet} _id={tutorial._id} />
           </StyledListItem>
         );
       })}

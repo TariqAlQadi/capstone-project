@@ -3,10 +3,10 @@ import Tutorial from "@/db/models/Tutorial";
 
 export default async function handler(request, response) {
   await dbConnect();
-  const { id } = request.query;
+  const { _id } = request.query;
 
   if (request.method === "GET") {
-    const product = await Tutorial.findById(id);
+    const product = await Tutorial.findById(_id);
 
     if (!product) {
       return response.status(404).json({ status: "Not Found" });

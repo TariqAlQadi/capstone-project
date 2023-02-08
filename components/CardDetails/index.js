@@ -9,9 +9,67 @@ import {
 import { currentUser } from "@/testData/globalStates";
 import { useAtom } from "jotai";
 
-export default function CardDetails({ content, onToggle, id }) {
+export default function CardDetails({ content, onToggle, _id }) {
   const router = useRouter();
   const [user] = useAtom(currentUser);
+
+  function handleEdit(event) {
+    event.preventDefault();
+
+    const notes = event.target.notes.value;
+    const learning = event.target.learning.checked;
+    const mastered = event.target.mastered.checked;
+
+    list.map((tutorial) => {
+      if (tutorial._id === _id) {
+        let updatedIsLearning = [];
+        let updatedMastered = [];
+        if (learning) {
+          if (!tutorial.isLearning.includes(user.email)) {
+            updatedIsLearning = [...tutorial.isLearning, user.email];
+          } else {
+            updatedIsLearning = tutorial.isLearning.filter(
+              (email) => email !== user.email
+            );
+          }
+        }
+        if (mastered) {
+          if (!tutorial.mastered.includes(user.email)) {
+            updatedMastered = [...tutorial.mastered, user.email];
+          } else {
+            updatedMastered = tutorial.mastered.filter(
+              (email) => email !== user.email
+            );
+          }
+        }
+        return {
+          ...tutorial,
+          notes,
+          isLearning: updatedIsLearning,
+          mastered: updatedMastered,
+        };
+      }
+      console.log(tutorial);
+      return tutorial;
+    });
+
+    // try {
+    //   const response = fetch(`/api/tutorials/${id}`, {
+    //     method: "PUT",
+    //     body: JSON.stringify(data),
+    //     headers: { "Content-type": "application/json" },
+    //   });
+
+    //   if (response.ok) {
+    //     event.target.reset();
+    //     router.push("/");
+    //   } else {
+    //     console.error(`Error: ${response.status}`);
+    //   }
+    // } catch (error) {
+    //   console.error(error);
+    // }
+  }
 
   //length of the description until the first "!"
   const lengthOfDescription = content?.snippet.description.indexOf("!") + 1;
@@ -25,51 +83,51 @@ export default function CardDetails({ content, onToggle, id }) {
   const numberMastered = content?.mastered.length;
 
   //handle submit that toggles user email between "learning"/"mastered" + notes input
-  function handleSubmit(event) {
-    event.preventDefault();
+  // function handleEdit(event) {
+  //   event.preventDefault();
 
-    const notes = event.target.notes.value;
-    const learning = event.target.learning.checked;
-    const mastered = event.target.mastered.checked;
+  //   const notes = event.target.notes.value;
+  //   const learning = event.target.learning.checked;
+  //   const mastered = event.target.mastered.checked;
 
-    setList(
-      list.map((tutorial) => {
-        if (tutorial.id === id) {
-          let updatedIsLearning = [];
-          let updatedMastered = [];
-          if (learning) {
-            if (!tutorial.isLearning.includes(user.email)) {
-              updatedIsLearning = [...tutorial.isLearning, user.email];
-            } else {
-              updatedIsLearning = tutorial.isLearning.filter(
-                (email) => email !== user.email
-              );
-            }
-          }
-          if (mastered) {
-            if (!tutorial.mastered.includes(user.email)) {
-              updatedMastered = [...tutorial.mastered, user.email];
-            } else {
-              updatedMastered = tutorial.mastered.filter(
-                (email) => email !== user.email
-              );
-            }
-          }
-          return {
-            ...tutorial,
-            notes,
-            isLearning: updatedIsLearning,
-            mastered: updatedMastered,
-          };
-        }
-        return tutorial;
-      })
-    );
+  //   setList(
+  //     list.map((tutorial) => {
+  //       if (tutorial.id === id) {
+  //         let updatedIsLearning = [];
+  //         let updatedMastered = [];
+  //         if (learning) {
+  //           if (!tutorial.isLearning.includes(user.email)) {
+  //             updatedIsLearning = [...tutorial.isLearning, user.email];
+  //           } else {
+  //             updatedIsLearning = tutorial.isLearning.filter(
+  //               (email) => email !== user.email
+  //             );
+  //           }
+  //         }
+  //         if (mastered) {
+  //           if (!tutorial.mastered.includes(user.email)) {
+  //             updatedMastered = [...tutorial.mastered, user.email];
+  //           } else {
+  //             updatedMastered = tutorial.mastered.filter(
+  //               (email) => email !== user.email
+  //             );
+  //           }
+  //         }
+  //         return {
+  //           ...tutorial,
+  //           notes,
+  //           isLearning: updatedIsLearning,
+  //           mastered: updatedMastered,
+  //         };
+  //       }
+  //       return tutorial;
+  //     })
+  //   );
 
-    //reset after submit
-    setShowEdit(false);
-    router.push(`/details/${id}`);
-  }
+  //reset after submit
+  //   setShowEdit(false);
+  //   router.push(`/details/${id}`);
+  // }
 
   return (
     <StyledSection>
@@ -101,7 +159,7 @@ export default function CardDetails({ content, onToggle, id }) {
       <button
         type="button"
         onClick={() => {
-          onToggle(content?.id);
+          onToggle(content?._id);
         }}
       >
         {content?.isLiked.includes(user.email) ? (
@@ -132,7 +190,7 @@ export default function CardDetails({ content, onToggle, id }) {
         )}
       </button>
       {showEdit && (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleEdit}>
           <label htmlFor="notes">notes</label>
           <br />
           <textarea
