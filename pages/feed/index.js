@@ -54,7 +54,7 @@ export default function Feed() {
   }
 
   //random button function
-  function handleRandom(event) {
+  function handleRandom() {
     const randomTutorial = list[Math.floor(Math.random() * list.length)];
     router.push(`/details/${randomTutorial.id}`);
   }

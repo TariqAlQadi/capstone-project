@@ -1,18 +1,26 @@
 import Image from "next/image";
 import { useAtom } from "jotai";
-import { allTutorials, currentUser } from "@/testData/globalStates";
+import { currentUser } from "@/testData/globalStates";
 import styled from "styled-components";
 import { useState } from "react";
 import ProfilSection from "@/components/ProfileSection";
 import SVGIcon from "@/components/SVGIcon";
+import useSWR from "swr";
 
 export default function Profil() {
-  const [list] = useAtom(allTutorials);
   const [user, setUser] = useAtom(currentUser);
   const [showEdit, setShowEdit] = useState(false);
 
   //filter isLiked/isLearning/mastered section
   const [filter, setFilter] = useState("isLiked");
+
+  //fetch mongoDB Atlas
+  const { data } = useSWR("/api/tutorials");
+  if (!data) {
+    return <div>...is Loading</div>;
+  }
+
+  const list = data;
 
   const filteredList = list.filter((listItem) =>
     listItem[filter].includes(user.email)
