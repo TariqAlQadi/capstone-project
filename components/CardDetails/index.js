@@ -8,7 +8,7 @@ import {
 import { currentUser } from "@/testData/globalStates";
 import { useAtom } from "jotai";
 
-export default function CardDetails({ content, onToggle, onEdit }) {
+export default function CardDetails({ content, onToggle, onEdit, _id }) {
   const [user] = useAtom(currentUser);
 
   //length of the description until the first "!"

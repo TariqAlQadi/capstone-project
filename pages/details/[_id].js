@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { useAtom } from "jotai";
 import { currentUser } from "@/testData/globalStates";
 import useSWR from "swr";
-import Tutorial from "@/db/models/Tutorial";
 
 export default function DetailsPage() {
   const [user] = useAtom(currentUser);
@@ -19,21 +18,19 @@ export default function DetailsPage() {
 
   //pushes & pulls the user id on/off the isLiked array
   function handleToggleLike(_id) {
-    let updatedIsLiked = [];
-    if (!data.isLiked.includes(user.email)) {
-      updatedIsLiked = [...data.isLiked, user.email];
-    } else {
-      updatedIsLiked = tutorial.isLiked.filter((email) => email !== user.email);
-    }
-    return { ...data, isLiked: updatedIsLiked };
-
+    // let updatedIsLiked = [];
+    // if (!data.isLiked.includes(user.email)) {
+    //   updatedIsLiked = [...data.isLiked, user.email];
+    // } else {
+    //   updatedIsLiked = tutorial.isLiked.filter((email) => email !== user.email);
+    // }
+    // const updatedData = { ...data, isLiked: updatedIsLiked };
     // try {
     //   const response = fetch(`/api/tutorials/${_id}`, {
     //     method: "PUT",
     //     body: JSON.stringify(data),
     //     headers: { "Content-type": "application/json" },
     //   });
-
     //   if (response.ok) {
     //     router.push(`/details/${_id}`);
     //   } else {
