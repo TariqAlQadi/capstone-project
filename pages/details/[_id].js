@@ -146,7 +146,7 @@ export default function DetailsPage() {
       mutate();
     }
   }
-  //pushes & pulls note & user email on & off the notes array
+  //pushes & pulls notes object on & off the notes array
   async function handleEditNote(event) {
     event.preventDefault();
 

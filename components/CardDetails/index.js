@@ -1,5 +1,10 @@
 import SVGIcon from "../SVGIcon";
-import { StyledSection, StyledDifficulty } from "./CardDetails.styled";
+import {
+  StyledSection,
+  StyledDifficulty,
+  StyledNoteForm,
+  StyledTextArea,
+} from "./CardDetails.styled";
 
 export default function CardDetails({
   content,
@@ -88,17 +93,15 @@ export default function CardDetails({
         )}
       </button>
 
-      <form onSubmit={onEditNote}>
+      <StyledNoteForm onSubmit={onEditNote}>
         <label htmlFor="notes">Notes:</label>
-        <br />
-        <textarea
+        <StyledTextArea
           id="notes"
           name="notes"
           defaultValue={note ? note.note : ""}
         />
-        <br />
         <button type="submit">Edit Note</button>
-      </form>
+      </StyledNoteForm>
     </StyledSection>
   );
 }

@@ -18,3 +18,17 @@ export const StyledDifficulty = styled.span`
     }
   }};
 `;
+
+export const StyledNoteForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
+
+export const StyledTextArea = styled.textarea`
+  width: 100%;
+  resize: none;
+  overflow: auto;
+  min-height: 100px;
+  padding: 5px;
+`;
