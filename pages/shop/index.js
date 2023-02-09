@@ -43,6 +43,7 @@ export default function Shop() {
   );
 }
 
+//styling
 const StyledSection = styled.section`
   margin: 10px;
   text-align: center;

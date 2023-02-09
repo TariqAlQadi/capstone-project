@@ -302,7 +302,7 @@ export default function Profil() {
   );
 }
 
-//styling for page
+//styling
 const StyledParagraph = styled.p`
   word-wrap: break-word;
 `;

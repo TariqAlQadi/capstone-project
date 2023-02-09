@@ -122,7 +122,7 @@ const tutorialSchema = new Schema({
     required: true,
   },
   notes: {
-    type: String,
+    type: Object,
     required: true,
   },
   rating: {

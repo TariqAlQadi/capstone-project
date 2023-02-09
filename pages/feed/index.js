@@ -13,7 +13,7 @@ const CardList = dynamic(() => import("@/components/CardList"), {
 export default function Feed() {
   const router = useRouter();
 
-  //filter states for artist and title
+  //filter states for artist/title & category
   const [filter, setFilter] = useState("");
   const [filterCategory, setFilterCategory] = useState("");
 
@@ -23,6 +23,7 @@ export default function Feed() {
     return <div>...is Loading</div>;
   }
 
+  //data
   const list = data;
 
   //filtered by search
@@ -109,6 +110,7 @@ export default function Feed() {
   );
 }
 
+//styling
 const StyledSection = styled.section`
   margin: 10px;
   text-align: center;

@@ -53,6 +53,7 @@ export default function Login() {
   );
 }
 
+//styling
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;

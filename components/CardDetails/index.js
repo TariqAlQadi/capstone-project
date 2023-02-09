@@ -6,6 +6,7 @@ export default function CardDetails({
   onToggleLike,
   onToggleLearning,
   onToggleMastered,
+  onEditNote,
 }) {
   //length of the description until the first "!"
   const lengthOfDescription = content?.snippet.description.indexOf("!") + 1;
@@ -17,6 +18,10 @@ export default function CardDetails({
   const numberLikes = content?.isLiked.length;
   const numberLearning = content?.isLearning.length;
   const numberMastered = content?.mastered.length;
+
+  //get user notes
+  const noteObject = content?.notes.filter((note) => note.user === user.email);
+  const [note] = noteObject;
 
   return (
     <StyledSection>
@@ -40,11 +45,13 @@ export default function CardDetails({
           {content?.difficulty}
         </StyledDifficulty>
       </p>
+
       <br />
       <p>{numberLikes} people have liked this trick so far!</p>
       <p>{numberLearning} people are learning this trick right now!</p>
       <p>{numberMastered} people have mastered this trick already!</p>
       <br />
+
       <button aria-label="like" type="button" onClick={onToggleLike}>
         {content?.isLiked.includes(user.email) ? (
           <>
@@ -80,6 +87,18 @@ export default function CardDetails({
           </>
         )}
       </button>
+
+      <form onSubmit={onEditNote}>
+        <label htmlFor="notes">Notes:</label>
+        <br />
+        <textarea
+          id="notes"
+          name="notes"
+          defaultValue={note ? note.note : ""}
+        />
+        <br />
+        <button type="submit">Edit Note</button>
+      </form>
     </StyledSection>
   );
 }
