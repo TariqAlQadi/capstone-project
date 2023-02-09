@@ -1,9 +1,13 @@
 import { StyledLink } from "../StyledLink/Link.styled";
-import { StyledList, StyledListItem } from "./ProfileSection.styled";
+import {
+  StyledList,
+  StyledListItem,
+  StyledProfileSection,
+} from "./ProfileSection.styled";
 
 export default function ProfilSection({ tutorials }) {
   return (
-    <section>
+    <>
       <StyledList>
         {tutorials.map((tutorial) => {
           return (
@@ -15,6 +19,6 @@ export default function ProfilSection({ tutorials }) {
           );
         })}
       </StyledList>
-    </section>
+    </>
   );
 }

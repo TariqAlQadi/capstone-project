@@ -91,7 +91,7 @@ export default function Profil() {
 
   return (
     <>
-      <StyledSection>
+      <StyledProfileSection>
         <h2>Profil</h2>
         <StyledImage
           src={user?.img}
@@ -99,9 +99,13 @@ export default function Profil() {
           width={100}
           height={100}
         />
-        <p>Name: {user.name}</p>
-        <StyledParagraph>Bio: {user.bio}</StyledParagraph>
-        <button
+        {!showEdit && (
+          <>
+            <p>Name: {user.name}</p>
+            <StyledParagraph>Bio: {user.bio}</StyledParagraph>
+          </>
+        )}
+        <StyledEditButton
           type="button"
           aria-label="edit profile"
           onClick={() => setShowEdit(!showEdit)}
@@ -111,9 +115,9 @@ export default function Profil() {
           ) : (
             <SVGIcon variant="edit" width="20px" color="green" />
           )}
-        </button>
+        </StyledEditButton>
         {showEdit && (
-          <form onSubmit={handleSubmit}>
+          <StyledProfileForm onSubmit={handleSubmit}>
             <label htmlFor="name">Name:</label>
             <input
               type="text"
@@ -130,11 +134,19 @@ export default function Profil() {
               defaultValue={user.bio}
               maxLength={100}
             />
+            <label htmlFor="imageUrl">Bio:</label>
+            <input
+              type="text"
+              id="imageUrl"
+              name="imageUrl"
+              defaultValue={user.img}
+              maxLength={100}
+            />
             <button type="submit">Submit Changes</button>
-          </form>
+          </StyledProfileForm>
         )}
-      </StyledSection>
-      <StyledSection>
+      </StyledProfileSection>
+      <StyledProfileSection>
         <h2>Stats</h2>
         <p>
           LvL: <StyledNumber number={lvl}>{lvl}</StyledNumber>
@@ -257,8 +269,8 @@ export default function Profil() {
               : "(master 100 Tutorials)"}
           </li>
         </StyledList>
-      </StyledSection>
-      <StyledSection>
+      </StyledProfileSection>
+      <StyledProfileSectionBottom>
         <h2>Repertoire</h2>
         <button
           aria-label="liked"
@@ -297,7 +309,7 @@ export default function Profil() {
           />
         </button>
         <ProfilSection tutorials={filteredList} />
-      </StyledSection>
+      </StyledProfileSectionBottom>
     </>
   );
 }
@@ -315,11 +327,34 @@ const StyledImage = styled(Image)`
   border-radius: 50%;
 `;
 
-const StyledSection = styled.section`
-  margin: 10px;
-`;
-
 const StyledList = styled.ul`
   list-style: none;
   padding: 0;
+`;
+
+const StyledProfileForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
+
+const StyledEditButton = styled.button`
+  position: absolute;
+  top: 5px;
+  right: 5px;
+`;
+
+const StyledProfileSection = styled.section`
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+  border: 1px solid black;
+`;
+
+const StyledProfileSectionBottom = styled.section`
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+  border: 1px solid black;
+  margin-bottom: 100px;
 `;
