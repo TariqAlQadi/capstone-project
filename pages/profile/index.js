@@ -20,15 +20,15 @@ export default function Profil() {
     setLoggedInUser(JSON.parse(localStorage.getItem("loggedInUser")));
   }, []);
 
-  //fetch tutorials
-  const { data } = useSWR("/api/tutorials");
-  if (!data) {
+  //fetch tutorials & logged-in user
+  const { data: list } = useSWR("/api/tutorials");
+  const { data: user, mutate } = useSWR(`/api/users/${loggedInUser._id}`);
+  if (!user) {
     return <div>...is Loading</div>;
   }
-
-  //data
-  const user = loggedInUser;
-  const list = data;
+  if (!list) {
+    return <div>...is Loading</div>;
+  }
 
   //filter with filter state
   const filteredList = list.filter((listItem) =>
@@ -79,13 +79,28 @@ export default function Profil() {
   );
 
   //handle submit profil
-  function handleSubmit(event) {
-    // event.preventDefault();
-    // setUser({
-    //   name: event.target.name.value,
-    //   bio: event.target.bio.value,
-    //   ...user,
-    // });
+  async function handleEditProfile(event) {
+    event.preventDefault();
+
+    const newUserObject = {
+      name: event.target.name.value,
+      bio: event.target.bio.value,
+      img: event.target.imageUrl.value,
+    };
+
+    try {
+      const response = await fetch(`/api/users/${loggedInUser._id}`, {
+        method: "PUT",
+        body: JSON.stringify(newUserObject),
+        headers: { "Content-type": "application/json" },
+      });
+      if (!response.ok) {
+        console.error(`Error: ${response.status}`);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+    mutate();
     setShowEdit(false);
   }
 
@@ -93,12 +108,7 @@ export default function Profil() {
     <>
       <StyledProfileSection>
         <h2>Profil</h2>
-        <StyledImage
-          src={user?.img}
-          alt="user image"
-          width={100}
-          height={100}
-        />
+        <StyledImage src={user.img} alt="user image" width={100} height={100} />
         {!showEdit && (
           <>
             <p>Name: {user.name}</p>
@@ -117,7 +127,7 @@ export default function Profil() {
           )}
         </StyledEditButton>
         {showEdit && (
-          <StyledProfileForm onSubmit={handleSubmit}>
+          <StyledProfileForm onSubmit={handleEditProfile}>
             <label htmlFor="name">Name:</label>
             <input
               type="text"
@@ -134,7 +144,7 @@ export default function Profil() {
               defaultValue={user.bio}
               maxLength={100}
             />
-            <label htmlFor="imageUrl">Bio:</label>
+            <label htmlFor="imageUrl">Image URL:</label>
             <input
               type="text"
               id="imageUrl"

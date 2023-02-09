@@ -64,7 +64,7 @@ export default function Feed() {
     <StyledSection>
       <StyledQuery>
         <SVGIcon variant="magnify" width="20px" color="grey" />
-        <input
+        <StyledTextInput
           aria-label="search"
           onChange={handleChangeSearch}
           type="text"
@@ -120,4 +120,8 @@ const StyledQuery = styled.div`
   display: flex;
   gap: 2px;
   margin-bottom: 10px;
+`;
+
+const StyledTextInput = styled.input`
+  max-width: 130px;
 `;
