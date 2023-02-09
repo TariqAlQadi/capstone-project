@@ -28,7 +28,6 @@ export const StyledNoteForm = styled.form`
 export const StyledTextArea = styled.textarea`
   width: 100%;
   resize: none;
-  overflow: auto;
-  min-height: 100px;
+  min-height: 180px;
   padding: 5px;
 `;

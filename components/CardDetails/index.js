@@ -13,6 +13,12 @@ export default function CardDetails({
   onToggleMastered,
   onEditNote,
 }) {
+  //resizing textarea
+  function resize(event) {
+    event.target.style.height = "auto";
+    event.target.style.height = event.target.scrollHeight + 2 + "px";
+  }
+
   //length of the description until the first "!"
   const lengthOfDescription = content?.snippet.description.indexOf("!") + 1;
 
@@ -99,6 +105,8 @@ export default function CardDetails({
           id="notes"
           name="notes"
           defaultValue={note ? note.note : ""}
+          onInput={resize}
+          maxLength={480}
         />
         <button type="submit">Edit Note</button>
       </StyledNoteForm>
