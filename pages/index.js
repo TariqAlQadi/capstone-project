@@ -1,9 +1,15 @@
 import styled from "styled-components";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 import useSWR from "swr";
+import { useRouter } from "next/router";
 
 export default function Login() {
+  const router = useRouter();
   const { data: session } = useSession();
+
+  if (session) {
+    router.push("/feed");
+  }
 
   const {
     data: loggedInUser,
@@ -21,14 +27,10 @@ export default function Login() {
       <button
         type="button"
         onClick={() => {
-          if (session) {
-            signOut();
-          } else {
-            signIn();
-          }
+          signIn();
         }}
       >
-        {session ? "Logout" : "Login"}
+        Login
       </button>
     </StyledSection>
   );

@@ -14,7 +14,7 @@ export default function Profil() {
 
   //fetch tutorials & logged-in user
   const { data: list } = useSWR("/api/tutorials");
-  const { data: user, mutate } = useSWR(`/api/users/`);
+  const { data: user, mutate } = useSWR(`/api/users`);
   if (!user) {
     return <div>...is Loading</div>;
   }
@@ -81,7 +81,7 @@ export default function Profil() {
     };
 
     try {
-      const response = await fetch(`/api/users/${loggedInUser._id}`, {
+      const response = await fetch(`/api/users`, {
         method: "PUT",
         body: JSON.stringify(newUserObject),
         headers: { "Content-type": "application/json" },
