@@ -1,8 +1,19 @@
 import styled from "styled-components";
 import { useSession, signIn, signOut } from "next-auth/react";
+import useSWR from "swr";
 
 export default function Login() {
   const { data: session } = useSession();
+
+  const {
+    data: loggedInUser,
+    isLoading: userIsLoading,
+    error: userError,
+  } = useSWR(session ? "/api/users" : null);
+
+  if (userIsLoading) return <p>User is Loading</p>;
+  if (userError) return <p>error user</p>;
+  console.log(loggedInUser);
 
   return (
     <StyledSection>
@@ -20,10 +31,6 @@ export default function Login() {
       >
         {session ? "Logout" : "Login"}
       </button>
-      <br />
-      <p>Psst! ... Try the test login!</p>
-      <h3>Email: test@test</h3>
-      <h3>Password: test</h3>
     </StyledSection>
   );
 }

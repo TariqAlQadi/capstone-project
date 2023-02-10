@@ -8,25 +8,29 @@ export default async function handler(request, response) {
   const session = await conn.startSession();
 
   await session.withTransaction(async () => {
-    const token = await getToken({ request });
+    if (request.method === "GET") {
+      const token = await getToken({ req: request });
 
-    if (token && req.method === "GET") {
-      const existingUser = await User.findOne({ sub: token.sub });
+      if (token) {
+        const existingUser = await User.findOne({ email: token.sub });
 
-      if (!existingUser) {
-        const newUser = new User({
-          sub: token.sub,
-        });
+        if (!existingUser) {
+          const newUser = new User({
+            name: token.name,
+            email: token.sub,
+            img: token.picture,
+            bio: "",
+          });
 
-        await newUser.save();
+          await newUser.save();
 
-        return response
-          .status(201)
-          .json(newUser, { status: "Created a new user" });
+          return response.status(200).json(newUser);
+        }
+        if (existingUser) {
+          return response.status(200).json(existingUser);
+        }
       }
-      return response.status(200).json(existingUser);
     }
   });
-
   session.endSession();
 }
