@@ -9,6 +9,8 @@ export default async function handler(request, response) {
 
   await session.withTransaction(async () => {
     if (request.method === "PUT") {
+      const token = await getToken({ req: request });
+
       await User.findByIdAndUpdate(
         { email: token.sub },
         {
