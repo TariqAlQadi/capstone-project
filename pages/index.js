@@ -2,8 +2,12 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import useLocalStorageState from "use-local-storage-state";
 import useSWR from "swr";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function Login() {
+  const { data: session } = useSession();
+  console.log(session);
+
   const router = useRouter();
 
   //localstorage state for logged in user
@@ -20,31 +24,39 @@ export default function Login() {
   function handleLogin(event) {
     event.preventDefault();
 
-    // user check email & password
-    const foundUser = data.find(
-      (user) => user.email === event.target.email.value
-    );
-    if (!foundUser) {
-      alert("incorrect email");
-    } else if (foundUser.password === event.target.password.value) {
-      setLoggedInUser(foundUser);
-      router.push("/feed");
-    } else {
-      alert("incorrect password");
-    }
+    // // user check email & password
+    // const foundUser = data.find(
+    //   (user) => user.email === event.target.email.value
+    // );
+    // if (!foundUser) {
+    //   alert("incorrect email");
+    // } else if (foundUser.password === event.target.password.value) {
+    //   setLoggedInUser(foundUser);
+    //   router.push("/feed");
+    // } else {
+    //   alert("incorrect password");
+    // }
   }
 
   return (
     <StyledSection>
       <h1>Welcome to Netrix</h1>
       <p>This is a Web Application to discover, learn and create Magic!</p>
-      <StyledForm onSubmit={handleLogin}>
-        <label htmlFor="">Email</label>
+      {/* <StyledForm onSubmit={handleLogin}> */}
+      {/* <label htmlFor="">Email</label>
         <input type="email" name="email" id="email" required />
         <label htmlFor="password">Password</label>
-        <input type="password" name="password" id="password" required />
-        <button type="submit">Login</button>
-      </StyledForm>
+        <input type="password" name="password" id="password" required /> */}
+      {/* <button type="submit">Login</button>
+      </StyledForm> */}
+      <button
+        type="button"
+        onClick={() => {
+          signIn();
+        }}
+      >
+        Login
+      </button>
       <br />
       <p>Psst! ... Try the test login!</p>
       <h3>Email: test@test</h3>
