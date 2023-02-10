@@ -13,10 +13,11 @@ export default function Header() {
         <StyledHeader>
           <h1>NeTrix</h1>
           <StyledLogOutButton
+            type="button"
+            aria-label="logout"
             onClick={() => {
               signOut();
             }}
-            aria-label="log-out"
           >
             <SVGIcon variant="logOut" width="20px" color="black" />
           </StyledLogOutButton>

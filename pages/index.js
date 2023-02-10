@@ -8,7 +8,6 @@ export default function Login() {
     <StyledSection>
       <h1>Welcome to Netrix</h1>
       <p>This is a Web Application to discover, learn and create Magic!</p>
-
       <button
         type="button"
         onClick={() => {
