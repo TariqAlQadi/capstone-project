@@ -106,7 +106,7 @@ export default function Profil() {
 
   return (
     <>
-      <StyledProfileSection>
+      <StyledProfileSectionTop>
         <h2>Profil</h2>
         <StyledImage src={user.img} alt="user image" width={100} height={100} />
         {!showEdit && (
@@ -155,7 +155,7 @@ export default function Profil() {
             <button type="submit">Submit Changes</button>
           </StyledProfileForm>
         )}
-      </StyledProfileSection>
+      </StyledProfileSectionTop>
       <StyledProfileSection>
         <h2>Stats</h2>
         <p>
@@ -356,6 +356,14 @@ const StyledEditButton = styled.button`
 
 const StyledProfileSection = styled.section`
   margin: 10px;
+  padding: 10px;
+  position: relative;
+  border: 1px solid black;
+`;
+
+const StyledProfileSectionTop = styled.section`
+  margin: 10px;
+  margin-top: 70px;
   padding: 10px;
   position: relative;
   border: 1px solid black;

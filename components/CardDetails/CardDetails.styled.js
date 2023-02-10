@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
 export const StyledSection = styled.section`
-  margin-bottom: 100px;
+  margin-top: 20px;
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 85px;
 `;
 
 export const StyledDifficulty = styled.span`

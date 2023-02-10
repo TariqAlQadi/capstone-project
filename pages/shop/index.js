@@ -46,7 +46,10 @@ export default function Shop() {
 //styling
 const StyledSection = styled.section`
   margin: 10px;
+  margin-top: 70px;
   text-align: center;
+  border: 1px solid black;
+  padding: 10px;
 `;
 
 const StyledList = styled.ul`

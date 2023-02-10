@@ -117,6 +117,7 @@ const StyledSection = styled.section`
 `;
 
 const StyledQuery = styled.div`
+  margin-top: 70px;
   display: flex;
   gap: 2px;
   margin-bottom: 10px;

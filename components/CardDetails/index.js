@@ -39,9 +39,8 @@ export default function CardDetails({
       <h2>{content?.snippet.title}</h2>
       <h3>by {content?.snippet.videoOwnerChannelTitle}</h3>
       <iframe
-        // width should be "100%" on mobile, but for now static
-        width={(200 * 16) / 9}
-        height={200}
+        width="100%" //must be fixed on big screens
+        height={200} //can be auto
         src={`https://www.youtube.com/embed/${content?.snippet.resourceId.videoId}`}
         title={content?.snippet.title}
         allowFullScreen
