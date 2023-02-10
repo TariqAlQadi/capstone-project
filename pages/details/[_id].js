@@ -1,21 +1,14 @@
 import CardDetails from "@/components/CardDetails";
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 export default function DetailsPage() {
-  //logged-in state
-  const [loggedInUser, setLoggedInUser] = useState({});
-
   const router = useRouter();
   const { _id } = router.query;
 
   //get logged-in user
-  useEffect(() => {
-    setLoggedInUser(JSON.parse(localStorage.getItem("loggedInUser")));
-  }, []);
-  const user = loggedInUser;
+  const { data: user } = useSWR(`/api/users/`);
 
   //fetch tutorial
   const { data, mutate } = useSWR(`/api/tutorials/${_id}`);

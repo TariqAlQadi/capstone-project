@@ -13,7 +13,6 @@ export default function Login() {
 
   if (userIsLoading) return <p>User is Loading</p>;
   if (userError) return <p>error user</p>;
-  console.log(loggedInUser);
 
   return (
     <StyledSection>

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styled from "styled-components";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ProfilSection from "@/components/ProfileSection";
 import SVGIcon from "@/components/SVGIcon";
 import useSWR from "swr";
@@ -9,20 +9,12 @@ export default function Profil() {
   //show edit profile state
   const [showEdit, setShowEdit] = useState(false);
 
-  //logged-in state
-  const [loggedInUser, setLoggedInUser] = useState({});
-
   //filter isLiked/isLearning/mastered section
   const [filter, setFilter] = useState("isLiked");
 
-  //get logged-in user
-  useEffect(() => {
-    setLoggedInUser(JSON.parse(localStorage.getItem("loggedInUser")));
-  }, []);
-
   //fetch tutorials & logged-in user
   const { data: list } = useSWR("/api/tutorials");
-  const { data: user, mutate } = useSWR(`/api/users/${loggedInUser._id}`);
+  const { data: user, mutate } = useSWR(`/api/users/`);
   if (!user) {
     return <div>...is Loading</div>;
   }

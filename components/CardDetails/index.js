@@ -5,6 +5,7 @@ import {
   StyledNoteForm,
   StyledTextArea,
 } from "./CardDetails.styled";
+import useSWR from "swr";
 
 export default function CardDetails({
   content,
@@ -23,7 +24,11 @@ export default function CardDetails({
   const lengthOfDescription = content?.snippet.description.indexOf("!") + 1;
 
   //get logged-in user
-  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+  const { data: user, mutate } = useSWR(`/api/users`);
+
+  if (!user) {
+    return <div>...is Loading</div>;
+  }
 
   //number of all likes/learns/masters
   const numberLikes = content?.isLiked.length;

@@ -39,7 +39,6 @@ export default function Feed() {
       listItem.difficulty === filterCategory ||
       listItem.category === filterCategory
   );
-
   const filteredByCategorySearch = filteredByOption.filter(
     (listItem) =>
       listItem.snippet.title.toLowerCase().includes(filter) ||
