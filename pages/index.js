@@ -62,6 +62,8 @@ const StyledForm = styled.form`
 `;
 
 const StyledSection = styled.section`
+  padding: 10px;
   margin: 10px;
   text-align: center;
+  border: 1px solid black;
 `;

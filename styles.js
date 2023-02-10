@@ -8,8 +8,21 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
 
+  :root {
+    --text-color-light:;
+    --text-color-dark:;
+
+    --primary-color:;
+    --secondary-color:;
+    --accent-color:;
+
+    --primary-bg-color: darkred;
+    --secondary-bg-color:;
+  }
+
   body {
     font-family: monospace;
+
   }
 `;
 
