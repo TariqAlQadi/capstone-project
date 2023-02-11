@@ -1,19 +1,43 @@
 import Image from "next/image";
-import { useAtom } from "jotai";
-import { allTutorials, currentUser } from "@/testData/globalStates";
 import styled from "styled-components";
 import { useState } from "react";
 import ProfilSection from "@/components/ProfileSection";
 import SVGIcon from "@/components/SVGIcon";
+import useSWR from "swr";
+import { useSession } from "next-auth/react";
+import Login from "@/components/Login";
 
 export default function Profil() {
-  const [list] = useAtom(allTutorials);
-  const [user, setUser] = useAtom(currentUser);
+  const { data: session } = useSession();
+  //show edit profile state
   const [showEdit, setShowEdit] = useState(false);
 
   //filter isLiked/isLearning/mastered section
   const [filter, setFilter] = useState("isLiked");
 
+  //fetch tutorials & logged-in user
+  const { data: list, isLoading: isLoadingList } = useSWR(
+    session ? "/api/tutorials" : null
+  );
+  const {
+    data: user,
+    isLoading: isLoadingUser,
+    mutate,
+  } = useSWR(session ? `/api/users` : null);
+
+  if (isLoadingUser) {
+    return <div>...is Loading</div>;
+  }
+
+  if (isLoadingList) {
+    return <div>...is Loading</div>;
+  }
+
+  if (!session) {
+    return <Login />;
+  }
+
+  //filter with filter state
   const filteredList = list.filter((listItem) =>
     listItem[filter].includes(user.email)
   );
@@ -62,29 +86,43 @@ export default function Profil() {
   );
 
   //handle submit profil
-  function handleSubmit(event) {
+  async function handleEditProfile(event) {
     event.preventDefault();
-    setUser({
+
+    const newUserObject = {
       name: event.target.name.value,
       bio: event.target.bio.value,
-      ...user,
-    });
+      img: event.target.imageUrl.value,
+    };
+
+    try {
+      const response = await fetch(`/api/users/${user._id}`, {
+        method: "PUT",
+        body: JSON.stringify(newUserObject),
+        headers: { "Content-type": "application/json" },
+      });
+      if (!response.ok) {
+        console.error(`Error: ${response.status}`);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+    mutate();
     setShowEdit(false);
   }
 
   return (
     <>
-      <StyledSection>
+      <StyledProfileSectionTop>
         <h2>Profil</h2>
-        <StyledImage
-          src={user?.img}
-          alt="user image"
-          width={100}
-          height={100}
-        />
-        <p>Name: {user.name}</p>
-        <StyledParagraph>Bio: {user.bio}</StyledParagraph>
-        <button
+        <StyledImage src={user.img} alt="user image" width={100} height={100} />
+        {!showEdit && (
+          <>
+            <p>Name: {user.name}</p>
+            <StyledParagraph>Bio: {user.bio}</StyledParagraph>
+          </>
+        )}
+        <StyledEditButton
           type="button"
           aria-label="edit profile"
           onClick={() => setShowEdit(!showEdit)}
@@ -94,9 +132,9 @@ export default function Profil() {
           ) : (
             <SVGIcon variant="edit" width="20px" color="green" />
           )}
-        </button>
+        </StyledEditButton>
         {showEdit && (
-          <form onSubmit={handleSubmit}>
+          <StyledProfileForm onSubmit={handleEditProfile}>
             <label htmlFor="name">Name:</label>
             <input
               type="text"
@@ -113,11 +151,19 @@ export default function Profil() {
               defaultValue={user.bio}
               maxLength={100}
             />
+            <label htmlFor="imageUrl">Image URL:</label>
+            <input
+              type="text"
+              id="imageUrl"
+              name="imageUrl"
+              defaultValue={user.img}
+              maxLength={100}
+            />
             <button type="submit">Submit Changes</button>
-          </form>
+          </StyledProfileForm>
         )}
-      </StyledSection>
-      <StyledSection>
+      </StyledProfileSectionTop>
+      <StyledProfileSection>
         <h2>Stats</h2>
         <p>
           LvL: <StyledNumber number={lvl}>{lvl}</StyledNumber>
@@ -240,8 +286,8 @@ export default function Profil() {
               : "(master 100 Tutorials)"}
           </li>
         </StyledList>
-      </StyledSection>
-      <StyledSection>
+      </StyledProfileSection>
+      <StyledProfileSectionBottom>
         <h2>Repertoire</h2>
         <button
           aria-label="liked"
@@ -252,7 +298,7 @@ export default function Profil() {
           <SVGIcon
             variant={filter === "isLiked" ? "heart" : "heartOutline"}
             width="40px"
-            color="red"
+            color={filter === "isLiked" ? "red" : "grey"}
           />
         </button>
         <button
@@ -264,7 +310,7 @@ export default function Profil() {
           <SVGIcon
             variant={filter === "isLearning" ? "learning" : "learningOutline"}
             width="40px"
-            color="blue"
+            color={filter === "isLearning" ? "blue" : "grey"}
           />
         </button>
         <button
@@ -276,16 +322,16 @@ export default function Profil() {
           <SVGIcon
             variant={filter === "mastered" ? "doneAll" : "done"}
             width="40px"
-            color="green"
+            color={filter === "mastered" ? "green" : "grey"}
           />
         </button>
         <ProfilSection tutorials={filteredList} />
-      </StyledSection>
+      </StyledProfileSectionBottom>
     </>
   );
 }
 
-//styling for page
+//styling
 const StyledParagraph = styled.p`
   word-wrap: break-word;
 `;
@@ -298,11 +344,42 @@ const StyledImage = styled(Image)`
   border-radius: 50%;
 `;
 
-const StyledSection = styled.section`
-  margin: 10px;
-`;
-
 const StyledList = styled.ul`
   list-style: none;
   padding: 0;
+`;
+
+const StyledProfileForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
+
+const StyledEditButton = styled.button`
+  position: absolute;
+  top: 5px;
+  right: 5px;
+`;
+
+const StyledProfileSection = styled.section`
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+  border: 1px solid black;
+`;
+
+const StyledProfileSectionTop = styled.section`
+  margin: 10px;
+  margin-top: 70px;
+  padding: 10px;
+  position: relative;
+  border: 1px solid black;
+`;
+
+const StyledProfileSectionBottom = styled.section`
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+  border: 1px solid black;
+  margin-bottom: 100px;
 `;

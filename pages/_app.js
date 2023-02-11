@@ -3,7 +3,9 @@ import Head from "next/head";
 import { SWRConfig } from "swr";
 import Navigation from "@/components/Navigation";
 import Header from "@/components/Header";
+import { SessionProvider } from "next-auth/react";
 
+//fetcher function
 const fetcher = async (url) => {
   const res = await fetch(url);
 
@@ -20,20 +22,25 @@ const fetcher = async (url) => {
   return res.json();
 };
 
-export default function App({ Component, pageProps }) {
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}) {
   return (
-    <SWRConfig
-      value={{
-        fetcher,
-      }}
-    >
-      <GlobalStyle />
-      <Head>
-        <title>Capstone Project</title>
-      </Head>
-      <Header />
-      <Component {...pageProps} />
-      <Navigation />
-    </SWRConfig>
+    <SessionProvider session={session}>
+      <SWRConfig
+        value={{
+          fetcher,
+        }}
+      >
+        <GlobalStyle />
+        <Head>
+          <title>Capstone Project</title>
+        </Head>
+        <Header />
+        <Component {...pageProps} />
+        <Navigation />
+      </SWRConfig>
+    </SessionProvider>
   );
 }

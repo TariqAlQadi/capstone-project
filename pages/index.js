@@ -1,49 +1,42 @@
-import { allUsers, currentUser } from "@/testData/globalStates";
-import { useAtom } from "jotai";
-import { useRouter } from "next/router";
 import styled from "styled-components";
+import { useSession, signIn } from "next-auth/react";
+import useSWR from "swr";
+import { useRouter } from "next/router";
 
 export default function Login() {
   const router = useRouter();
-  const [user, setUser] = useAtom(currentUser);
-  const [users] = useAtom(allUsers);
+  const { data: session } = useSession();
 
-  function handleLogin(event) {
-    event.preventDefault();
-
-    // user check email & password
-    const foundUser = users.find(
-      (user) => user.email === event.target.email.value
-    );
-    if (!foundUser) {
-      alert("incorrect email");
-    } else if (foundUser.password === event.target.password.value) {
-      setUser(foundUser);
-      router.push("/feed");
-    } else {
-      alert("incorrect password");
-    }
+  if (session) {
+    router.push("/feed");
   }
+
+  const {
+    data: loggedInUser,
+    isLoading: userIsLoading,
+    error: userError,
+  } = useSWR(session ? "/api/users" : null);
+
+  if (userIsLoading) return <p>User is Loading</p>;
+  if (userError) return <p>error user</p>;
 
   return (
     <StyledSection>
       <h1>Welcome to Netrix</h1>
       <p>This is a Web Application to discover, learn and create Magic!</p>
-      <StyledForm onSubmit={handleLogin}>
-        <label htmlFor="">Email</label>
-        <input type="email" name="email" id="email" required />
-        <label htmlFor="password">Password</label>
-        <input type="password" name="password" id="password" required />
-        <button type="submit">Login</button>
-      </StyledForm>
-      <br />
-      <p>Psst! ... Try the test login!</p>
-      <h3>Email: test@test</h3>
-      <h3>Password: test</h3>
+      <button
+        type="button"
+        onClick={() => {
+          signIn();
+        }}
+      >
+        Login
+      </button>
     </StyledSection>
   );
 }
 
+//styling
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -52,6 +45,8 @@ const StyledForm = styled.form`
 `;
 
 const StyledSection = styled.section`
+  padding: 10px;
   margin: 10px;
   text-align: center;
+  border: 1px solid black;
 `;

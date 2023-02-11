@@ -8,8 +8,8 @@ export default function CardList({ tutorials }) {
     <StyledList>
       {shuffledTutorials.map((tutorial) => {
         return (
-          <StyledListItem key={tutorial.id}>
-            <CardPreview content={tutorial.snippet} id={tutorial.id} />
+          <StyledListItem key={tutorial._id}>
+            <CardPreview content={tutorial.snippet} _id={tutorial._id} />
           </StyledListItem>
         );
       })}

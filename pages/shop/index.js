@@ -1,5 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components";
+import { useSession } from "next-auth/react";
+import Login from "@/components/Login";
 
 const onlineShops = [
   { name: "Murphsy Magic", href: "https://www.murphysmagic.com" },
@@ -18,31 +20,42 @@ const onlineShops = [
 ];
 
 export default function Shop() {
+  const { data: session } = useSession();
   return (
-    <StyledSection>
-      <h2>Online Shops:</h2>
-      <StyledList>
-        {onlineShops.map((shop) => {
-          return (
-            <li key={shop.href}>
-              <Link href={shop.href}>{shop.name}</Link>
-            </li>
-          );
-        })}
-      </StyledList>
-      <h2>Best Search Engine:</h2>
-      <Link href="https://askalexander.org">Ask Alexander</Link>
-      <h2>Forum:</h2>
-      <Link href="https://www.themagiccafe.com/forums/index.php">
-        The Magic Café
-      </Link>
-    </StyledSection>
+    <>
+      {session ? (
+        <StyledSection>
+          <h2>Online Shops:</h2>
+          <StyledList>
+            {onlineShops.map((shop) => {
+              return (
+                <li key={shop.href}>
+                  <Link href={shop.href}>{shop.name}</Link>
+                </li>
+              );
+            })}
+          </StyledList>
+          <h2>Best Search Engine:</h2>
+          <Link href="https://askalexander.org">Ask Alexander</Link>
+          <h2>Forum:</h2>
+          <Link href="https://www.themagiccafe.com/forums/index.php">
+            The Magic Café
+          </Link>
+        </StyledSection>
+      ) : (
+        <Login />
+      )}
+    </>
   );
 }
 
+//styling
 const StyledSection = styled.section`
   margin: 10px;
+  margin-top: 70px;
   text-align: center;
+  border: 1px solid black;
+  padding: 10px;
 `;
 
 const StyledList = styled.ul`
