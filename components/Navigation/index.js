@@ -38,11 +38,15 @@ export default function Navigation() {
             {isActive === "feed" ? (
               <SVGIcon
                 variant="searchOutline"
-                width="30"
+                width="40"
                 color="var(--accent-color)"
               />
             ) : (
-              <SVGIcon variant="searchOutline" width="30" color="#23222" />
+              <SVGIcon
+                variant="searchOutline"
+                width="40"
+                color="var(--passive-color)"
+              />
             )}
           </Button>
 
@@ -54,11 +58,15 @@ export default function Navigation() {
             {isActive === "shop" ? (
               <SVGIcon
                 variant="shopOutline"
-                width="30"
+                width="40"
                 color="var(--accent-color)"
               />
             ) : (
-              <SVGIcon variant="shopOutline" width="30" color="#23222" />
+              <SVGIcon
+                variant="shopOutline"
+                width="40"
+                color="var(--passive-color)"
+              />
             )}
           </Button>
 
@@ -70,11 +78,15 @@ export default function Navigation() {
             {isActive === "profile" ? (
               <SVGIcon
                 variant="userOutline"
-                width="30"
+                width="40"
                 color="var(--accent-color)"
               />
             ) : (
-              <SVGIcon variant="userOutline" width="30" color="#23222" />
+              <SVGIcon
+                variant="userOutline"
+                width="40"
+                color="var(--passive-color)"
+              />
             )}
           </Button>
         </StyledNavigation>

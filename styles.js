@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
 
     --primary-color:;
     --secondary-color:;
+    --passive-color: lightgrey;
     --accent-color: darkred;
 
     --primary-bg-color: darkred;
