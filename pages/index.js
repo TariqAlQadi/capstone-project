@@ -61,7 +61,9 @@ const StyledSection = styled.section`
   padding: 10px;
   margin: 10px;
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  position: relative;
 `;
 
 const StyledLoginButton = styled.button`
@@ -70,26 +72,26 @@ const StyledLoginButton = styled.button`
 const ClubsWrapper = styled.div`
   rotate: -45deg;
   position: absolute;
-  left: 15px;
-  top: 15px;
+  left: 5px;
+  top: 5px;
 `;
 const HeartsWrapper = styled.div`
   rotate: 45deg;
   position: absolute;
-  right: 15px;
-  top: 15px;
+  right: 5px;
+  top: 5px;
 `;
 
 const SpadesWrapper = styled.div`
   rotate: 135deg;
   position: absolute;
-  top: 120px;
-  right: 15px;
+  bottom: 5px;
+  right: 5px;
 `;
 
 const DiamondsWrapper = styled.div`
   rotate: 45deg;
   position: absolute;
-  left: 15px;
-  top: 120px;
+  left: 5px;
+  bottom: 5px;
 `;

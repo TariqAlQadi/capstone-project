@@ -9,5 +9,6 @@ export const StyledNavigation = styled.nav`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border: 1px solid black;
+  border: 1px solid grey;
+  border-radius: 20px;
 `;

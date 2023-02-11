@@ -144,8 +144,8 @@ const StyledList = styled.ul`
 `;
 
 const StyledImage = styled(Image)`
-  border-radius: 20px;
-  box-shadow: 2px 1px 4px darkred;
+  border-radius: 5px;
+  box-shadow: 2px 1px 4px black;
 `;
 
 const StyledResources = styled.div`
