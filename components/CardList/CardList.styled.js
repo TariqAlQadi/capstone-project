@@ -10,4 +10,5 @@ export const StyledListItem = styled.li`
   padding: 20px;
   margin-bottom: 10px;
   border: 1px solid black;
+  position: relative;
 `;

@@ -131,6 +131,7 @@ const StyledQuery = styled.div`
   display: flex;
   gap: 3px;
   margin-bottom: 10px;
+  max-width: 100%;
 `;
 
 const StyledTextInput = styled.input`
@@ -153,7 +154,8 @@ const StyledSelect = styled.select`
 `;
 
 const StyledRandomButton = styled.button`
-  margin-left: 5px;
+  margin-left: 3px;
+
   background: none;
   border: 1px solid black;
   border-radius: 50%;
