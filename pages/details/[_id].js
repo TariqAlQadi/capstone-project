@@ -2,8 +2,10 @@ import CardDetails from "@/components/CardDetails";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import styled from "styled-components";
+import { useSession } from "next-auth/react";
 
 export default function DetailsPage() {
+  const { data: session } = useSession();
   const router = useRouter();
   const { _id } = router.query;
 
@@ -178,15 +180,19 @@ export default function DetailsPage() {
   }
 
   return (
-    <StyledSection>
-      <CardDetails
-        content={data}
-        onToggleLike={handleToggleLike}
-        onToggleLearning={handleToggleLearning}
-        onToggleMastered={handleToggleMastered}
-        onEditNote={handleEditNote}
-      />
-    </StyledSection>
+    <>
+      {session && (
+        <StyledSection>
+          <CardDetails
+            content={data}
+            onToggleLike={handleToggleLike}
+            onToggleLearning={handleToggleLearning}
+            onToggleMastered={handleToggleMastered}
+            onEditNote={handleEditNote}
+          />
+        </StyledSection>
+      )}
+    </>
   );
 }
 

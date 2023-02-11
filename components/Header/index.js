@@ -3,14 +3,15 @@ import { useRouter } from "next/router";
 import SVGIcon from "../SVGIcon";
 import { StyledLogOutButton, StyledBackButton } from "./Header.styled";
 import { signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 export default function Header() {
-  const { pathname } = useRouter();
+  const { data: session } = useSession();
   const router = useRouter();
 
   return (
     <>
-      {pathname !== "/" && (
+      {session && (
         <StyledHeader>
           <StyledBackButton
             type="button"

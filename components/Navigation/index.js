@@ -2,13 +2,15 @@ import Link from "next/link";
 import { StyledNavigation } from "./Navigation.styled";
 import SVGIcon from "../SVGIcon";
 import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 
 export default function Navigation() {
+  const { data: session } = useSession();
   const { pathname } = useRouter();
 
   return (
     <>
-      {pathname !== "/" && (
+      {session && (
         <StyledNavigation>
           <Link href="/feed" aria-label="feed">
             <SVGIcon
