@@ -79,42 +79,45 @@ export default function Shop() {
               return (
                 <li key={shop.href}>
                   <Link href={shop.href} aria-label={shop.name}>
-                    <Image
+                    <StyledImage
                       src={shop.src}
                       alt={shop.name}
-                      width={120}
-                      height={120}
+                      width={110}
+                      height={110}
                     />
                   </Link>
                 </li>
               );
             })}
           </StyledList>
+          <hr />
           <h2>Free Resources:</h2>
-          <Link
-            href="https://askalexander.org"
-            aria-label="ask alexander search engine"
-          >
-            <Image
-              src={
-                "https://149455961.v2.pressablecdn.com/wp-content/uploads/2013/03/askalexander.png"
-              }
-              alt="ask alexander"
-              width={120}
-              height={160}
-            />
-          </Link>
-          <Link
-            href="https://www.themagiccafe.com/forums/index.php"
-            aria-label="magic cafe forum"
-          >
-            <Image
-              src={"https://themagiccafe.com/forums/images/header2.gif"}
-              alt="magic cafe"
-              width={250}
-              height={160}
-            />
-          </Link>
+          <StyledResources>
+            <Link
+              href="https://askalexander.org"
+              aria-label="ask alexander search engine"
+            >
+              <StyledImage
+                src={
+                  "https://149455961.v2.pressablecdn.com/wp-content/uploads/2013/03/askalexander.png"
+                }
+                alt="ask alexander"
+                width={100}
+                height={140}
+              />
+            </Link>
+            <Link
+              href="https://www.themagiccafe.com/forums/index.php"
+              aria-label="magic cafe forum"
+            >
+              <StyledImage
+                src={"https://themagiccafe.com/forums/images/header2.gif"}
+                alt="magic cafe"
+                width={200}
+                height={100}
+              />
+            </Link>
+          </StyledResources>
         </StyledSection>
       ) : (
         <Login />
@@ -125,10 +128,10 @@ export default function Shop() {
 
 //styling
 const StyledSection = styled.section`
-  margin: 10px;
-  margin-top: 70px;
-  border: 1px solid black;
+  margin-top: 60px;
   padding: 10px;
+  margin-bottom: 90px;
+  background-color: #fefff1;
 `;
 
 const StyledList = styled.ul`
@@ -136,4 +139,18 @@ const StyledList = styled.ul`
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-bottom: 10px;
+`;
+
+const StyledImage = styled(Image)`
+  border-radius: 20px;
+  box-shadow: 2px 1px 4px darkred;
+`;
+
+const StyledResources = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 `;

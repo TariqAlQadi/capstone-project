@@ -15,26 +15,26 @@ export const StyledSection = styled.section`
 export const ClubsWrapper = styled.div`
   rotate: -45deg;
   position: absolute;
-  left: 5px;
-  top: 5px;
+  left: 3px;
+  top: 3px;
 `;
 export const HeartsWrapper = styled.div`
   rotate: 45deg;
   position: absolute;
-  right: 5px;
-  top: 5px;
+  right: 3px;
+  top: 3px;
 `;
 
 export const SpadesWrapper = styled.div`
   rotate: 135deg;
   position: absolute;
-  bottom: 5px;
-  right: 5px;
+  bottom: 3px;
+  right: 3px;
 `;
 
 export const DiamondsWrapper = styled.div`
   rotate: 45deg;
   position: absolute;
-  left: 5px;
-  bottom: 5px;
+  left: 3px;
+  bottom: 3px;
 `;

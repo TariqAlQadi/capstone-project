@@ -99,7 +99,7 @@ export default function Feed() {
               aria-label="random"
               onClick={handleRandom}
             >
-              <SVGIcon variant="dice" width="30px" color="darkred"></SVGIcon>
+              <SVGIcon variant="dice" width="30px" color="black"></SVGIcon>
             </StyledRandomButton>
           </StyledQuery>
           {filterCategory === "" ? (
@@ -131,7 +131,6 @@ const StyledQuery = styled.div`
   display: flex;
   gap: 3px;
   margin-bottom: 10px;
-  max-width: 100%;
 `;
 
 const StyledTextInput = styled.input`
@@ -155,7 +154,6 @@ const StyledSelect = styled.select`
 
 const StyledRandomButton = styled.button`
   margin-left: 3px;
-
   background: none;
   border: 1px solid black;
   border-radius: 50%;
