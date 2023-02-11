@@ -25,7 +25,10 @@ export default function Login() {
         <SVGIcon variant="diamonds" width="20px" color="darkred" />
       </DiamondsWrapper>
       <h1>Welcome to Netrix</h1>
-      <p>This is a Web Application to discover, learn and create Magic!</p>
+      <p>
+        This is a Web Application to discover, learn, create and spread the Art
+        of Magic!
+      </p>
       <StyledLoginButton
         type="button"
         aria-label="login"
