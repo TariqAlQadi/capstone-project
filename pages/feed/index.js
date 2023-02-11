@@ -62,16 +62,17 @@ export default function Feed() {
   return (
     <StyledSection>
       <StyledQuery>
-        <SVGIcon variant="magnify" width="20px" color="grey" />
-        <StyledTextInput
-          aria-label="search"
-          onChange={handleChangeSearch}
-          type="text"
-          name="search"
-          id="search"
-          maxLength={50}
-        />
-
+        <StyledSearchWrapper>
+          <SVGIcon variant="magnify" width="20px" color="grey" />
+          <StyledTextInput
+            aria-label="search"
+            onChange={handleChangeSearch}
+            type="text"
+            name="search"
+            id="search"
+            maxLength={50}
+          />
+        </StyledSearchWrapper>
         <label htmlFor="select"></label>
         <select
           onChange={handleChangeCategory}
@@ -124,4 +125,14 @@ const StyledQuery = styled.div`
 
 const StyledTextInput = styled.input`
   max-width: 130px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+`;
+
+const StyledSearchWrapper = styled.div`
+  border: 1px solid black;
+  border-radius: 20px;
+  display: flex;
+  padding-left: 5px;
 `;
