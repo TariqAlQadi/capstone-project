@@ -22,7 +22,7 @@ export default function Navigation() {
     }
 
     if (pathname === "/profile") {
-      setIsActive("user");
+      setIsActive("profile");
     }
   }, [router]);
 
@@ -36,7 +36,11 @@ export default function Navigation() {
             href="/feed"
           >
             {isActive === "feed" ? (
-              <SVGIcon variant="search" width="30" color="#23222" />
+              <SVGIcon
+                variant="searchOutline"
+                width="30"
+                color="var(--accent-color)"
+              />
             ) : (
               <SVGIcon variant="searchOutline" width="30" color="#23222" />
             )}
@@ -48,7 +52,11 @@ export default function Navigation() {
             href="/shop"
           >
             {isActive === "shop" ? (
-              <SVGIcon variant="shop" width="30" color="#23222" />
+              <SVGIcon
+                variant="shopOutline"
+                width="30"
+                color="var(--accent-color)"
+              />
             ) : (
               <SVGIcon variant="shopOutline" width="30" color="#23222" />
             )}
@@ -56,13 +64,17 @@ export default function Navigation() {
 
           <Button
             variant="navButton"
-            isActive={isActive === "user"}
+            isActive={isActive === "profile"}
             href="/profile"
           >
             {isActive === "profile" ? (
-              <SVGIcon variant="userOutline" width="30" color="#23222" />
+              <SVGIcon
+                variant="userOutline"
+                width="30"
+                color="var(--accent-color)"
+              />
             ) : (
-              <SVGIcon variant="user" width="30" color="#23222" />
+              <SVGIcon variant="userOutline" width="30" color="#23222" />
             )}
           </Button>
         </StyledNavigation>

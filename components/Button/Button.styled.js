@@ -6,15 +6,11 @@ const StyledButton = styled.button`
   transition: 0.5s;
   padding: 0;
   background: none;
-  display: flex;w
+  display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size: 1rem;
-  font-family: inherit;
-  -webkit-tap-highlight-color: transparent;
-  font-weight: 300;
-  
+
   ${({ variant, isActive }) => {
     if (variant === "navButton") {
       return css`
