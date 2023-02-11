@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import useSWR from "swr";
 import { useSession } from "next-auth/react";
+import Login from "@/components/Login";
 
 // import dynamic CardList for randomizing
 import dynamic from "next/dynamic";
@@ -63,7 +64,7 @@ export default function Feed() {
 
   return (
     <>
-      {session && (
+      {session ? (
         <StyledSection>
           <StyledQuery>
             <StyledSearchWrapper>
@@ -115,6 +116,8 @@ export default function Feed() {
           )}
           <p>nothing found</p>
         </StyledSection>
+      ) : (
+        <Login />
       )}
     </>
   );

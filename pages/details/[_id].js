@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import styled from "styled-components";
 import { useSession } from "next-auth/react";
+import Login from "@/components/Login";
 
 export default function DetailsPage() {
   const { data: session } = useSession();
@@ -181,7 +182,7 @@ export default function DetailsPage() {
 
   return (
     <>
-      {session && (
+      {session ? (
         <StyledSection>
           <CardDetails
             content={data}
@@ -191,6 +192,8 @@ export default function DetailsPage() {
             onEditNote={handleEditNote}
           />
         </StyledSection>
+      ) : (
+        <Login />
       )}
     </>
   );
