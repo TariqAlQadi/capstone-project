@@ -8,19 +8,6 @@ export default async function handler(request, response) {
   const session = await conn.startSession();
 
   await session.withTransaction(async () => {
-    if (request.method === "PUT") {
-      const token = await getToken({ req: request });
-
-      await User.findByIdAndUpdate(
-        { email: token.sub },
-        {
-          $set: request.body,
-        }
-      );
-
-      return response.status(200).json({ status: "User updated" });
-    }
-
     if (request.method === "GET") {
       const token = await getToken({ req: request });
 

@@ -81,7 +81,7 @@ export default function Profil() {
     };
 
     try {
-      const response = await fetch(`/api/users`, {
+      const response = await fetch(`/api/users/${user._id}`, {
         method: "PUT",
         body: JSON.stringify(newUserObject),
         headers: { "Content-type": "application/json" },

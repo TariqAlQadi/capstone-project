@@ -179,15 +179,6 @@ export default function DetailsPage() {
 
   return (
     <StyledSection>
-      <button
-        type="button"
-        onClick={() => {
-          router.back();
-        }}
-      >
-        Go Back
-      </button>
-      <h2>Details:</h2>
       <CardDetails
         content={data}
         onToggleLike={handleToggleLike}
@@ -202,4 +193,5 @@ export default function DetailsPage() {
 //styling
 const StyledSection = styled.section`
   margin: 10px;
+  margin-top: 75px;
 `;
