@@ -11,7 +11,7 @@ export default function Login() {
         aria-label="login"
         onClick={() => signIn()}
       >
-        Login
+        Login with Github
       </StyledLoginButton>
     </StyledSection>
   );
