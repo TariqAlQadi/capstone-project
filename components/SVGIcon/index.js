@@ -113,6 +113,11 @@ const paths = {
     path: "M16,17V14H9V10H16V7L21,12L16,17M14,2A2,2 0 0,1 16,4V6H14V4H5V20H14V18H16V20A2,2 0 0,1 14,22H5A2,2 0 0,1 3,20V4A2,2 0 0,1 5,2H14Z",
     viewbox: "0 0 24 24",
   },
+
+  arrowLeft: {
+    path: "M21,11H6.83L10.41,7.41L9,6L3,12L9,18L10.41,16.58L6.83,13H21V11Z",
+    viewbox: "0 0 24 24",
+  },
 };
 
 export default function SVGIcon({ variant, width, color }) {

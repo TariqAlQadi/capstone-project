@@ -16,3 +16,9 @@ export const StyledLogOutButton = styled.button`
   top: 15px;
   right: 10px;
 `;
+
+export const StyledBackButton = styled.button`
+  position: absolute;
+  top: 15px;
+  left: 10px;
+`;
