@@ -99,12 +99,9 @@ export default function Feed() {
               aria-label="random"
               onClick={handleRandom}
             >
-              <SVGIcon variant="dice" width="30px" color="black"></SVGIcon>
+              <SVGIcon variant="dice" width="30px" color="darkred"></SVGIcon>
             </StyledRandomButton>
           </StyledQuery>
-
-          <h2>Results</h2>
-
           {filterCategory === "" ? (
             <>
               <CardList tutorials={filteredBySearch} />
@@ -156,6 +153,8 @@ const StyledSelect = styled.select`
 `;
 
 const StyledRandomButton = styled.button`
+  margin-left: 5px;
+  background: none;
   border: 1px solid black;
   border-radius: 50%;
   padding: 4px;

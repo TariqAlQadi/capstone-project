@@ -20,7 +20,7 @@ export default function Header() {
               router.back();
             }}
           >
-            <SVGIcon variant="arrowLeft" width="20px" color="black" />
+            <SVGIcon variant="arrowLeft" width="30px" color="darkred" />
           </StyledBackButton>
           <h1>NeTrix</h1>
           <StyledLogOutButton
@@ -30,7 +30,7 @@ export default function Header() {
               signOut();
             }}
           >
-            <SVGIcon variant="logOut" width="20px" color="black" />
+            <SVGIcon variant="logOut" width="25px" color="darkred" />
           </StyledLogOutButton>
         </StyledHeader>
       )}
