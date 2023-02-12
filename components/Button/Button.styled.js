@@ -78,9 +78,8 @@ const StyledButton = styled.button`
     if (variant === "tabButton") {
       return css`
         gap: 0.4rem;
-        color: var(--white);
         transition: 0, 5s ease;
-        mix-blend-mode: difference;
+        flex-direction: row;
       `;
     }
   }}

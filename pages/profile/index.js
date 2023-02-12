@@ -304,9 +304,10 @@ export default function Profil() {
           >
             <SVGIcon
               variant={filter === "isLiked" ? "heart" : "heartOutline"}
-              width="40px"
+              width="20px"
               color={filter === "isLiked" ? "red" : "grey"}
             />
+            Likes
           </Button>
           <Button
             type="button"
@@ -318,9 +319,10 @@ export default function Profil() {
           >
             <SVGIcon
               variant={filter === "isLearning" ? "learning" : "learningOutline"}
-              width="40px"
+              width="20px"
               color={filter === "isLearning" ? "blue" : "grey"}
             />
+            Learning
           </Button>
           <Button
             type="button"
@@ -332,9 +334,10 @@ export default function Profil() {
           >
             <SVGIcon
               variant={filter === "mastered" ? "doneAll" : "done"}
-              width="40px"
+              width="20px"
               color={filter === "mastered" ? "green" : "grey"}
             />
+            Mastered
           </Button>
           <div></div>
         </StyledTabBar>
@@ -399,11 +402,12 @@ const StyledTabBar = styled.div`
   width: 100%;
   height: 45px;
   position: relative;
-
   left: 50%;
   transform: translateX(-50%);
   display: flex;
+  border: 1px solid var(--passive-color);
   justify-content: space-around;
+  border-radius: 5px;
 
   div {
     transition: 0.5s ease;
@@ -411,6 +415,7 @@ const StyledTabBar = styled.div`
     position: absolute;
     height: 100%;
     border: 2px solid darkred;
+    border-radius: 5px;
     display: flex;
 
     ${({ filter }) => {
