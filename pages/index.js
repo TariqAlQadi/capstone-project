@@ -3,6 +3,8 @@ import { useSession, signIn } from "next-auth/react";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 import SVGIcon from "@/components/SVGIcon";
+import Image from "next/image";
+import { StyledTitle } from "@/components/Login/Login.styled";
 
 export default function Login() {
   const router = useRouter();
@@ -35,8 +37,18 @@ export default function Login() {
       <DiamondsWrapper>
         <SVGIcon variant="diamonds" width="20px" color="darkred" />
       </DiamondsWrapper>
-      <h1>Welcome to Netrix</h1>
-      <p>This is a Web Application to discover, learn and create Magic!</p>
+      <h1>Welcome to</h1>
+      <StyledTitle>Netrix</StyledTitle>
+      <Image
+        src="/../public/magician.gif"
+        width={200}
+        height={200}
+        alt="magician waving a wand"
+      />
+      <p>
+        This is a Web Application to discover, learn, create and spread the Art
+        of Illusion!
+      </p>
       <StyledLoginButton
         type="button"
         onClick={() => {

@@ -31,6 +31,18 @@ const StyledButton = styled.button`
         }
       `;
     }
+
+    if (variant === "random") {
+      return css`
+        padding: 5px;
+        border: 1px solid black;
+        border-radius: 50%;
+        &:focus {
+          outline: 1px solid var(--accent-color);
+        }
+      `;
+    }
+
     // if (variant === "tabBarButton") {
     //   return css`
     //     z-index: 10;

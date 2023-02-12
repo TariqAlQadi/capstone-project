@@ -6,8 +6,10 @@ import {
   HeartsWrapper,
   SpadesWrapper,
   DiamondsWrapper,
+  StyledTitle,
 } from "./Login.styled";
 import SVGIcon from "../SVGIcon";
+import Image from "next/image";
 
 export default function Login() {
   return (
@@ -24,10 +26,17 @@ export default function Login() {
       <DiamondsWrapper>
         <SVGIcon variant="diamonds" width="20px" color="darkred" />
       </DiamondsWrapper>
-      <h1>Welcome to Netrix</h1>
+      <h1>Welcome to </h1>
+      <StyledTitle>Netrix</StyledTitle>
+      <Image
+        src="/../public/magician.gif"
+        width={200}
+        height={200}
+        alt="magician waving a wand"
+      />
       <p>
         This is a Web Application to discover, learn, create and spread the Art
-        of Magic!
+        of Illusion!
       </p>
       <StyledLoginButton
         type="button"

@@ -8,7 +8,8 @@ export const StyledSection = styled.section`
   padding: 10px;
   margin: 10px;
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
   position: relative;
 `;
 
@@ -37,4 +38,9 @@ export const DiamondsWrapper = styled.div`
   position: absolute;
   left: 3px;
   bottom: 3px;
+`;
+
+export const StyledTitle = styled.h2`
+  color: var(--accent-color);
+  font-size: 3em;
 `;
