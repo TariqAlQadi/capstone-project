@@ -1,8 +1,8 @@
-import Link from "next/link";
 import styled from "styled-components";
 import { useSession } from "next-auth/react";
 import Login from "@/components/Login";
 import Image from "next/image";
+import Button from "@/components/Button";
 
 const onlineShops = [
   {
@@ -78,14 +78,14 @@ export default function Shop() {
             {onlineShops.map((shop) => {
               return (
                 <li key={shop.href}>
-                  <Link href={shop.href} aria-label={shop.name}>
+                  <Button href={shop.href} aria-label={shop.name}>
                     <StyledImage
                       src={shop.src}
                       alt={shop.name}
                       width={110}
                       height={110}
                     />
-                  </Link>
+                  </Button>
                 </li>
               );
             })}
@@ -93,7 +93,7 @@ export default function Shop() {
           <hr />
           <h2>Free Resources:</h2>
           <StyledResources>
-            <Link
+            <Button
               href="https://askalexander.org"
               aria-label="ask alexander search engine"
             >
@@ -105,8 +105,8 @@ export default function Shop() {
                 width={100}
                 height={140}
               />
-            </Link>
-            <Link
+            </Button>
+            <Button
               href="https://www.themagiccafe.com/forums/index.php"
               aria-label="magic cafe forum"
             >
@@ -116,7 +116,7 @@ export default function Shop() {
                 width={200}
                 height={100}
               />
-            </Link>
+            </Button>
           </StyledResources>
         </StyledSection>
       ) : (

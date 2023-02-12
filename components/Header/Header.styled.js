@@ -10,23 +10,3 @@ export const StyledHeader = styled.header`
   top: 0;
   z-index: 10;
 `;
-
-export const StyledLogOutButton = styled.button`
-  padding: 7px;
-  background: none;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  border: 1px solid black;
-  border-radius: 50%;
-`;
-
-export const StyledBackButton = styled.button`
-  padding: 4px;
-  background: none;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  border: 1px solid black;
-  border-radius: 50%;
-`;

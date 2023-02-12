@@ -46,8 +46,8 @@ export default function Login() {
         alt="magician waving a wand"
       />
       <p>
-        This is a Web Application to discover, learn, create and spread the Art
-        of Illusion!
+        This is a Web Application to discover, learn, create and spread the
+        <br /> Art of Illusion!
       </p>
       <StyledLoginButton
         type="button"

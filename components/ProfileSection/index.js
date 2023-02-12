@@ -1,9 +1,5 @@
-import { StyledLink } from "../StyledLink/Link.styled";
-import {
-  StyledList,
-  StyledListItem,
-  StyledProfileSection,
-} from "./ProfileSection.styled";
+import Button from "../Button";
+import { StyledList, StyledListItem } from "./ProfileSection.styled";
 
 export default function ProfilSection({ tutorials }) {
   return (
@@ -12,9 +8,9 @@ export default function ProfilSection({ tutorials }) {
         {tutorials.map((tutorial) => {
           return (
             <StyledListItem key={tutorial._id}>
-              <StyledLink href={`/details/${tutorial._id}`}>
+              <Button href={`/details/${tutorial._id}`}>
                 <h3>{tutorial.snippet.title}</h3>
-              </StyledLink>
+              </Button>
             </StyledListItem>
           );
         })}

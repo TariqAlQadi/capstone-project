@@ -6,13 +6,16 @@ import SVGIcon from "@/components/SVGIcon";
 import useSWR from "swr";
 import { useSession } from "next-auth/react";
 import Login from "@/components/Login";
+import Button from "@/components/Button";
+import css from "styled-jsx/css";
 
 export default function Profil() {
   const { data: session } = useSession();
+
   //show edit profile state
   const [showEdit, setShowEdit] = useState(false);
 
-  //filter isLiked/isLearning/mastered section
+  //filter isLiked/isLearning/mastered section & tabstate
   const [filter, setFilter] = useState("isLiked");
 
   //fetch tutorials & logged-in user
@@ -122,9 +125,10 @@ export default function Profil() {
             <StyledParagraph>Bio: {user.bio}</StyledParagraph>
           </>
         )}
-        <StyledEditButton
+        <Button
+          variant="edit"
           type="button"
-          aria-label="edit profile"
+          aria-label={showEdit ? "close editing" : "edit profile"}
           onClick={() => setShowEdit(!showEdit)}
         >
           {showEdit ? (
@@ -132,7 +136,7 @@ export default function Profil() {
           ) : (
             <SVGIcon variant="edit" width="20px" color="green" />
           )}
-        </StyledEditButton>
+        </Button>
         {showEdit && (
           <StyledProfileForm onSubmit={handleEditProfile}>
             <label htmlFor="name">Name:</label>
@@ -289,42 +293,51 @@ export default function Profil() {
       </StyledProfileSection>
       <StyledProfileSectionBottom>
         <h2>Repertoire</h2>
-        <button
-          aria-label="liked"
-          onClick={() => {
-            setFilter("isLiked");
-          }}
-        >
-          <SVGIcon
-            variant={filter === "isLiked" ? "heart" : "heartOutline"}
-            width="40px"
-            color={filter === "isLiked" ? "red" : "grey"}
-          />
-        </button>
-        <button
-          aria-label="learning"
-          onClick={() => {
-            setFilter("isLearning");
-          }}
-        >
-          <SVGIcon
-            variant={filter === "isLearning" ? "learning" : "learningOutline"}
-            width="40px"
-            color={filter === "isLearning" ? "blue" : "grey"}
-          />
-        </button>
-        <button
-          aria-label="mastered"
-          onClick={() => {
-            setFilter("mastered");
-          }}
-        >
-          <SVGIcon
-            variant={filter === "mastered" ? "doneAll" : "done"}
-            width="40px"
-            color={filter === "mastered" ? "green" : "grey"}
-          />
-        </button>
+        <StyledTabBar filter={filter}>
+          <Button
+            type="button"
+            variant="tabButton"
+            aria-label={filter === "isLiked" ? "" : "open liked tab"}
+            onClick={() => {
+              setFilter("isLiked");
+            }}
+          >
+            <SVGIcon
+              variant={filter === "isLiked" ? "heart" : "heartOutline"}
+              width="40px"
+              color={filter === "isLiked" ? "red" : "grey"}
+            />
+          </Button>
+          <Button
+            type="button"
+            variant="tabButton"
+            aria-label={filter === "isLearning" ? "" : "open learning tab"}
+            onClick={() => {
+              setFilter("isLearning");
+            }}
+          >
+            <SVGIcon
+              variant={filter === "isLearning" ? "learning" : "learningOutline"}
+              width="40px"
+              color={filter === "isLearning" ? "blue" : "grey"}
+            />
+          </Button>
+          <Button
+            type="button"
+            variant="tabButton"
+            aria-label={filter === "mastered" ? "" : "open mastered tab"}
+            onClick={() => {
+              setFilter("mastered");
+            }}
+          >
+            <SVGIcon
+              variant={filter === "mastered" ? "doneAll" : "done"}
+              width="40px"
+              color={filter === "mastered" ? "green" : "grey"}
+            />
+          </Button>
+          <div></div>
+        </StyledTabBar>
         <ProfilSection tutorials={filteredList} />
       </StyledProfileSectionBottom>
     </>
@@ -355,17 +368,12 @@ const StyledProfileForm = styled.form`
   gap: 5px;
 `;
 
-const StyledEditButton = styled.button`
-  position: absolute;
-  top: 5px;
-  right: 5px;
-`;
-
 const StyledProfileSection = styled.section`
   margin: 10px;
   padding: 10px;
   position: relative;
-  border: 1px solid black;
+  border: 1px solid var(--passive-color);
+  border-radius: 5px;
 `;
 
 const StyledProfileSectionTop = styled.section`
@@ -373,13 +381,54 @@ const StyledProfileSectionTop = styled.section`
   margin-top: 70px;
   padding: 10px;
   position: relative;
-  border: 1px solid black;
+  border: 1px solid var(--passive-color);
+  border-radius: 5px;
 `;
 
 const StyledProfileSectionBottom = styled.section`
   margin: 10px;
   padding: 10px;
   position: relative;
-  border: 1px solid black;
+  border: 1px solid var(--passive-color);
+  border-radius: 5px;
   margin-bottom: 100px;
+`;
+
+const StyledTabBar = styled.div`
+  margin-bottom: 20px;
+  width: 100%;
+  height: 45px;
+  position: relative;
+
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-around;
+
+  div {
+    transition: 0.5s ease;
+    width: 33%;
+    position: absolute;
+    height: 100%;
+    border: 2px solid darkred;
+    display: flex;
+
+    ${({ filter }) => {
+      if (filter === "isLiked") {
+        return css`
+          left: 0%;
+        `;
+      }
+      if (filter === "isLearning") {
+        return css`
+          left: 33%;
+        `;
+      }
+      if (filter === "mastered") {
+        return css`
+          left: 67%;
+        `;
+      }
+    }}
+  }
 `;

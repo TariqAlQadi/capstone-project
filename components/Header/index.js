@@ -1,9 +1,9 @@
 import { StyledHeader } from "./Header.styled";
 import { useRouter } from "next/router";
 import SVGIcon from "../SVGIcon";
-import { StyledLogOutButton, StyledBackButton } from "./Header.styled";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
+import Button from "../Button";
 
 export default function Header() {
   const { data: session } = useSession();
@@ -13,7 +13,8 @@ export default function Header() {
     <>
       {session && (
         <StyledHeader>
-          <StyledBackButton
+          <Button
+            variant="back"
             type="button"
             aria-label="back to the last page"
             onClick={() => {
@@ -21,9 +22,10 @@ export default function Header() {
             }}
           >
             <SVGIcon variant="arrowLeft" width="30px" color="darkred" />
-          </StyledBackButton>
+          </Button>
           <h1>NeTrix</h1>
-          <StyledLogOutButton
+          <Button
+            variant="logOut"
             type="button"
             aria-label="logout"
             onClick={() => {
@@ -31,7 +33,7 @@ export default function Header() {
             }}
           >
             <SVGIcon variant="logOut" width="25px" color="darkred" />
-          </StyledLogOutButton>
+          </Button>
         </StyledHeader>
       )}
     </>

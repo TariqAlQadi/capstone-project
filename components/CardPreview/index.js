@@ -1,4 +1,4 @@
-import { StyledLink } from "../StyledLink/Link.styled";
+import Button from "../Button";
 import {
   StyledImage,
   StyledTopLine,
@@ -8,7 +8,7 @@ import {
 
 export default function CardPreview({ content, _id }) {
   return (
-    <StyledLink href={`/details/${_id}`}>
+    <Button href={`/details/${_id}`}>
       <h3>{content?.title}</h3>
       <StyledSubtitle>by {content?.videoOwnerChannelTitle}</StyledSubtitle>
       <StyledTopLine />
@@ -19,6 +19,6 @@ export default function CardPreview({ content, _id }) {
         height={300}
       />
       <StyledBottomLine />
-    </StyledLink>
+    </Button>
   );
 }

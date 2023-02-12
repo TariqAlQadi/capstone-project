@@ -13,10 +13,12 @@ export const StyledTopLine = styled.hr`
   color: var(--passive-color);
   position: relative;
   top: 18px;
+  width: 250px;
 `;
 
 export const StyledBottomLine = styled.hr`
   color: var(--passive-color);
   position: relative;
   bottom: 20px;
+  width: 250px;
 `;

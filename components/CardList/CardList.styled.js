@@ -9,6 +9,7 @@ export const StyledList = styled.ul`
 export const StyledListItem = styled.li`
   padding: 20px;
   margin-bottom: 10px;
-  border: 1px solid black;
+  border: 1px solid var(--passive-color);
+  border-radius: 5px;
   position: relative;
 `;

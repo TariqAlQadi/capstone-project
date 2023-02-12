@@ -11,5 +11,6 @@ export const StyledList = styled.ul`
 
 export const StyledListItem = styled.li`
   padding: 10px;
-  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 1px 0.5px 3.5px darkred;
 `;
