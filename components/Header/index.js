@@ -21,7 +21,11 @@ export default function Header() {
               router.back();
             }}
           >
-            <SVGIcon variant="arrowLeft" width="30px" color="darkred" />
+            <SVGIcon
+              variant="arrowLeft"
+              width="30px"
+              color="var(--accent-color)"
+            />
           </Button>
           <h1>NeTrix</h1>
           <Button
@@ -32,7 +36,11 @@ export default function Header() {
               signOut();
             }}
           >
-            <SVGIcon variant="logOut" width="25px" color="darkred" />
+            <SVGIcon
+              variant="logOut"
+              width="25px"
+              color="var(--accent-color)"
+            />
           </Button>
         </StyledHeader>
       )}

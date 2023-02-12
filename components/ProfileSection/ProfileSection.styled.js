@@ -10,7 +10,6 @@ export const StyledList = styled.ul`
 `;
 
 export const StyledListItem = styled.li`
-  padding: 10px;
+  border: 2px solid var(--passive-color);
   border-radius: 5px;
-  box-shadow: 1px 0.5px 3.5px darkred;
 `;

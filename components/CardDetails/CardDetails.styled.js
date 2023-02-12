@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const StyledSection = styled.section`
   margin-top: 20px;
-  border: 1px solid black;
+  border: 1px solid var(--passive-color);
+  border-radius: 5px;
   padding: 10px;
   margin-bottom: 85px;
 `;
@@ -29,8 +30,12 @@ export const StyledNoteForm = styled.form`
 `;
 
 export const StyledTextArea = styled.textarea`
+  background: lightyellow;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
   width: 100%;
   resize: none;
   min-height: 180px;
-  padding: 5px;
+  box-shadow: 1px 1px 5px black;
 `;

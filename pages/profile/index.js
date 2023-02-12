@@ -132,9 +132,9 @@ export default function Profil() {
           onClick={() => setShowEdit(!showEdit)}
         >
           {showEdit ? (
-            <SVGIcon variant="close" width="20px" color="red" />
+            <SVGIcon variant="close" width="20px" color="var(--accent-color)" />
           ) : (
-            <SVGIcon variant="edit" width="20px" color="green" />
+            <SVGIcon variant="edit" width="20px" color="var(--accent-color)" />
           )}
         </Button>
         {showEdit && (
@@ -394,7 +394,7 @@ const StyledProfileSectionBottom = styled.section`
   position: relative;
   border: 1px solid var(--passive-color);
   border-radius: 5px;
-  margin-bottom: 100px;
+  margin-bottom: 70vh;
 `;
 
 const StyledTabBar = styled.div`

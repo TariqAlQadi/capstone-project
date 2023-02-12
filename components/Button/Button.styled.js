@@ -88,6 +88,19 @@ const StyledButton = styled.button`
         flex-direction: row;
       `;
     }
+
+    if (variant === "profileList") {
+      return css`
+        flex-direction: row;
+        gap: 10px;
+        padding: 10px;
+        border-radius: 5px;
+
+        &:focus {
+          outline: 1px solid var(--accent-color);
+        }
+      `;
+    }
   }}
 `;
 
