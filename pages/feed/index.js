@@ -69,7 +69,11 @@ export default function Feed() {
         <StyledSection>
           <StyledQuery>
             <StyledSearchWrapper>
-              <SVGIcon variant="magnify" width="20px" color="grey" />
+              <SVGIcon
+                variant="magnify"
+                width="20px"
+                color="var(--accent-color)"
+              />
               <StyledTextInput
                 aria-label="search"
                 onChange={handleChangeSearch}
@@ -96,7 +100,11 @@ export default function Feed() {
               <option value="gimmick">Gimmicks</option>
             </StyledSelect>
             <Button variant="random" aria-label="random" onClick={handleRandom}>
-              <SVGIcon variant="dice" width="30px" color="black"></SVGIcon>
+              <SVGIcon
+                variant="dice"
+                width="25px"
+                color="var(--accent-color)"
+              ></SVGIcon>
             </Button>
           </StyledQuery>
           {filterCategory === "" ? (
@@ -139,25 +147,17 @@ const StyledTextInput = styled.input`
 `;
 
 const StyledSearchWrapper = styled.div`
-  border: 1px solid black;
+  border: 1px solid var(--passive-color);
   border-radius: 20px;
   display: flex;
   padding-left: 8px;
 `;
 
 const StyledSelect = styled.select`
-  border: 1px solid black;
+  border: 1px solid var(--passive-color);
   border-radius: 20px;
   padding-left: 5px;
   &:focus {
     outline: 1px solid var(--accent-color);
   }
-`;
-
-const StyledRandomButton = styled.button`
-  margin-left: 3px;
-  background: none;
-  border: 1px solid black;
-  border-radius: 50%;
-  padding: 4px;
 `;

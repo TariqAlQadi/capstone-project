@@ -36,8 +36,8 @@ const StyledButton = styled.button`
     }
     if (variant === "random") {
       return css`
-        padding: 5px;
-        border: 1px solid black;
+        padding: 7px;
+        border: 1px solid var(--passive-color);
         border-radius: 50%;
         &:focus {
           outline: 1px solid var(--accent-color);
@@ -51,8 +51,11 @@ const StyledButton = styled.button`
         position: absolute;
         top: 10px;
         left: 10px;
-        border: 1px solid black;
+        border: 1px solid var(--passive-color);
         border-radius: 50%;
+        &:focus {
+          outline: 1px solid var(--accent-color);
+        }
       `;
     }
     if (variant === "logOut") {
@@ -62,8 +65,11 @@ const StyledButton = styled.button`
         position: absolute;
         top: 10px;
         right: 10px;
-        border: 1px solid black;
+        border: 1px solid var(--passive-color);
         border-radius: 50%;
+        &:focus {
+          outline: 1px solid var(--accent-color);
+        }
       `;
     }
 

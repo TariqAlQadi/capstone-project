@@ -305,7 +305,7 @@ export default function Profil() {
             <SVGIcon
               variant={filter === "isLiked" ? "heart" : "heartOutline"}
               width="20px"
-              color={filter === "isLiked" ? "red" : "grey"}
+              color={filter === "isLiked" ? "var(--accent-color)" : "grey"}
             />
             Likes
           </Button>
@@ -320,7 +320,7 @@ export default function Profil() {
             <SVGIcon
               variant={filter === "isLearning" ? "learning" : "learningOutline"}
               width="20px"
-              color={filter === "isLearning" ? "blue" : "grey"}
+              color={filter === "isLearning" ? "var(--accent-color)" : "grey"}
             />
             Learning
           </Button>
@@ -335,7 +335,7 @@ export default function Profil() {
             <SVGIcon
               variant={filter === "mastered" ? "doneAll" : "done"}
               width="20px"
-              color={filter === "mastered" ? "green" : "grey"}
+              color={filter === "mastered" ? "var(--accent-color)" : "grey"}
             />
             Mastered
           </Button>
