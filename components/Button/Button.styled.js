@@ -72,6 +72,16 @@ const StyledButton = styled.button`
         }
       `;
     }
+    if (variant === "logIn") {
+      return css`
+        border: 1px solid var(--passive-color);
+        border-radius: 5px;
+        background: black;
+        color: white;
+        margin: 0 auto;
+        padding: 5px;
+      `;
+    }
 
     if (variant === "edit") {
       return css`

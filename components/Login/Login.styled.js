@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-export const StyledLoginButton = styled.button`
-  margin: 20px;
-`;
-
 export const StyledSection = styled.section`
   padding: 10px;
   margin: 10px;
@@ -43,4 +39,15 @@ export const DiamondsWrapper = styled.div`
 export const StyledTitle = styled.h2`
   color: var(--accent-color);
   font-size: 3em;
+  margin: 0;
+`;
+
+export const StyledGreeting = styled.h1`
+  font-size: 1.5em;
+  margin: 0;
+`;
+
+export const StyledHighlight = styled.span`
+  color: var(--accent-color);
+  font-weight: bold;
 `;

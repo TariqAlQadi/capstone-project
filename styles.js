@@ -1,19 +1,29 @@
 import { createGlobalStyle } from "styled-components";
 
+//font import
+import { Roboto } from "@next/font/google";
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["100", "300", "400", "500", "700", "900"],
+});
+
 const GlobalStyle = createGlobalStyle`
   *,
   *::before,
   *::after {
     box-sizing: border-box;
-    margin: 0;
   }
 
   :root {
+
+    --roboto-font: ${roboto.style.fontFamily};
+
     --text-color-light:;
     --text-color-dark:;
 
     --primary-color:;
     --secondary-color:;
+
     --passive-color: lightgrey;
     --accent-color: darkred;
 
@@ -22,7 +32,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: monospace;
+    font-family: var(--roboto-font);
+    font-weight: 300;
   }
 `;
 

@@ -62,13 +62,6 @@ export default function Login() {
 }
 
 //styling
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-`;
-
 const StyledSection = styled.section`
   padding: 10px;
   margin: 10px;

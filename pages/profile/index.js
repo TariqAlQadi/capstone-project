@@ -394,7 +394,7 @@ const StyledProfileSectionBottom = styled.section`
   position: relative;
   border: 1px solid var(--passive-color);
   border-radius: 5px;
-  margin-bottom: 70vh;
+  margin-bottom: 76vh;
 `;
 
 const StyledTabBar = styled.div`

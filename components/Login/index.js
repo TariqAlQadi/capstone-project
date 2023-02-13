@@ -1,15 +1,17 @@
 import { signIn } from "next-auth/react";
 import {
-  StyledLoginButton,
   StyledSection,
   ClubsWrapper,
   HeartsWrapper,
   SpadesWrapper,
   DiamondsWrapper,
   StyledTitle,
+  StyledGreeting,
+  StyledHighlight,
 } from "./Login.styled";
 import SVGIcon from "../SVGIcon";
 import Image from "next/image";
+import Button from "../Button";
 
 export default function Login() {
   return (
@@ -26,7 +28,7 @@ export default function Login() {
       <DiamondsWrapper>
         <SVGIcon variant="diamonds" width="20px" color="darkred" />
       </DiamondsWrapper>
-      <h1>Welcome to </h1>
+      <StyledGreeting>Welcome to</StyledGreeting>
       <StyledTitle>Netrix</StyledTitle>
       <Image
         src="/../public/magician.gif"
@@ -37,15 +39,17 @@ export default function Login() {
       <p>
         This is a Web Application to discover, learn, create and spread the
         <br />
-        Art of Illusion!
+        <StyledHighlight>Art of Illusion!</StyledHighlight>
       </p>
-      <StyledLoginButton
+      <Button
+        variant="logIn"
         type="button"
-        aria-label="login"
+        aria-label="log in"
         onClick={() => signIn()}
       >
         Login with Github
-      </StyledLoginButton>
+        <SVGIcon variant="github" width="20px" color="white" />
+      </Button>
     </StyledSection>
   );
 }
