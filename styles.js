@@ -1,10 +1,16 @@
 import { createGlobalStyle } from "styled-components";
 
-//font import
+//import fonts
 import { Roboto } from "@next/font/google";
 const roboto = Roboto({
   subsets: ["latin"],
   weight: ["100", "300", "400", "500", "700", "900"],
+});
+
+import { Lobster } from "@next/font/google";
+const lobster = Lobster({
+  subsets: ["latin"],
+  weight: ["400"],
 });
 
 const GlobalStyle = createGlobalStyle`
@@ -12,11 +18,14 @@ const GlobalStyle = createGlobalStyle`
   *::before,
   *::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
   :root {
 
     --roboto-font: ${roboto.style.fontFamily};
+    --lobster-font: ${lobster.style.fontFamily};
 
     --text-color-light:;
     --text-color-dark:;

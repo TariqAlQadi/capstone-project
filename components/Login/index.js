@@ -44,11 +44,11 @@ export default function Login() {
       <Button
         variant="logIn"
         type="button"
-        aria-label="log in"
+        aria-label="log in with github"
         onClick={() => signIn()}
       >
-        Login with Github
-        <SVGIcon variant="github" width="20px" color="white" />
+        <SVGIcon variant="github" width="20px" color="white" /> Login with
+        GitHub
       </Button>
     </StyledSection>
   );

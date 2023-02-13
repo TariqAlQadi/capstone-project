@@ -73,7 +73,7 @@ export default function Shop() {
     <>
       {session ? (
         <StyledSection>
-          <h2>Online Shops:</h2>
+          <StyledHeading>Online Shops</StyledHeading>
           <StyledList>
             {onlineShops.map((shop) => {
               return (
@@ -90,8 +90,7 @@ export default function Shop() {
               );
             })}
           </StyledList>
-          <hr />
-          <h2>Free Resources:</h2>
+          <StyledHeading>Free Resources</StyledHeading>
           <StyledResources>
             <Button
               href="https://askalexander.org"
@@ -128,10 +127,13 @@ export default function Shop() {
 
 //styling
 const StyledSection = styled.section`
-  margin-top: 60px;
-  padding: 10px;
-  margin-bottom: 90px;
-  background-color: #fefff1;
+  margin-top: 70px;
+  padding: 0.7em 0.2em;
+  margin-bottom: 80px;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  border: 1px solid var(--passive-color);
+  border-radius: 5px;
 `;
 
 const StyledList = styled.ul`
@@ -140,7 +142,7 @@ const StyledList = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 6px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 `;
 
 const StyledImage = styled(Image)`
@@ -153,4 +155,9 @@ const StyledResources = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
+`;
+
+const StyledHeading = styled.h2`
+  text-align: center;
+  margin-bottom: 0.5em;
 `;

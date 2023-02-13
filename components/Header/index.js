@@ -1,4 +1,4 @@
-import { StyledHeader } from "./Header.styled";
+import { StyledHeader, StyledHeading } from "./Header.styled";
 import { useRouter } from "next/router";
 import SVGIcon from "../SVGIcon";
 import { signOut } from "next-auth/react";
@@ -27,7 +27,7 @@ export default function Header() {
               color="var(--accent-color)"
             />
           </Button>
-          <h1>NeTrix</h1>
+          <StyledHeading>Netrix</StyledHeading>
           <Button
             variant="logOut"
             type="button"

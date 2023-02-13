@@ -1,5 +1,10 @@
 import Button from "../Button";
-import { StyledList, StyledListItem } from "./ProfileSection.styled";
+import {
+  StyledList,
+  StyledListItem,
+  StyledArtist,
+  StyledItemTitle,
+} from "./ProfileSection.styled";
 import { StyledImage } from "../CardPreview/CardPreview.styled";
 
 export default function ProfilSection({ tutorials }) {
@@ -16,7 +21,15 @@ export default function ProfilSection({ tutorials }) {
                   width={50}
                   height={50}
                 ></StyledImage>
-                <h3>{tutorial.snippet.title}</h3>
+                <div>
+                  <StyledItemTitle>{tutorial.snippet.title}</StyledItemTitle>
+                  <p>
+                    by{" "}
+                    <StyledArtist>
+                      {tutorial.snippet.videoOwnerChannelTitle}
+                    </StyledArtist>
+                  </p>
+                </div>
               </Button>
             </StyledListItem>
           );

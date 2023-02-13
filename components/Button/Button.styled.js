@@ -49,7 +49,7 @@ const StyledButton = styled.button`
         padding: 4px;
         background: none;
         position: absolute;
-        top: 10px;
+        top: 20px;
         left: 10px;
         border: 1px solid var(--passive-color);
         border-radius: 50%;
@@ -63,10 +63,11 @@ const StyledButton = styled.button`
         padding: 7px;
         background: none;
         position: absolute;
-        top: 10px;
+        top: 20px;
         right: 10px;
         border: 1px solid var(--passive-color);
         border-radius: 50%;
+
         &:focus {
           outline: 1px solid var(--accent-color);
         }
@@ -78,8 +79,10 @@ const StyledButton = styled.button`
         border-radius: 5px;
         background: black;
         color: white;
-        margin: 0 auto;
+        margin: 1em auto;
         padding: 5px;
+        flex-direction: row;
+        padding: 10px;
       `;
     }
 
@@ -96,6 +99,7 @@ const StyledButton = styled.button`
         gap: 0.4rem;
         transition: 0, 5s ease;
         flex-direction: row;
+        transform: translatex(10%);
       `;
     }
 
@@ -105,6 +109,37 @@ const StyledButton = styled.button`
         gap: 10px;
         padding: 10px;
         border-radius: 5px;
+
+        &:focus {
+          outline: 1px solid var(--accent-color);
+        }
+      `;
+    }
+    if (variant === "like") {
+      return css`
+        padding: 7px;
+        border: 1px solid var(--passive-color);
+        border-radius: 50%;
+        &:focus {
+          outline: 1px solid var(--accent-color);
+        }
+      `;
+    }
+    if (variant === "learning") {
+      return css`
+        padding: 7px;
+        border: 1px solid var(--passive-color);
+        border-radius: 50%;
+        &:focus {
+          outline: 1px solid var(--accent-color);
+        }
+      `;
+    }
+    if (variant === "mastered") {
+      return css`
+        padding: 7px;
+        border: 1px solid var(--passive-color);
+        border-radius: 50%;
 
         &:focus {
           outline: 1px solid var(--accent-color);

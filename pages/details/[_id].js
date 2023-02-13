@@ -4,6 +4,7 @@ import useSWR from "swr";
 import styled from "styled-components";
 import { useSession } from "next-auth/react";
 import Login from "@/components/Login";
+import Loading from "@/components/Loading";
 
 export default function DetailsPage() {
   const { data: session } = useSession();
@@ -16,7 +17,7 @@ export default function DetailsPage() {
   //fetch tutorial
   const { data, mutate } = useSWR(`/api/tutorials/${_id}`);
   if (!data) {
-    return <div>...is Loading</div>;
+    return <Loading />;
   }
 
   //pushes & pulls the user email on & off the isLiked array

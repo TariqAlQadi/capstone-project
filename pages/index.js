@@ -1,10 +1,18 @@
-import styled from "styled-components";
 import { useSession, signIn } from "next-auth/react";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 import SVGIcon from "@/components/SVGIcon";
 import Image from "next/image";
-import { StyledTitle } from "@/components/Login/Login.styled";
+import { StyledGreeting, StyledTitle } from "@/components/Login/Login.styled";
+import Button from "@/components/Button";
+import {
+  DiamondsWrapper,
+  ClubsWrapper,
+  HeartsWrapper,
+  SpadesWrapper,
+  StyledSection,
+  StyledHighlight,
+} from "@/components/Login/Login.styled";
 
 export default function Login() {
   const router = useRouter();
@@ -37,7 +45,7 @@ export default function Login() {
       <DiamondsWrapper>
         <SVGIcon variant="diamonds" width="20px" color="darkred" />
       </DiamondsWrapper>
-      <h1>Welcome to</h1>
+      <StyledGreeting>Welcome to</StyledGreeting>
       <StyledTitle>Netrix</StyledTitle>
       <Image
         src="/../public/magician.gif"
@@ -47,56 +55,18 @@ export default function Login() {
       />
       <p>
         This is a Web Application to discover, learn, create and spread the
-        <br /> Art of Illusion!
+        <br />
+        <StyledHighlight>Art of Illusion!</StyledHighlight>
       </p>
-      <StyledLoginButton
+      <Button
+        variant="logIn"
         type="button"
-        onClick={() => {
-          signIn();
-        }}
+        aria-label="log in with github"
+        onClick={() => signIn()}
       >
-        Login with Github
-      </StyledLoginButton>
+        <SVGIcon variant="github" width="20px" color="white" /> Login with
+        GitHub
+      </Button>
     </StyledSection>
   );
 }
-
-//styling
-const StyledSection = styled.section`
-  padding: 10px;
-  margin: 10px;
-  text-align: center;
-  border: 1px solid lightgrey;
-  border-radius: 5px;
-  position: relative;
-`;
-
-const StyledLoginButton = styled.button`
-  margin: 20px;
-`;
-const ClubsWrapper = styled.div`
-  rotate: -45deg;
-  position: absolute;
-  left: 5px;
-  top: 5px;
-`;
-const HeartsWrapper = styled.div`
-  rotate: 45deg;
-  position: absolute;
-  right: 5px;
-  top: 5px;
-`;
-
-const SpadesWrapper = styled.div`
-  rotate: 135deg;
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
-`;
-
-const DiamondsWrapper = styled.div`
-  rotate: 45deg;
-  position: absolute;
-  left: 5px;
-  bottom: 5px;
-`;

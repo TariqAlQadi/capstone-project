@@ -5,6 +5,7 @@ import useSWR from "swr";
 import { useSession } from "next-auth/react";
 import Login from "@/components/Login";
 import Button from "@/components/Button";
+import Loading from "@/components/Loading";
 
 // import dynamic CardList for randomizing
 import dynamic from "next/dynamic";
@@ -24,7 +25,7 @@ export default function Feed() {
   //fetch mongoDB Atlas
   const { data } = useSWR("/api/tutorials");
   if (!data) {
-    return <div>...is Loading</div>;
+    return <Loading />;
   }
 
   //data

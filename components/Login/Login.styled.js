@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const StyledSection = styled.section`
-  padding: 10px;
-  margin: 10px;
+  padding: 0.5em;
+  margin: 0.5em;
   text-align: center;
   border: 1px solid lightgrey;
   border-radius: 5px;
@@ -15,31 +15,33 @@ export const ClubsWrapper = styled.div`
   left: 3px;
   top: 3px;
 `;
+
 export const HeartsWrapper = styled.div`
   rotate: 45deg;
   position: absolute;
-  right: 3px;
-  top: 3px;
+  right: 0.3em;
+  top: 0.3em;
 `;
 
 export const SpadesWrapper = styled.div`
   rotate: 135deg;
   position: absolute;
-  bottom: 3px;
-  right: 3px;
+  bottom: 0.3em;
+  right: 0.3em;
 `;
 
 export const DiamondsWrapper = styled.div`
   rotate: 45deg;
   position: absolute;
-  left: 3px;
-  bottom: 3px;
+  left: 0.3em;
+  bottom: 0.3em;
 `;
 
 export const StyledTitle = styled.h2`
   color: var(--accent-color);
-  font-size: 3em;
+  font-size: 2.8em;
   margin: 0;
+  font-family: var(--lobster-font);
 `;
 
 export const StyledGreeting = styled.h1`

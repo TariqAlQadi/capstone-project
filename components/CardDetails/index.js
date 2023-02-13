@@ -4,8 +4,14 @@ import {
   StyledDifficulty,
   StyledNoteForm,
   StyledTextArea,
+  StyledLabel,
+  StyledTitle,
+  StyledSubTitle,
 } from "./CardDetails.styled";
 import useSWR from "swr";
+import Button from "../Button";
+import { StyledHighlight } from "../Login/Login.styled";
+import Loading from "../Loading";
 
 export default function CardDetails({
   content,
@@ -14,12 +20,6 @@ export default function CardDetails({
   onToggleMastered,
   onEditNote,
 }) {
-  //resizing textarea
-  function resize(event) {
-    event.target.style.height = "auto";
-    event.target.style.height = event.target.scrollHeight + 2 + "px";
-  }
-
   //length of the description until the first "!"
   const lengthOfDescription = content?.snippet.description.indexOf("!") + 1;
 
@@ -27,7 +27,7 @@ export default function CardDetails({
   const { data: user, mutate } = useSWR(`/api/users`);
 
   if (!user) {
-    return <div>...is Loading</div>;
+    return <Loading />;
   }
 
   //number of all likes/learns/masters
@@ -41,8 +41,13 @@ export default function CardDetails({
 
   return (
     <StyledSection>
-      <h2>{content?.snippet.title}</h2>
-      <h3>by {content?.snippet.videoOwnerChannelTitle}</h3>
+      <StyledTitle>{content?.snippet.title}</StyledTitle>
+      <StyledSubTitle>
+        by{" "}
+        <StyledHighlight>
+          {content?.snippet.videoOwnerChannelTitle}
+        </StyledHighlight>
+      </StyledSubTitle>
       <iframe
         width="100%" //must be fixed on big screens
         height={200} //can be auto
@@ -50,9 +55,9 @@ export default function CardDetails({
         title={content?.snippet.title}
         allowFullScreen
       ></iframe>
+
       <p>Description:</p>
       <p>{content?.snippet.description.substring(0, lengthOfDescription)}</p>
-      <br />
       <p>Category: {content?.category}</p>
       <p>
         Difficulty:{" "}
@@ -61,58 +66,86 @@ export default function CardDetails({
         </StyledDifficulty>
       </p>
 
-      <br />
       <p>{numberLikes} people have liked this trick so far!</p>
       <p>{numberLearning} people are learning this trick right now!</p>
       <p>{numberMastered} people have mastered this trick already!</p>
-      <br />
 
-      <button aria-label="like" type="button" onClick={onToggleLike}>
+      <Button
+        variant="like"
+        aria-label="like"
+        type="button"
+        onClick={onToggleLike}
+      >
         {content?.isLiked.includes(user.email) ? (
           <>
-            <SVGIcon variant="heart" width="20px" color="red" />
+            <SVGIcon variant="heart" width="20px" color="var(--accent-color)" />
           </>
         ) : (
           <>
-            <SVGIcon variant="heartOutline" width="20px" color="grey" />
+            <SVGIcon
+              variant="heartOutline"
+              width="20px"
+              color="var(--passive-color)"
+            />
           </>
         )}
-      </button>
+      </Button>
 
-      <button aria-label="learing" type="button" onClick={onToggleLearning}>
+      <Button
+        variant="learning"
+        aria-label="learing"
+        type="button"
+        onClick={onToggleLearning}
+      >
         {content?.isLearning.includes(user.email) ? (
           <>
-            <SVGIcon variant="learning" width="20px" color="blue" />
+            <SVGIcon
+              variant="learning"
+              width="20px"
+              color="var(--accent-color)"
+            />
           </>
         ) : (
           <>
-            <SVGIcon variant="learningOutline" width="20px" color="grey" />
+            <SVGIcon
+              variant="learningOutline"
+              width="20px"
+              color="var(--passive-color)"
+            />
           </>
         )}
-      </button>
+      </Button>
 
-      <button aria-label="mastered" type="button" onClick={onToggleMastered}>
+      <Button
+        variant="mastered"
+        aria-label="mastered"
+        type="button"
+        onClick={onToggleMastered}
+      >
         {content?.mastered.includes(user.email) ? (
           <>
-            <SVGIcon variant="doneAll" width="20px" color="green" />
+            <SVGIcon
+              variant="doneAll"
+              width="20px"
+              color="var(--accent-color)"
+            />
           </>
         ) : (
           <>
-            <SVGIcon variant="done" width="20px" color="grey" />
+            <SVGIcon variant="done" width="20px" color="var(--passive-color)" />
           </>
         )}
-      </button>
+      </Button>
 
       <StyledNoteForm onSubmit={onEditNote}>
-        <label htmlFor="notes">Notes:</label>
+        <StyledLabel htmlFor="notes">Notes</StyledLabel>
         <StyledTextArea
           id="notes"
           name="notes"
           defaultValue={note ? note.note : ""}
-          onInput={resize}
-          maxLength={480}
+          maxLength={420}
         />
-        <button type="submit">Edit Note</button>
+        <Button type="submit">Edit Note</Button>
       </StyledNoteForm>
     </StyledSection>
   );
