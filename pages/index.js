@@ -48,7 +48,7 @@ export default function Login() {
       <StyledGreeting>Welcome to</StyledGreeting>
       <StyledTitle>Netrix</StyledTitle>
       <Image
-        src="/../public/magician.gif"
+        src="/magician.gif"
         width={200}
         height={200}
         alt="magician waving a wand"
