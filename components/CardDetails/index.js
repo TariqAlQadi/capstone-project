@@ -7,6 +7,8 @@ import {
   StyledLabel,
   StyledTitle,
   StyledSubTitle,
+  StyledInfoTitle,
+  StyledInfoText,
 } from "./CardDetails.styled";
 import useSWR from "swr";
 import Button from "../Button";
@@ -24,7 +26,7 @@ export default function CardDetails({
   const lengthOfDescription = content?.snippet.description.indexOf("!") + 1;
 
   //get logged-in user
-  const { data: user, mutate } = useSWR(`/api/users`);
+  const { data: user } = useSWR(`/api/users`);
 
   if (!user) {
     return <Loading />;
@@ -49,22 +51,28 @@ export default function CardDetails({
         </StyledHighlight>
       </StyledSubTitle>
       <iframe
-        width="100%" //must be fixed on big screens
+        width="100%" //must be a fixed number on big screens
         height={200} //can be auto
         src={`https://www.youtube.com/embed/${content?.snippet.resourceId.videoId}`}
         title={content?.snippet.title}
         allowFullScreen
       ></iframe>
 
-      <p>Description:</p>
-      <p>{content?.snippet.description.substring(0, lengthOfDescription)}</p>
-      <p>Category: {content?.category}</p>
-      <p>
+      <StyledInfoTitle>Description:</StyledInfoTitle>
+      <StyledInfoText>
+        {content?.snippet.description.substring(0, lengthOfDescription)}
+      </StyledInfoText>
+      <StyledInfoTitle>
+        Category:
+        <StyledInfoText> {content?.category}</StyledInfoText>
+      </StyledInfoTitle>
+
+      <StyledInfoTitle>
         Difficulty:{" "}
         <StyledDifficulty difficulty={content?.difficulty}>
           {content?.difficulty}
         </StyledDifficulty>
-      </p>
+      </StyledInfoTitle>
 
       <p>{numberLikes} people have liked this trick so far!</p>
       <p>{numberLearning} people are learning this trick right now!</p>

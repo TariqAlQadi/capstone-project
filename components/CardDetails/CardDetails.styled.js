@@ -8,6 +8,17 @@ export const StyledSubTitle = styled.h3`
   font-size: 0.9em;
 `;
 
+export const StyledInfoTitle = styled.h4`
+  font-weight: normal;
+  font-size: 0.8em;
+  color: var(--accent-color);
+`;
+
+export const StyledInfoText = styled.span`
+  color: black;
+  font-size: 0.9rem;
+`;
+
 export const StyledSection = styled.section`
   border: 1px solid var(--passive-color);
   border-radius: 5px;
@@ -49,5 +60,6 @@ export const StyledTextArea = styled.textarea`
 `;
 
 export const StyledLabel = styled.label`
+  font-size: 0.8em;
   color: var(--accent-color);
 `;
