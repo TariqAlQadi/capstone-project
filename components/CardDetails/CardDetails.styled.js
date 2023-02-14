@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledDescription = styled.p`
   font-size: 0.8rem;
+  font-weight: 300;
 `;
 
 export const StyledTitle = styled.h2`
@@ -55,7 +56,7 @@ export const StyledIcon = styled.span`
   color: black;
   position: relative;
   right: 1.7em;
-  bottom: 0.3em;
+  bottom: 0;
 `;
 
 export const StyledSection = styled.section`
@@ -110,6 +111,7 @@ export const StyledTextArea = styled.textarea`
 export const StyledLabel = styled.label`
   font-size: 0.8rem;
   color: var(--accent-color);
+  font-weight: 300;
 `;
 
 export const StyledLine = styled.hr`

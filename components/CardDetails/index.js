@@ -167,7 +167,7 @@ export default function CardDetails({
         </StyledIcon>
       </StyledIconWrapper>
       <StyledDescriptionWrapper>
-        <StyledInfoTitle>Description</StyledInfoTitle>
+        <StyledInfoTitle>Description:</StyledInfoTitle>
         <Button
           variant="description"
           type="button"
@@ -187,18 +187,18 @@ export default function CardDetails({
         )}
       </StyledDescriptionWrapper>
       <StyledInfoTitle>
-        Category
+        Category:
         <StyledInfoText> {content?.category}</StyledInfoText>
       </StyledInfoTitle>
       <StyledInfoTitle>
-        Difficulty{" "}
+        Difficulty:{" "}
         <StyledDifficulty difficulty={content?.difficulty}>
           {content?.difficulty}
         </StyledDifficulty>
       </StyledInfoTitle>
 
       <StyledNoteForm onSubmit={onEditNote}>
-        <StyledLabel htmlFor="notes">Notes</StyledLabel>
+        <StyledLabel htmlFor="notes">Notes:</StyledLabel>
         <StyledTextArea
           id="notes"
           name="notes"
