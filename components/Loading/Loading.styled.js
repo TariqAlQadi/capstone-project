@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
 export const StyledImageContainer = styled.div`
-  margin-left: 40vw;
-  margin-top: 40vh;
+  margin-left: 50vw;
+  margin-top: 50vh;
 `;
