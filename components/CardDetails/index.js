@@ -9,11 +9,20 @@ import {
   StyledSubTitle,
   StyledInfoTitle,
   StyledInfoText,
+  StyledDescription,
+  StyledButtonWrapper,
+  StyledLine,
+  StyledBy,
+  StyledSpadesContainer,
+  StyledDescriptionWrapper,
+  StyledIconWrapper,
+  StyledIcon,
 } from "./CardDetails.styled";
 import useSWR from "swr";
 import Button from "../Button";
 import { StyledHighlight } from "../Login/Login.styled";
 import Loading from "../Loading";
+import { useState } from "react";
 
 export default function CardDetails({
   content,
@@ -22,6 +31,9 @@ export default function CardDetails({
   onToggleMastered,
   onEditNote,
 }) {
+  //description state
+  const [showDescription, setShowDescription] = useState(false);
+
   //length of the description until the first "!"
   const lengthOfDescription = content?.snippet.description.indexOf("!") + 1;
 
@@ -45,11 +57,85 @@ export default function CardDetails({
     <StyledSection>
       <StyledTitle>{content?.snippet.title}</StyledTitle>
       <StyledSubTitle>
-        by{" "}
         <StyledHighlight>
-          {content?.snippet.videoOwnerChannelTitle}
+          <StyledBy>by</StyledBy> {content?.snippet.videoOwnerChannelTitle}
         </StyledHighlight>
+        <StyledButtonWrapper>
+          <Button
+            variant="like"
+            aria-label="like"
+            type="button"
+            onClick={onToggleLike}
+          >
+            {content?.isLiked.includes(user.email) ? (
+              <>
+                <SVGIcon
+                  variant="heart"
+                  width="20px"
+                  color="var(--accent-color)"
+                />
+              </>
+            ) : (
+              <>
+                <SVGIcon
+                  variant="heartOutline"
+                  width="20px"
+                  color="var(--passive-color)"
+                />
+              </>
+            )}
+          </Button>
+          <Button
+            variant="learning"
+            aria-label="learing"
+            type="button"
+            onClick={onToggleLearning}
+          >
+            {content?.isLearning.includes(user.email) ? (
+              <>
+                <SVGIcon
+                  variant="learning"
+                  width="20px"
+                  color="var(--accent-color)"
+                />
+              </>
+            ) : (
+              <>
+                <SVGIcon
+                  variant="learningOutline"
+                  width="20px"
+                  color="var(--passive-color)"
+                />
+              </>
+            )}
+          </Button>
+          <Button
+            variant="mastered"
+            aria-label="mastered"
+            type="button"
+            onClick={onToggleMastered}
+          >
+            {content?.mastered.includes(user.email) ? (
+              <>
+                <SVGIcon
+                  variant="doneAll"
+                  width="20px"
+                  color="var(--accent-color)"
+                />
+              </>
+            ) : (
+              <>
+                <SVGIcon
+                  variant="done"
+                  width="20px"
+                  color="var(--passive-color)"
+                />
+              </>
+            )}
+          </Button>
+        </StyledButtonWrapper>
       </StyledSubTitle>
+      <StyledLine />
       <iframe
         width="100%" //must be a fixed number on big screens
         height={200} //can be auto
@@ -57,93 +143,59 @@ export default function CardDetails({
         title={content?.snippet.title}
         allowFullScreen
       ></iframe>
+      <StyledIconWrapper>
+        <StyledIcon>
+          {numberLikes}
+          <SVGIcon variant="heart" width="15px" color="var(--passive-color)" />
+        </StyledIcon>
 
-      <StyledInfoTitle>Description:</StyledInfoTitle>
-      <StyledInfoText>
-        {content?.snippet.description.substring(0, lengthOfDescription)}
-      </StyledInfoText>
+        <StyledIcon>
+          {numberLearning}
+          <SVGIcon
+            variant="learning"
+            width="15px"
+            color="var(--passive-color)"
+          />
+        </StyledIcon>
+        <StyledIcon>
+          {numberMastered}
+          <SVGIcon
+            variant="doneAll"
+            width="15px"
+            color="var(--passive-color)"
+          />
+        </StyledIcon>
+      </StyledIconWrapper>
+      <StyledDescriptionWrapper>
+        <StyledInfoTitle>Description</StyledInfoTitle>
+        <Button
+          variant="description"
+          type="button"
+          aria-label={showDescription ? "hide description" : "show description"}
+          onClick={() => {
+            setShowDescription(!showDescription);
+          }}
+        >
+          <StyledSpadesContainer rotate={showDescription}>
+            <SVGIcon variant="spades" width="15px" />
+          </StyledSpadesContainer>
+        </Button>
+        {showDescription && (
+          <StyledDescription>
+            {content?.snippet.description.substring(0, lengthOfDescription)}
+          </StyledDescription>
+        )}
+      </StyledDescriptionWrapper>
       <StyledInfoTitle>
-        Category:
+        Category
         <StyledInfoText> {content?.category}</StyledInfoText>
       </StyledInfoTitle>
-
       <StyledInfoTitle>
-        Difficulty:{" "}
+        Difficulty{" "}
         <StyledDifficulty difficulty={content?.difficulty}>
           {content?.difficulty}
         </StyledDifficulty>
       </StyledInfoTitle>
-
-      <p>{numberLikes} people have liked this trick so far!</p>
-      <p>{numberLearning} people are learning this trick right now!</p>
-      <p>{numberMastered} people have mastered this trick already!</p>
-
-      <Button
-        variant="like"
-        aria-label="like"
-        type="button"
-        onClick={onToggleLike}
-      >
-        {content?.isLiked.includes(user.email) ? (
-          <>
-            <SVGIcon variant="heart" width="20px" color="var(--accent-color)" />
-          </>
-        ) : (
-          <>
-            <SVGIcon
-              variant="heartOutline"
-              width="20px"
-              color="var(--passive-color)"
-            />
-          </>
-        )}
-      </Button>
-
-      <Button
-        variant="learning"
-        aria-label="learing"
-        type="button"
-        onClick={onToggleLearning}
-      >
-        {content?.isLearning.includes(user.email) ? (
-          <>
-            <SVGIcon
-              variant="learning"
-              width="20px"
-              color="var(--accent-color)"
-            />
-          </>
-        ) : (
-          <>
-            <SVGIcon
-              variant="learningOutline"
-              width="20px"
-              color="var(--passive-color)"
-            />
-          </>
-        )}
-      </Button>
-
-      <Button
-        variant="mastered"
-        aria-label="mastered"
-        type="button"
-        onClick={onToggleMastered}
-      >
-        {content?.mastered.includes(user.email) ? (
-          <>
-            <SVGIcon
-              variant="doneAll"
-              width="20px"
-              color="var(--accent-color)"
-            />
-          </>
-        ) : (
-          <>
-            <SVGIcon variant="done" width="20px" color="var(--passive-color)" />
-          </>
-        )}
-      </Button>
 
       <StyledNoteForm onSubmit={onEditNote}>
         <StyledLabel htmlFor="notes">Notes</StyledLabel>
@@ -153,7 +205,9 @@ export default function CardDetails({
           defaultValue={note ? note.note : ""}
           maxLength={420}
         />
-        <Button type="submit">Edit Note</Button>
+        <Button type="submit" aria-label="save note" variant="note">
+          Edit Note
+        </Button>
       </StyledNoteForm>
     </StyledSection>
   );

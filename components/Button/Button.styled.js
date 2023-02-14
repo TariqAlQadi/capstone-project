@@ -120,6 +120,10 @@ const StyledButton = styled.button`
         padding: 7px;
         border: 1px solid var(--passive-color);
         border-radius: 50%;
+        margin: 3px 0;
+        background-color: white;
+        z-index: 10;
+
         &:focus {
           outline: 1px solid var(--accent-color);
         }
@@ -130,6 +134,10 @@ const StyledButton = styled.button`
         padding: 7px;
         border: 1px solid var(--passive-color);
         border-radius: 50%;
+        margin: 3px 0;
+        background-color: white;
+        z-index: 10;
+
         &:focus {
           outline: 1px solid var(--accent-color);
         }
@@ -140,10 +148,32 @@ const StyledButton = styled.button`
         padding: 7px;
         border: 1px solid var(--passive-color);
         border-radius: 50%;
+        margin: 3px 0;
+        background-color: white;
+        z-index: 10;
 
         &:focus {
           outline: 1px solid var(--accent-color);
         }
+      `;
+    }
+    if (variant === "note") {
+      return css`
+        margin-top: 5px;
+        padding: 2px;
+        border: 1px solid var(--passive-color);
+        border-radius: 5px;
+
+        &:focus {
+          outline: 1px solid var(--accent-color);
+        }
+      `;
+    }
+    if (variant === "description") {
+      return css`
+        position: absolute;
+        top: 0;
+        left: 5em;
       `;
     }
   }}

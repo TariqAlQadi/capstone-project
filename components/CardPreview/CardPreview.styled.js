@@ -10,15 +10,15 @@ export const StyledImage = styled(Image)`
 `;
 
 export const StyledTopLine = styled.hr`
-  color: var(--passive-color);
   position: relative;
   top: 18px;
   width: 250px;
+  border: 1px solid var(--passive-color);
 `;
 
 export const StyledBottomLine = styled.hr`
-  color: var(--passive-color);
   position: relative;
   bottom: 20px;
   width: 250px;
+  border: 1px solid var(--passive-color);
 `;

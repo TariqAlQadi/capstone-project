@@ -9,7 +9,7 @@ export const StyledHeader = styled.header`
   border-radius: 20px;
   position: fixed;
   top: 0;
-  z-index: 10;
+  z-index: 20;
   transform: translateY(-10px);
   font-family: var(--lobster-font);
 `;
