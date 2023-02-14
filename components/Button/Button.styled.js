@@ -51,8 +51,8 @@ const StyledButton = styled.button`
         position: absolute;
         top: 20px;
         left: 10px;
-        border: 1px solid var(--passive-color);
         border-radius: 50%;
+
         &:focus {
           outline: 1px solid var(--accent-color);
         }
@@ -65,7 +65,6 @@ const StyledButton = styled.button`
         position: absolute;
         top: 20px;
         right: 10px;
-        border: 1px solid var(--passive-color);
         border-radius: 50%;
 
         &:focus {
