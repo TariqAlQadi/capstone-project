@@ -1,7 +1,10 @@
-import { StyledImage } from "./Loading.styled";
+import { StyledImageContainer } from "./Loading.styled";
+import Image from "next/image";
 
 export default function Loading() {
   return (
-    <StyledImage src="/loading.gif" alt="loading" width={200} height={200} />
+    <StyledImageContainer>
+      <Image src="/loading.gif" alt="loading" width={200} height={200} />
+    </StyledImageContainer>
   );
 }
