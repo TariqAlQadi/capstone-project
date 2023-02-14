@@ -23,26 +23,15 @@ const GlobalStyle = createGlobalStyle`
   }
 
   :root {
-
     --roboto-font: ${roboto.style.fontFamily};
     --lobster-font: ${lobster.style.fontFamily};
 
-    --text-color-light:;
-    --text-color-dark:;
-
-    --primary-color:;
-    --secondary-color:;
-
     --passive-color: lightgrey;
-    --accent-color: darkred;
-
-    --primary-bg-color: darkred;
-    --secondary-bg-color:;
+    --accent-color: #880700;
   }
 
   body {
     font-family: var(--roboto-font);
-    font-weight: 300;
   }
 `;
 
