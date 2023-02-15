@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
     --roboto-font: ${roboto.style.fontFamily};
     --lobster-font: ${lobster.style.fontFamily};
 
-    --passive-color: lightgrey;
+    --passive-color: 	#D3D3D3;
     --accent-color: #880700;
     --green: #3c6f3c;
  

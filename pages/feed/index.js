@@ -83,6 +83,7 @@ export default function Feed() {
                 name="search"
                 id="search"
                 maxLength={50}
+                autoComplete="off"
               />
             </StyledSearchWrapper>
             <Button variant="random" aria-label="random" onClick={handleRandom}>
