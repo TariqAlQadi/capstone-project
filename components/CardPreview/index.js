@@ -10,7 +10,7 @@ export default function CardPreview({ content, _id }) {
   return (
     <Button href={`/details/${_id}`}>
       <h3>{content?.title}</h3>
-      <StyledSubtitle>by {content?.videoOwnerChannelTitle}</StyledSubtitle>
+      by<StyledSubtitle> {content?.videoOwnerChannelTitle}</StyledSubtitle>
       <StyledTopLine />
       <StyledImage
         src={content?.thumbnails.high.url}

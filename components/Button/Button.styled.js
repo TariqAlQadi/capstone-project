@@ -36,6 +36,7 @@ const StyledButton = styled.button`
     }
     if (variant === "random") {
       return css`
+        margin-left: 5px;
         padding: 7px;
         border: 1px solid var(--passive-color);
         border-radius: 50%;

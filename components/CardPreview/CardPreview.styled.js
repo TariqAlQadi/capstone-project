@@ -3,6 +3,7 @@ import Image from "next/image";
 
 export const StyledSubtitle = styled.h4`
   padding: 5px;
+  color: var(--accent-color);
 `;
 
 export const StyledImage = styled(Image)`

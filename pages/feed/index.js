@@ -84,6 +84,13 @@ export default function Feed() {
                 maxLength={50}
               />
             </StyledSearchWrapper>
+            <Button variant="random" aria-label="random" onClick={handleRandom}>
+              <SVGIcon
+                variant="dice"
+                width="25px"
+                color="var(--accent-color)"
+              ></SVGIcon>
+            </Button>
             <label htmlFor="select"></label>
             <StyledSelect
               onChange={handleChangeCategory}
@@ -100,13 +107,6 @@ export default function Feed() {
               <option value="coin">Coins</option>
               <option value="gimmick">Gimmicks</option>
             </StyledSelect>
-            <Button variant="random" aria-label="random" onClick={handleRandom}>
-              <SVGIcon
-                variant="dice"
-                width="25px"
-                color="var(--accent-color)"
-              ></SVGIcon>
-            </Button>
           </StyledQuery>
           {filterCategory === "" ? (
             <>
@@ -135,9 +135,7 @@ const StyledSection = styled.section`
 const StyledQuery = styled.div`
   margin-top: 70px;
   display: flex;
-  gap: 5px;
   margin-bottom: 10px;
-  justify-content: space-evenly;
 `;
 
 const StyledTextInput = styled.input`
@@ -158,6 +156,8 @@ const StyledSelect = styled.select`
   border: 1px solid var(--passive-color);
   border-radius: 20px;
   padding-left: 5px;
+  margin-left: 5px;
+
   &:focus {
     outline: 1px solid var(--accent-color);
   }
