@@ -476,7 +476,7 @@ const StyledProfileSectionBottom = styled.section`
   position: relative;
   border: 1px solid var(--passive-color);
   border-radius: 5px;
-  margin-bottom: 76vh;
+  margin-bottom: 5em;
   opacity: 0;
   animation: ${appear} 0.9s forwards;
 `;
