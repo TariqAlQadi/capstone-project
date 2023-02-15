@@ -138,7 +138,7 @@ export default function CardDetails({
       <StyledLine />
       <iframe
         width="100%" //must be a fixed number on big screens
-        height={200} //can be auto
+        height={192} //can be auto
         src={`https://www.youtube.com/embed/${content?.snippet.resourceId.videoId}`}
         title={content?.snippet.title}
         allowFullScreen
