@@ -1,9 +1,11 @@
-import { StyledLink } from "../StyledLink/Link.styled";
+import Button from "../Button";
 import {
   StyledList,
   StyledListItem,
-  StyledProfileSection,
+  StyledArtist,
+  StyledItemTitle,
 } from "./ProfileSection.styled";
+import { StyledImage } from "../CardPreview/CardPreview.styled";
 
 export default function ProfilSection({ tutorials }) {
   return (
@@ -12,9 +14,23 @@ export default function ProfilSection({ tutorials }) {
         {tutorials.map((tutorial) => {
           return (
             <StyledListItem key={tutorial._id}>
-              <StyledLink href={`/details/${tutorial._id}`}>
-                <h3>{tutorial.snippet.title}</h3>
-              </StyledLink>
+              <Button href={`/details/${tutorial._id}`} variant="profileList">
+                <StyledImage
+                  src={tutorial.snippet.thumbnails.high.url}
+                  alt={tutorial.snippet.title}
+                  width={50}
+                  height={50}
+                ></StyledImage>
+                <div>
+                  <StyledItemTitle>{tutorial.snippet.title}</StyledItemTitle>
+                  <p>
+                    by{" "}
+                    <StyledArtist>
+                      {tutorial.snippet.videoOwnerChannelTitle}
+                    </StyledArtist>
+                  </p>
+                </div>
+              </Button>
             </StyledListItem>
           );
         })}

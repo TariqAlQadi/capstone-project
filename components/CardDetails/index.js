@@ -4,8 +4,26 @@ import {
   StyledDifficulty,
   StyledNoteForm,
   StyledTextArea,
+  StyledLabel,
+  StyledTitle,
+  StyledSubTitle,
+  StyledInfoTitle,
+  StyledInfoText,
+  StyledDescription,
+  StyledButtonWrapper,
+  StyledLine,
+  StyledBy,
+  StyledSpadesContainer,
+  StyledDescriptionWrapper,
+  StyledIconWrapper,
+  StyledIcon,
+  StyledIconNumber,
 } from "./CardDetails.styled";
 import useSWR from "swr";
+import Button from "../Button";
+import { StyledHighlight } from "../Login/Login.styled";
+import Loading from "../Loading";
+import { useState } from "react";
 
 export default function CardDetails({
   content,
@@ -14,20 +32,17 @@ export default function CardDetails({
   onToggleMastered,
   onEditNote,
 }) {
-  //resizing textarea
-  function resize(event) {
-    event.target.style.height = "auto";
-    event.target.style.height = event.target.scrollHeight + 2 + "px";
-  }
+  //description state
+  const [showDescription, setShowDescription] = useState(false);
 
   //length of the description until the first "!"
   const lengthOfDescription = content?.snippet.description.indexOf("!") + 1;
 
   //get logged-in user
-  const { data: user, mutate } = useSWR(`/api/users`);
+  const { data: user } = useSWR(`/api/users`);
 
   if (!user) {
-    return <div>...is Loading</div>;
+    return <Loading />;
   }
 
   //number of all likes/learns/masters
@@ -41,78 +56,143 @@ export default function CardDetails({
 
   return (
     <StyledSection>
-      <h2>{content?.snippet.title}</h2>
-      <h3>by {content?.snippet.videoOwnerChannelTitle}</h3>
+      <StyledTitle>{content?.snippet.title}</StyledTitle>
+      <StyledSubTitle>
+        <StyledHighlight>
+          <StyledBy>by</StyledBy> {content?.snippet.videoOwnerChannelTitle}
+        </StyledHighlight>
+        <StyledButtonWrapper>
+          <Button
+            variant="like"
+            aria-label="like"
+            type="button"
+            onClick={onToggleLike}
+          >
+            {content?.isLiked.includes(user.email) ? (
+              <>
+                <SVGIcon
+                  variant="heart"
+                  width="20px"
+                  color="var(--accent-color)"
+                />
+              </>
+            ) : (
+              <>
+                <SVGIcon
+                  variant="heartOutline"
+                  width="20px"
+                  color="var(--passive-color)"
+                />
+              </>
+            )}
+          </Button>
+          <Button
+            variant="learning"
+            aria-label="learing"
+            type="button"
+            onClick={onToggleLearning}
+          >
+            {content?.isLearning.includes(user.email) ? (
+              <>
+                <SVGIcon variant="learning" width="20px" color="black" />
+              </>
+            ) : (
+              <>
+                <SVGIcon
+                  variant="learningOutline"
+                  width="20px"
+                  color="var(--passive-color)"
+                />
+              </>
+            )}
+          </Button>
+          <Button
+            variant="mastered"
+            aria-label="mastered"
+            type="button"
+            onClick={onToggleMastered}
+          >
+            {content?.mastered.includes(user.email) ? (
+              <>
+                <SVGIcon variant="doneAll" width="20px" color="var(--green)" />
+              </>
+            ) : (
+              <>
+                <SVGIcon
+                  variant="done"
+                  width="20px"
+                  color="var(--passive-color)"
+                />
+              </>
+            )}
+          </Button>
+        </StyledButtonWrapper>
+      </StyledSubTitle>
+      <StyledLine />
       <iframe
-        width="100%" //must be fixed on big screens
-        height={200} //can be auto
+        width="100%" //must be a fixed number on big screens
+        height={192} //can be auto
         src={`https://www.youtube.com/embed/${content?.snippet.resourceId.videoId}`}
         title={content?.snippet.title}
         allowFullScreen
       ></iframe>
-      <p>Description:</p>
-      <p>{content?.snippet.description.substring(0, lengthOfDescription)}</p>
-      <br />
-      <p>Category: {content?.category}</p>
-      <p>
+      <StyledIconWrapper>
+        <StyledIcon>
+          <StyledIconNumber>{numberLikes}</StyledIconNumber>
+          <SVGIcon variant="heart" width="15px" color="var(--accent-color)" />
+        </StyledIcon>
+
+        <StyledIcon>
+          <StyledIconNumber>{numberLearning}</StyledIconNumber>
+          <SVGIcon variant="learning" width="15px" color="black" />
+        </StyledIcon>
+        <StyledIcon>
+          <StyledIconNumber>{numberMastered}</StyledIconNumber>
+          <SVGIcon variant="doneAll" width="15px" color="var(--green)" />
+        </StyledIcon>
+      </StyledIconWrapper>
+      <StyledDescriptionWrapper>
+        <StyledInfoTitle>Description:</StyledInfoTitle>
+        <Button
+          variant="description"
+          type="button"
+          aria-label={showDescription ? "hide description" : "show description"}
+          onClick={() => {
+            setShowDescription(!showDescription);
+          }}
+        >
+          <StyledSpadesContainer rotate={showDescription}>
+            <SVGIcon variant="spades" width="15px" />
+          </StyledSpadesContainer>
+        </Button>
+        {showDescription && (
+          <StyledDescription>
+            {content?.snippet.description.substring(0, lengthOfDescription)}
+          </StyledDescription>
+        )}
+      </StyledDescriptionWrapper>
+      <StyledInfoTitle>
+        Category:
+        <StyledInfoText> {content?.category}</StyledInfoText>
+      </StyledInfoTitle>
+      <StyledInfoTitle>
         Difficulty:{" "}
         <StyledDifficulty difficulty={content?.difficulty}>
           {content?.difficulty}
         </StyledDifficulty>
-      </p>
-
-      <br />
-      <p>{numberLikes} people have liked this trick so far!</p>
-      <p>{numberLearning} people are learning this trick right now!</p>
-      <p>{numberMastered} people have mastered this trick already!</p>
-      <br />
-
-      <button aria-label="like" type="button" onClick={onToggleLike}>
-        {content?.isLiked.includes(user.email) ? (
-          <>
-            <SVGIcon variant="heart" width="20px" color="red" />
-          </>
-        ) : (
-          <>
-            <SVGIcon variant="heartOutline" width="20px" color="grey" />
-          </>
-        )}
-      </button>
-
-      <button aria-label="learing" type="button" onClick={onToggleLearning}>
-        {content?.isLearning.includes(user.email) ? (
-          <>
-            <SVGIcon variant="learning" width="20px" color="blue" />
-          </>
-        ) : (
-          <>
-            <SVGIcon variant="learningOutline" width="20px" color="grey" />
-          </>
-        )}
-      </button>
-
-      <button aria-label="mastered" type="button" onClick={onToggleMastered}>
-        {content?.mastered.includes(user.email) ? (
-          <>
-            <SVGIcon variant="doneAll" width="20px" color="green" />
-          </>
-        ) : (
-          <>
-            <SVGIcon variant="done" width="20px" color="grey" />
-          </>
-        )}
-      </button>
+      </StyledInfoTitle>
 
       <StyledNoteForm onSubmit={onEditNote}>
-        <label htmlFor="notes">Notes:</label>
+        <StyledLabel htmlFor="notes">Notes:</StyledLabel>
         <StyledTextArea
           id="notes"
           name="notes"
           defaultValue={note ? note.note : ""}
-          onInput={resize}
-          maxLength={480}
+          maxLength={420}
         />
-        <button type="submit">Edit Note</button>
+        <Button type="submit" aria-label="save note" variant="note">
+          Edit Note
+        </Button>
       </StyledNoteForm>
     </StyledSection>
   );

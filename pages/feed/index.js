@@ -4,6 +4,9 @@ import styled from "styled-components";
 import useSWR from "swr";
 import { useSession } from "next-auth/react";
 import Login from "@/components/Login";
+import Button from "@/components/Button";
+import Loading from "@/components/Loading";
+import Image from "next/image";
 
 // import dynamic CardList for randomizing
 import dynamic from "next/dynamic";
@@ -23,7 +26,7 @@ export default function Feed() {
   //fetch mongoDB Atlas
   const { data } = useSWR("/api/tutorials");
   if (!data) {
-    return <div>...is Loading</div>;
+    return <Loading />;
   }
 
   //data
@@ -68,7 +71,11 @@ export default function Feed() {
         <StyledSection>
           <StyledQuery>
             <StyledSearchWrapper>
-              <SVGIcon variant="magnify" width="20px" color="grey" />
+              <SVGIcon
+                variant="magnify"
+                width="20px"
+                color="var(--accent-color)"
+              />
               <StyledTextInput
                 aria-label="search"
                 onChange={handleChangeSearch}
@@ -78,6 +85,13 @@ export default function Feed() {
                 maxLength={50}
               />
             </StyledSearchWrapper>
+            <Button variant="random" aria-label="random" onClick={handleRandom}>
+              <SVGIcon
+                variant="dice"
+                width="25px"
+                color="var(--accent-color)"
+              ></SVGIcon>
+            </Button>
             <label htmlFor="select"></label>
             <StyledSelect
               onChange={handleChangeCategory}
@@ -94,17 +108,7 @@ export default function Feed() {
               <option value="coin">Coins</option>
               <option value="gimmick">Gimmicks</option>
             </StyledSelect>
-            <StyledRandomButton
-              type="button"
-              aria-label="random"
-              onClick={handleRandom}
-            >
-              <SVGIcon variant="dice" width="30px" color="black"></SVGIcon>
-            </StyledRandomButton>
           </StyledQuery>
-
-          <h2>Results</h2>
-
           {filterCategory === "" ? (
             <>
               <CardList tutorials={filteredBySearch} />
@@ -114,7 +118,12 @@ export default function Feed() {
               <CardList tutorials={filteredByCategorySearch} />
             </>
           )}
-          <p>nothing found</p>
+          <Image
+            src="/not-found.gif"
+            alt="nothing found"
+            width={200}
+            height={200}
+          />
         </StyledSection>
       ) : (
         <Login />
@@ -132,7 +141,6 @@ const StyledSection = styled.section`
 const StyledQuery = styled.div`
   margin-top: 70px;
   display: flex;
-  gap: 3px;
   margin-bottom: 10px;
 `;
 
@@ -140,23 +148,23 @@ const StyledTextInput = styled.input`
   border: none;
   border-radius: 20px;
   outline: none;
+  max-width: 7rem;
 `;
 
 const StyledSearchWrapper = styled.div`
-  border: 1px solid black;
+  border: 1px solid var(--passive-color);
   border-radius: 20px;
   display: flex;
-  padding-left: 5px;
+  padding-left: 8px;
 `;
 
 const StyledSelect = styled.select`
-  border: 1px solid black;
+  border: 1px solid var(--passive-color);
   border-radius: 20px;
   padding-left: 5px;
-`;
+  margin-left: 5px;
 
-const StyledRandomButton = styled.button`
-  border: 1px solid black;
-  border-radius: 50%;
-  padding: 4px;
+  &:focus {
+    outline: 1px solid var(--accent-color);
+  }
 `;
