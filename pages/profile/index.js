@@ -357,11 +357,7 @@ export default function Profil() {
             <SVGIcon
               variant={filter === "isLearning" ? "learning" : "learningOutline"}
               width="20px"
-              color={
-                filter === "isLearning"
-                  ? "var(--accent-color)"
-                  : "var(--passive-color)"
-              }
+              color={filter === "isLearning" ? "black" : "var(--passive-color)"}
             />
             {filter === "isLearning" ? (
               <StyledActiveText>Learning</StyledActiveText>
@@ -381,9 +377,7 @@ export default function Profil() {
               variant={filter === "mastered" ? "doneAll" : "done"}
               width="20px"
               color={
-                filter === "mastered"
-                  ? "var(--accent-color)"
-                  : "var(--passive-color)"
+                filter === "mastered" ? "var(--green)" : "var(--passive-color)"
               }
             />
             {filter === "mastered" ? (

@@ -17,6 +17,7 @@ import {
   StyledDescriptionWrapper,
   StyledIconWrapper,
   StyledIcon,
+  StyledIconNumber,
 } from "./CardDetails.styled";
 import useSWR from "swr";
 import Button from "../Button";
@@ -93,11 +94,7 @@ export default function CardDetails({
           >
             {content?.isLearning.includes(user.email) ? (
               <>
-                <SVGIcon
-                  variant="learning"
-                  width="20px"
-                  color="var(--accent-color)"
-                />
+                <SVGIcon variant="learning" width="20px" color="black" />
               </>
             ) : (
               <>
@@ -117,11 +114,7 @@ export default function CardDetails({
           >
             {content?.mastered.includes(user.email) ? (
               <>
-                <SVGIcon
-                  variant="doneAll"
-                  width="20px"
-                  color="var(--accent-color)"
-                />
+                <SVGIcon variant="doneAll" width="20px" color="var(--green)" />
               </>
             ) : (
               <>
@@ -145,25 +138,17 @@ export default function CardDetails({
       ></iframe>
       <StyledIconWrapper>
         <StyledIcon>
-          {numberLikes}
-          <SVGIcon variant="heart" width="15px" color="var(--passive-color)" />
+          <StyledIconNumber>{numberLikes}</StyledIconNumber>
+          <SVGIcon variant="heart" width="15px" color="var(--accent-color)" />
         </StyledIcon>
 
         <StyledIcon>
-          {numberLearning}
-          <SVGIcon
-            variant="learning"
-            width="15px"
-            color="var(--passive-color)"
-          />
+          <StyledIconNumber>{numberLearning}</StyledIconNumber>
+          <SVGIcon variant="learning" width="15px" color="black" />
         </StyledIcon>
         <StyledIcon>
-          {numberMastered}
-          <SVGIcon
-            variant="doneAll"
-            width="15px"
-            color="var(--passive-color)"
-          />
+          <StyledIconNumber>{numberMastered}</StyledIconNumber>
+          <SVGIcon variant="doneAll" width="15px" color="var(--green)" />
         </StyledIcon>
       </StyledIconWrapper>
       <StyledDescriptionWrapper>

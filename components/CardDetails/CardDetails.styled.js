@@ -8,6 +8,13 @@ export const StyledDescription = styled.p`
 export const StyledTitle = styled.h2`
   font-size: 1.2rem;
 `;
+
+export const StyledIconNumber = styled.span`
+  color: var(--accent-color);
+  position: relative;
+  top: -10%;
+`;
+
 export const StyledBy = styled.span`
   color: black;
   font-weight: 500;
