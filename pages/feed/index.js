@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import Login from "@/components/Login";
 import Button from "@/components/Button";
 import Loading from "@/components/Loading";
+import Image from "next/image";
 
 // import dynamic CardList for randomizing
 import dynamic from "next/dynamic";
@@ -117,7 +118,12 @@ export default function Feed() {
               <CardList tutorials={filteredByCategorySearch} />
             </>
           )}
-          <p>nothing found</p>
+          <Image
+            src="/not-found.gif"
+            alt="nothing found"
+            width={200}
+            height={200}
+          />
         </StyledSection>
       ) : (
         <Login />
