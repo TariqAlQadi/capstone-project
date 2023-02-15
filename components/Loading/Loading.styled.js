@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import Image from "next/image";
 
-export const StyledImageContainer = styled.div`
-  margin-left: 50vw;
-  margin-top: 50vh;
+export const StyledImage = styled(Image)`
+  margin-top: 10em;
+  transform: translateX(50%);
 `;
