@@ -29,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
     --passive-color: lightgrey;
     --accent-color: #880700;
     --green: #3c6f3c;
+ 
   }
 
   body {
