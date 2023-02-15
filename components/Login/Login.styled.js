@@ -1,4 +1,12 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const appear = keyframes`
+  to {
+    opacity: 1;
+    transform: scale(1);
+    transform: translateX(0%)
+  }
+`;
 
 export const StyledSection = styled.section`
   padding: 0.5em;
@@ -14,6 +22,9 @@ export const ClubsWrapper = styled.div`
   position: absolute;
   left: 3px;
   top: 3px;
+  opacity: 0;
+  animation: ${appear} 1s forwards;
+  transform: scale(0.8);
 `;
 
 export const HeartsWrapper = styled.div`
@@ -21,6 +32,9 @@ export const HeartsWrapper = styled.div`
   position: absolute;
   right: 0.3em;
   top: 0.3em;
+  opacity: 0;
+  animation: ${appear} 1s 0.2s forwards;
+  transform: scale(0.8);
 `;
 
 export const SpadesWrapper = styled.div`
@@ -28,6 +42,9 @@ export const SpadesWrapper = styled.div`
   position: absolute;
   bottom: 0.3em;
   right: 0.3em;
+  opacity: 0;
+  animation: ${appear} 1s 0.4s forwards;
+  transform: scale(0.8);
 `;
 
 export const DiamondsWrapper = styled.div`
@@ -35,6 +52,9 @@ export const DiamondsWrapper = styled.div`
   position: absolute;
   left: 0.3em;
   bottom: 0.3em;
+  opacity: 0;
+  animation: ${appear} 1s 0.6s forwards;
+  transform: scale(0.8);
 `;
 
 export const StyledTitle = styled.h2`
@@ -42,11 +62,16 @@ export const StyledTitle = styled.h2`
   font-size: 2.8em;
   margin: 0;
   font-family: var(--lobster-font);
+  opacity: 0;
+  animation: ${appear} 1s 1.5s forwards;
+  transform: scale(0.8);
 `;
 
 export const StyledGreeting = styled.h1`
   font-size: 1.5em;
   margin: 0;
+  animation: ${appear} 1s forwards;
+  transform: translateY(-100%);
 `;
 
 export const StyledHighlight = styled.span`
