@@ -13,6 +13,8 @@ import {
   StyledSection,
   StyledHighlight,
 } from "@/components/Login/Login.styled";
+import { StyledImage } from "@/components/Login/Login.styled";
+import { StyledIntroText } from "@/components/Login/Login.styled";
 
 export default function Login() {
   const router = useRouter();
@@ -47,17 +49,17 @@ export default function Login() {
       </DiamondsWrapper>
       <StyledGreeting>Welcome to</StyledGreeting>
       <StyledTitle>Netrix</StyledTitle>
-      <Image
+      <StyledImage
         src="/magician.gif"
         width={200}
         height={200}
         alt="magician waving a wand"
       />
-      <p>
+      <StyledIntroText>
         This is a Web Application to discover, learn, create and spread the
         <br />
         <StyledHighlight>Art of Illusion!</StyledHighlight>
-      </p>
+      </StyledIntroText>
       <Button
         variant="logIn"
         type="button"
