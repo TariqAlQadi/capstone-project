@@ -8,9 +8,11 @@ import {
   StyledTitle,
   StyledGreeting,
   StyledHighlight,
+  StyledIntroText,
+  StyledImage,
 } from "./Login.styled";
 import SVGIcon from "../SVGIcon";
-import Image from "next/image";
+
 import Button from "../Button";
 
 export default function Login() {
@@ -30,17 +32,17 @@ export default function Login() {
       </DiamondsWrapper>
       <StyledGreeting>Welcome to</StyledGreeting>
       <StyledTitle>Netrix</StyledTitle>
-      <Image
+      <StyledImage
         src="/magician.gif"
         width={200}
         height={200}
         alt="magician waving a wand"
       />
-      <p>
+      <StyledIntroText>
         This is a Web Application to discover, learn, create and spread the
         <br />
         <StyledHighlight>Art of Illusion!</StyledHighlight>
-      </p>
+      </StyledIntroText>
       <Button
         variant="logIn"
         type="button"

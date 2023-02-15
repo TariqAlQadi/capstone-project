@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { useState } from "react";
 import ProfilSection from "@/components/ProfileSection";
 import SVGIcon from "@/components/SVGIcon";
@@ -395,6 +395,11 @@ export default function Profil() {
 }
 
 //styling
+const appear = keyframes`
+  to {
+    opacity: 1;
+  }
+`;
 const StyledParagraph = styled.p`
   word-break: break-word;
 `;
@@ -441,6 +446,8 @@ const StyledUserInfo = styled.div`
   margin: 0.3em 0.7em;
   display: flex;
   flex-direction: column;
+  opacity: 0;
+  animation: ${appear} 0.5s forwards;
 `;
 
 const StyledProfileSection = styled.section`
@@ -449,6 +456,8 @@ const StyledProfileSection = styled.section`
   position: relative;
   border: 1px solid var(--passive-color);
   border-radius: 5px;
+  opacity: 0;
+  animation: ${appear} 0.7s forwards;
 `;
 
 const StyledProfileSectionTop = styled.section`
@@ -468,6 +477,8 @@ const StyledProfileSectionBottom = styled.section`
   border: 1px solid var(--passive-color);
   border-radius: 5px;
   margin-bottom: 76vh;
+  opacity: 0;
+  animation: ${appear} 0.9s forwards;
 `;
 
 const StyledTextInput = styled.input`

@@ -14,7 +14,7 @@ const StyledButton = styled.button`
   justify-content: center;
   cursor: pointer;
 
-  ${({ variant, isActive }) => {
+  ${({ variant, isActive, appear }) => {
     if (variant === "navButton") {
       return css`
         flex-direction: column;
@@ -40,6 +40,7 @@ const StyledButton = styled.button`
         padding: 7px;
         border: 1px solid var(--passive-color);
         border-radius: 50%;
+
         &:focus {
           outline: 1px solid var(--accent-color);
         }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import useSWR from "swr";
 import { useSession } from "next-auth/react";
 import Login from "@/components/Login";
@@ -118,7 +118,7 @@ export default function Feed() {
               <CardList tutorials={filteredByCategorySearch} />
             </>
           )}
-          <Image
+          <StyledImage
             src="/not-found.gif"
             alt="nothing found"
             width={200}
@@ -133,6 +133,17 @@ export default function Feed() {
 }
 
 //styling
+const appear = keyframes`
+  to {
+    opacity: 1;
+  }
+`;
+
+const StyledImage = styled(Image)`
+  opacity: 0;
+  animation: ${appear} 1s 1s forwards;
+`;
+
 const StyledSection = styled.section`
   margin: 10px;
   text-align: center;
@@ -142,6 +153,8 @@ const StyledQuery = styled.div`
   margin-top: 70px;
   display: flex;
   margin-bottom: 10px;
+  opacity: 0;
+  animation: ${appear} 0.5s forwards;
 `;
 
 const StyledTextInput = styled.input`

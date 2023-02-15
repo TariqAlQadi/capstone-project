@@ -1,7 +1,7 @@
 import CardDetails from "@/components/CardDetails";
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { useSession } from "next-auth/react";
 import Login from "@/components/Login";
 import Loading from "@/components/Loading";
@@ -201,7 +201,14 @@ export default function DetailsPage() {
 }
 
 //styling
+const appear = keyframes`
+  to {
+    opacity: 1;
+  }
+`;
 const StyledSection = styled.section`
   margin: 10px;
   margin-top: 75px;
+  opacity: 0;
+  animation: ${appear} 0.5s forwards;
 `;

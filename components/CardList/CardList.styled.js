@@ -1,9 +1,17 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const appear = keyframes`
+  to {
+    opacity: 1;
+  }
+`;
 
 export const StyledList = styled.ul`
-  margin-bottom: 70px;
+  margin-bottom: 140px;
   list-style: none;
   padding: 0;
+  opacity: 0;
+  animation: ${appear} 0.7s forwards;
 `;
 
 export const StyledListItem = styled.li`

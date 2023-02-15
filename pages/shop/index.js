@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { useSession } from "next-auth/react";
 import Login from "@/components/Login";
 import Image from "next/image";
@@ -126,6 +126,11 @@ export default function Shop() {
 }
 
 //styling
+const appear = keyframes`
+  to {
+    opacity: 1;
+  }
+`;
 const StyledSection = styled.section`
   margin-top: 70px;
   padding: 0.7em 0.2em;
@@ -134,6 +139,8 @@ const StyledSection = styled.section`
   margin-right: 0.5em;
   border: 1px solid var(--passive-color);
   border-radius: 5px;
+  opacity: 0;
+  animation: ${appear} 0.5s forwards;
 `;
 
 const StyledList = styled.ul`
